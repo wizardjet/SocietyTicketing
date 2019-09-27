@@ -145,25 +145,34 @@ class DBHandler:
 
     # checks if a member exists
     def exists_mem(self, person):
-        check_exists = f"SELECT COUNT(*) FROM smig_person AND smig_membership WHERE email='{person.email}'"
+        check_exists = f"SELECT COUNT(*) FROM smig_membership WHERE person_email='{person.email}'"
         return self.exists_one(check_exists)
+
+    # checks the number of persons in smig_membership
+    def no_of_mem(self):
+        get_count = "SELECT COUNT(*) FROM smig_membership"
+        self.query(get_count)
+        return self.cursor.fetchone()[0]
 
     # adds id number for person
     def add_ID(self, person, type, number):
         # check if exists
         msg = f"{person.email}, {'Library' if type==1 else 'Student'}, {number}"
-        if self.exists_ID(person):
-            add_row = f"INSERT INTO smig_ID(`person_email`, `type`, `number`) VALUES ('{person.email}', '{type}', '{number}')"
-            # assigns ID
-            # TODO: data check
-            id = ID(type, number)
-            person.ID = id
-            self.query(add_row)
-            self.log("add_ID", self.STATUS_OK, msg)
-            self.mariadb_connection.commit()
+        if self.exists_person(person):
+            if not self.exists_ID(person):
+                add_row = f"INSERT INTO smig_ID(`person_email`, `type`, `number`) VALUES ('{person.email}', '{type}', '{number}')"
+                # assigns ID
+                # TODO: data check
+                id = ID(type, number)
+                person.ID = id
+                self.query(add_row)
+                self.log("add_ID", self.STATUS_OK, msg)
+                self.mariadb_connection.commit()
+            else:
+                self.log("add_ID", self.STATUS_DUPLICATE, msg)
         else:
             self.log("add_ID", self.STATUS_NOT_EXIST, msg)
-    
+
     # deletes ID for person
     def del_ID(self, person):
         id = None
@@ -171,7 +180,7 @@ class DBHandler:
             id = person.id
         elif self.exists_ID(person):
             id = self.get_ID(person)
-            del_row = f"DELETE FROM smig_ID WHERE person_email='{person.email}"
+            del_row = f"DELETE FROM smig_ID WHERE person_email='{person.email}'"
             msg = f"{person.email}, {'Library' if type==1 else 'Student'}, {id.number}"
             self.query(del_row)
             person.id = None
@@ -182,14 +191,20 @@ class DBHandler:
 
     # retrieves ID object from data from database
     def get_ID(self, person):
-        get_row = f"SELECT type, number FROM smig_ID WHERE person_email='{person.email}"
+        get_row = f"SELECT type, number FROM smig_ID WHERE person_email='{person.email}'"
         self.query(get_row)
         return ID(self.cursor.fetchone[0], self.cursor.fetchone[1])
 
     # checks if ID exists
     def exists_ID(self, person):
-        check_exists = f"SELECT COUNT(*) FROM smig_ID AND smig_membership WHERE person_email='{person.email}'"
+        check_exists = f"SELECT COUNT(*) FROM smig_ID WHERE person_email='{person.email}'"
         return self.exists_one(check_exists)
+
+    # checks the number of IDs in smig_ID
+    def no_of_ID(self):
+        get_count = "SELECT COUNT(*) FROM smig_ID"
+        self.query(get_count)
+        return self.cursor.fetchone()[0]
 
     # Adds an event to the smig_event
     def add_event(self, event):
