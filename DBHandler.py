@@ -155,9 +155,19 @@ class DBHandler:
 
     # checks if an event exists
     def exists_event(self, event):
-        check_exists = f"SELECT COUNT(*) FROM smig_event WHERE `name`='{event.name}' AND DATEDIFF(`date`,'{event.date}')=0"
+        # check_exists = f"SELECT COUNT(*) FROM smig_event WHERE `name`='{event.name}' AND DATEDIFF(`date`,'{event.date}')=0"
+        check_exists = f"SELECT COUNT(*) FROM smig_event WHERE (`name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}')"
         # print(check_exists)
         return self.exists_one(check_exists)
+
+    def add_mem():
+
+    def del_mem():
+
+    def exists_mem():
+    def add_ID():
+
+    def exists_ID():
     # convert to CSV
 
     # convert from CSV
@@ -170,13 +180,3 @@ class DBHandler:
         f = open(f"log{datetime.date.today()}.txt","a+")
         f.write(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] ({status}) {operation}: {string}\n")
         f.close()
-    
-# db = DBHandler()
-# p1 = Person("Jane", "Smith", "js20", "1", "Computer Science")
-# p2 = Person("John", "Sax", "js19", "2", "Physics")
-# db.add_person(p1)
-# db.add_membership(p2, True)
-# db.add_ID(p1, 1, "8080808808")
-# db.add_ID(p2, 0, "160009424")
-# e1 = Event("Flavours of Malaysia", 10, 8, "2019-5-31", "14:30:00", "Holy Trinity Church Hall")
-# db.add_event(e1)

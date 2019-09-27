@@ -19,14 +19,14 @@ class MyModuleTest(unittest.TestCase):
         for x in range(self.no_of_events):
             self.events.append(self.factory.random_event())
 
-    def testAddPersons(self):
+    def testAddAllPersons(self):
         old_no = self.db.no_of_persons()
         for person in self.persons:
             self.db.add_person(person)
         assert(self.db.no_of_persons() == old_no + self.no_of_persons)
         self.delPersons()
 
-    def testAddEvents(self):
+    def testAddAllEvents(self):
         old_no = self.db.no_of_events()
         for event in self.events:
             self.db.add_event(event)
@@ -34,8 +34,10 @@ class MyModuleTest(unittest.TestCase):
         self.delEvents()
 
     def delEvents(self):
+        old_no = self.db.no_of_events()
         for event in self.events:
             self.db.del_event(event)
+        assert(old_no - self.db.no_of_events() == self.no_of_events)
     
     def delPersons(self):
         for person in self.persons:
@@ -45,7 +47,6 @@ class MyModuleTest(unittest.TestCase):
     def printPersons(self):
         for person in self.persons:
             print(person.to_string())
-        
 
     # Create persons
 
