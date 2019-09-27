@@ -2,6 +2,8 @@ import getpass
 import datetime
 import mysql.connector as mariadb
 from smig_person import Person
+from smig_person import ID
+from smig_person import Membership
 from smig_event import Event
 
 class DBHandler:
@@ -10,6 +12,9 @@ class DBHandler:
     EMAIL_MAX_CHAR = 15
     ID_MAX_CHAR = 10
     EVENT_MAX_CHAR = 50
+    STATUS_OK = "OK"
+    STATUS_NOT_EXIST = "NEX"
+    STATUS_DUPLICATE = "DUP"
 
     def __init__(self):
         print("Welcome to the SMIG app v0.2")
@@ -69,10 +74,10 @@ class DBHandler:
         if not self.exists_person(person):
             add_row = f"INSERT INTO smig_person(`first_name`, `last_name`, `email`, `year`, `course`) VALUES ('{person.first_name}', '{person.last_name}', '{person.email}', '{person.year}', '{person.course}')"
             self.query(add_row)
-            self.log("add_person", "OK", person.to_string())
+            self.log("add_person", self.STATUS_OK, person.to_string())
             self.mariadb_connection.commit()
         else:
-            self.log("add_person", "DUP", person.to_string())
+            self.log("add_person", self.STATUS_DUPLICATE, person.to_string())
 
     # checks the number of persons in smig_person
     def no_of_persons(self):
@@ -86,10 +91,10 @@ class DBHandler:
         if self.exists_person(person):
             del_row = f"DELETE FROM smig_person WHERE email='{person.email}'"
             self.query(del_row)
-            self.log("del_person", "OK", person.to_string())
+            self.log("del_person", self.STATUS_OK, person.to_string())
             self.mariadb_connection.commit()
         else:
-            self.log("del_person", "NEX", person.to_string())
+            self.log("del_person", self.STATUS_NOT_EXIST, person.to_string())
 
     # checks if a person exists
     def exists_person(self, person):
@@ -97,32 +102,94 @@ class DBHandler:
         return self.exists_one(check_exists)
 
     # adds membership for person
-    def add_membership(self, person, has_paid):
-        # check if exists
-        check_exists = f"SELECT COUNT(*) FROM smig_person WHERE email='{person.email}'"
+    def add_mem(self, person, has_paid):
         msg = f"{person.email}, {'paid' if has_paid else 'not paid'}"
-        if self.exists_one(check_exists):
-            add_member_row = f"INSERT INTO smig_membership(`person_email`, `hasPaid`) VALUES ('{person.email}', '{'1' if has_paid else '0'}')"
-            print (add_member_row)
-            self.query(add_member_row)
-            self.log("add_membership", "OK", msg)
+        # checks if person exists first
+        if self.exists_person(person):
+            add_row = f"INSERT INTO smig_membership(`person_email`, `hasPaid`) VALUES ('{person.email}', '{'1' if has_paid else '0'}')"
+            # assigns membership
+            mem = Membership(has_paid)
+            person.membership = mem
+            self.query(add_row)
+            self.log("add_mem", self.STATUS_OK, msg)
             self.mariadb_connection.commit()
         else:
-            self.log("add_membership", "NEX", msg)
+            self.log("add_mem", self.STATUS_NOT_EXIST, msg)
+    
+    # deletes membership for person
+    def del_mem(self, person):
+        # checks if person is member first
+        if self.exists_mem(person):
+            del_row = f"DELETE FROM smig_membership WHERE person_email='{person.email}'"
+            # unassigns membership
+            person.membership = None
+            self.query(del_row)
+            self.log("del_mem", self.STATUS_OK, person.to_string())
+            self.mariadb_connection.commit()
+        else:
+            self.log("del_mem", self.STATUS_NOT_EXIST, person.to_string())
+    
+    # checks if a person has paid membership
+    def paid_mem(self, person):
+        # checks if object is assigned membership
+        if person.membership != None:
+            return person.membership.has_paid
+        # checks if a person is a paid member
+        elif self.exists_mem(person):
+            check_paid = f"SELECT hasPaid FROM smig_membership WHERE person_email='{person.email}'"
+            self.query(check_paid)
+            has_paid = self.cursor.fetchone[0]
+            # assigns membership
+            mem = Membership(True if has_paid else False)
+            person.membership = mem
+
+    # checks if a member exists
+    def exists_mem(self, person):
+        check_exists = f"SELECT COUNT(*) FROM smig_person AND smig_membership WHERE email='{person.email}'"
+        return self.exists_one(check_exists)
 
     # adds id number for person
     def add_ID(self, person, type, number):
         # check if exists
-        check_exists = f"SELECT COUNT(*) FROM smig_membership WHERE person_email='{person.email}'"
         msg = f"{person.email}, {'Library' if type==1 else 'Student'}, {number}"
-        if self.exists_one(check_exists):
+        if self.exists_ID(person):
             add_row = f"INSERT INTO smig_ID(`person_email`, `type`, `number`) VALUES ('{person.email}', '{type}', '{number}')"
-            print (add_row)
+            # assigns ID
+            # TODO: data check
+            id = ID(type, number)
+            person.ID = id
             self.query(add_row)
-            self.log("add_ID", "OK", msg)
+            self.log("add_ID", self.STATUS_OK, msg)
             self.mariadb_connection.commit()
         else:
-            self.log("add_ID", "NEX", msg)
+            self.log("add_ID", self.STATUS_NOT_EXIST, msg)
+    
+    # deletes ID for person
+    def del_ID(self, person):
+        id = None
+        if person.id != None:
+            id = person.id
+        elif self.exists_ID(person):
+            id = self.get_ID(person)
+            del_row = f"DELETE FROM smig_ID WHERE person_email='{person.email}"
+            msg = f"{person.email}, {'Library' if type==1 else 'Student'}, {id.number}"
+            self.query(del_row)
+            person.id = None
+            self.log("del_ID", self.STATUS_OK, msg)
+            self.mariadb_connection.commit()
+        else:
+            self.log("del_ID", self.STATUS_NOT_EXIST, msg)
+
+    # retrieves ID object from data from database
+    def get_ID(self, person):
+        get_row = f"SELECT type, number FROM smig_ID WHERE person_email='{person.email}"
+        self.query(get_row)
+        return ID(self.cursor.fetchone[0], self.cursor.fetchone[1])
+
+    # checks if ID exists
+    def exists_ID(self, person):
+        check_exists = f"SELECT COUNT(*) FROM smig_ID AND smig_membership WHERE person_email='{person.email}'"
+        return self.exists_one(check_exists)
 
     # Adds an event to the smig_event
     def add_event(self, event):
@@ -130,10 +197,10 @@ class DBHandler:
         if not self.exists_event(event):
             add_row = f"INSERT INTO smig_event(`name`, `price_non_member`, `price_member`, `date`, `time`, `location`) VALUES ('{event.name}', '{event.price_non_member}', '{event.price_member}','{event.date}', '{event.time}', '{event.location}')"
             self.query(add_row)
-            self.log("add_event", "OK", msg)
+            self.log("add_event", self.STATUS_OK, msg)
             self.mariadb_connection.commit()
         else:
-            self.log("add_event", "DUP", msg)
+            self.log("add_event", self.STATUS_DUPLICATE, msg)
 
      # checks the number of persons in smig_person
     def no_of_events(self):
@@ -148,10 +215,10 @@ class DBHandler:
         if self.exists_event(event):
             del_row = f"DELETE FROM smig_event WHERE (`name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}')"
             self.query(del_row)
-            self.log("del_event", "OK", msg)
+            self.log("del_event", self.STATUS_OK, msg)
             self.mariadb_connection.commit()
         else:
-            self.log("del_event", "NEX", msg)
+            self.log("del_event", self.STATUS_NOT_EXIST, msg)
 
     # checks if an event exists
     def exists_event(self, event):
@@ -160,14 +227,6 @@ class DBHandler:
         # print(check_exists)
         return self.exists_one(check_exists)
 
-    def add_mem():
-
-    def del_mem():
-
-    def exists_mem():
-    def add_ID():
-
-    def exists_ID():
     # convert to CSV
 
     # convert from CSV
