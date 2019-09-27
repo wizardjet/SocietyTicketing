@@ -19,31 +19,32 @@ class MyModuleTest(unittest.TestCase):
         for x in range(self.no_of_events):
             self.events.append(self.factory.random_event())
 
-    def tearDown(self):
-        self.delPersons()
-        self.delEvents()
-    
     def testAddPersons(self):
+        old_no = self.db.no_of_persons()
         for person in self.persons:
             self.db.add_person(person)
-        assert(self.db.no_of_persons() == self.no_of_persons)
-
-    def delPersons(self):
-        for person in self.persons:
-            self.db.del_person(person)
-        assert(self.db.no_of_persons() == 0)
-    
-    def printPersons(self):
-        for person in self.persons:
-            print(person.to_string())
+        assert(self.db.no_of_persons() == old_no + self.no_of_persons)
+        self.delPersons()
 
     def testAddEvents(self):
+        old_no = self.db.no_of_events()
         for event in self.events:
             self.db.add_event(event)
+        assert(self.db.no_of_events() == old_no + self.no_of_events)
+        self.delEvents()
 
     def delEvents(self):
         for event in self.events:
             self.db.del_event(event)
+    
+    def delPersons(self):
+        for person in self.persons:
+            self.db.del_person(person)
+        assert(self.db.no_of_persons() == 0)
+
+    def printPersons(self):
+        for person in self.persons:
+            print(person.to_string())
         
 
     # Create persons

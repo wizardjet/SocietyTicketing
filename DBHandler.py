@@ -37,7 +37,7 @@ class DBHandler:
         table_person = f"CREATE TABLE IF NOT EXISTS smig_person (first_name VARCHAR({self.NAME_MAX_CHAR}), last_name VARCHAR({self.NAME_MAX_CHAR}), email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, `year` VARCHAR({self.NAME_MAX_CHAR}), course VARCHAR({self.EVENT_MAX_CHAR}))"
         table_membership = f"CREATE TABLE IF NOT EXISTS smig_membership (person_email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, hasPaid BOOLEAN, CONSTRAINT FOREIGN KEY (person_email) REFERENCES smig_person (email) ON DELETE CASCADE)"
         table_ID = f"CREATE TABLE IF NOT EXISTS smig_ID (person_email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, `type` BOOLEAN, `number` VARCHAR({self.ID_MAX_CHAR}), CONSTRAINT FOREIGN KEY (person_email) REFERENCES smig_person (email) ON DELETE CASCADE)"
-        table_event = f"CREATE TABLE IF NOT EXISTS smig_event (id INT PRIMARY KEY AUTO_INCREMENT, `name` VARCHAR({self.EVENT_MAX_CHAR}), price_non_member DECIMAL(10,2), price_member DECIMAL(10,2), `date` DATE, `time` TIME, `location` VARCHAR({self.NAME_MAX_CHAR}))"
+        table_event = f"CREATE TABLE IF NOT EXISTS smig_event (id INT PRIMARY KEY AUTO_INCREMENT, `name` VARCHAR({self.EVENT_MAX_CHAR}), price_non_member DECIMAL(10,2), price_member DECIMAL(10,2), `date` DATE, `time` TIME, `location` VARCHAR({self.EVENT_MAX_CHAR}))"
         table_event_attendee = f"CREATE TABLE IF NOT EXISTS smig_event_attendee (event_id INT, person_email VARCHAR({self.EMAIL_MAX_CHAR}), amount_paid DECIMAL(10,2), CONSTRAINT FOREIGN KEY (person_email) REFERENCES smig_person (email) ON DELETE CASCADE, CONSTRAINT FOREIGN KEY (event_id) REFERENCES smig_event (id) ON DELETE CASCADE)"
         table_event_guest = f"CREATE TABLE IF NOT EXISTS smig_event_guest (event_id INT, guest_name VARCHAR({self.NAME_MAX_CHAR}), amount_paid DECIMAL(10,2), CONSTRAINT FOREIGN KEY (event_id) REFERENCES smig_event (id) ON DELETE CASCADE)"
         self.query(table_person)
@@ -126,16 +126,14 @@ class DBHandler:
 
     # Adds an event to the smig_event
     def add_event(self, event):
-        check_exists = f"SELECT COUNT(*) FROM smig_event WHERE name='{event.name}'"
-        msg = f"{event.name}, {event.price_non_member}, {event.price_member},{event.date}, {event.time}, {event.location}"
-        if self.exists_one(check_exists):
+        msg = f"{event.name}, {event.price_non_member}, {event.price_member}, {event.date}, {event.time}, {event.location}"
+        if not self.exists_event(event):
             add_row = f"INSERT INTO smig_event(`name`, `price_non_member`, `price_member`, `date`, `time`, `location`) VALUES ('{event.name}', '{event.price_non_member}', '{event.price_member}','{event.date}', '{event.time}', '{event.location}')"
-            print (add_row)
             self.query(add_row)
             self.log("add_event", "OK", msg)
             self.mariadb_connection.commit()
         else:
-            self.log("add_event", "NEX", msg)
+            self.log("add_event", "DUP", msg)
 
      # checks the number of persons in smig_person
     def no_of_events(self):
@@ -145,10 +143,10 @@ class DBHandler:
     
     # removes a person object from smig_person
     def del_event(self, event):
-        msg = f"{event.name}, {event.price_non_member}, {event.price_member},{event.date}, {event.time}, {event.location}"
+        msg = f"{event.name}, {event.price_non_member}, {event.price_member}, {event.date}, {event.time}, {event.location}"
         # checks if event exists
         if self.exists_event(event):
-            del_row = f"DELETE FROM smig_event WHERE WHERE `name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}'"
+            del_row = f"DELETE FROM smig_event WHERE (`name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}')"
             self.query(del_row)
             self.log("del_event", "OK", msg)
             self.mariadb_connection.commit()
@@ -157,7 +155,8 @@ class DBHandler:
 
     # checks if an event exists
     def exists_event(self, event):
-        check_exists = f"SELECT COUNT(*) FROM smig_event WHERE `name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}'"
+        check_exists = f"SELECT COUNT(*) FROM smig_event WHERE `name`='{event.name}' AND DATEDIFF(`date`,'{event.date}')=0"
+        # print(check_exists)
         return self.exists_one(check_exists)
     # convert to CSV
 

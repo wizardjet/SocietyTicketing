@@ -34,7 +34,7 @@ class Factory:
 
     # generates random date YYYY-MM-DD    
     def random_date(self):
-        return f"{random.randint(2017,2019)}-{random.randint(1,12)}-{random.randint(1,28)}"
+        return f"{random.randint(1970,2075)}-{random.randint(1,12)}-{random.randint(1,28)}"
 
     # generates random 24 time hh:mm:ss
     def random_time(self):
