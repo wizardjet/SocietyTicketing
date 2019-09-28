@@ -54,6 +54,16 @@ class DBHandler:
         self.query(table_event_attendee)
         self.query(table_event_guest)
 
+    # deletes all tables
+    # TODO: Backups
+    def del_tables(self):
+        self.db.query("DROP TABLE IF EXISTS smig_membership")
+        self.db.query("DROP TABLE IF EXISTS smig_ID")
+        self.db.query("DROP TABLE IF EXISTS smig_event_attendee")
+        self.db.query("DROP TABLE IF EXISTS smig_event_guest")
+        self.db.query("DROP TABLE IF EXISTS smig_event")
+        self.db.query("DROP TABLE IF EXISTS smig_person")
+
     # creates views
     def create_views(self):
         view_csv = "CREATE VIEW csv AS SELECT ROW_NUMBER() OVER(ORDER BY p.email ASC) AS '#', p.first_name AS 'First Name', p.last_name AS 'Last Name', p.email AS 'Email', m.status AS 'Membership?', m.has_paid AS 'Paid?', p.course AS 'Course', p.malaysian AS 'Malaysian?', p.committee AS 'Committee?', id.type AS 'ID Type', id.number AS 'ID Number' FROM smig_person AS p LEFT JOIN smig_membership AS m ON p.email=m.person_email LEFT JOIN smig_ID as id ON m.person_email=id.person_email"
@@ -323,15 +333,16 @@ class DBHandler:
             self.log("exists_attendee", self.STATUS_NOT_EXIST, f"{event.ID}, {person.email}")
             return False
             
-    # gets a list of all attendees for an event
+    # gets a list of all attendees (person objects) for an event
     def get_attendees(self, event):
         # if event exists
         if self.exists_event(event):
             get_rows = f"SELECT person_email FROM smig_event_attendee WHERE `event_id`='{event.ID}'"
             self.query(get_rows)
-            results = self.query_results()
+            results = self.query_results() # emails
             self.log("get_attendees", self.STATUS_OK, f"Fetched {len(results)} rows")
-            attendees = [] # list of emails
+            attendees = [] # person objects
+            # obtain person objects from email
             for result in results:
                 email = result[0]
                 person = self.get_person(email)
@@ -344,7 +355,7 @@ class DBHandler:
             self.log("get_attendees", self.STATUS_NOT_EXIST, f"Event [{event.ID}] not found")
             return None
     
-    # gets a list of all attendees for an event
+    # number of attendees for an event
     def no_of_attendees(self, event):
         # if event exists
         if self.exists_event(event):

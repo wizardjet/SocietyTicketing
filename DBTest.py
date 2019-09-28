@@ -21,12 +21,7 @@ class MyModuleTest(unittest.TestCase):
             self.events.append(self.factory.random_event())
 
     def tearDown(self):
-        self.db.query("DROP TABLE IF EXISTS smig_membership")
-        self.db.query("DROP TABLE IF EXISTS smig_ID")
-        self.db.query("DROP TABLE IF EXISTS smig_event_attendee")
-        self.db.query("DROP TABLE IF EXISTS smig_event_guest")
-        self.db.query("DROP TABLE IF EXISTS smig_event")
-        self.db.query("DROP TABLE IF EXISTS smig_person")
+        self.db.del_tables()
 
     def testAddAllPersons(self):
         self.addPersons()
