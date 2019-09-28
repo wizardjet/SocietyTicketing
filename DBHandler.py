@@ -25,7 +25,8 @@ class DBHandler:
     def connect_db(self):
         try:
             self.mariadb_connection = mariadb.connect(user='smig', password="jommakan_55", database='smig_1920')
-            self.cursor = self.mariadb_connection.cursor()
+            self.cursor = self.mariadb_connection.cursor(buffered=True)
+            # self.cursor.free_result()
             print("Connect success")
         except Exception as e:
             print(e)
@@ -38,8 +39,8 @@ class DBHandler:
             print('ERROR', error) 
         return p
 
+    # create the tables that matter
     def create_tables(self):
-        # create the tables that matter
         table_person = f"CREATE TABLE IF NOT EXISTS smig_person (first_name VARCHAR({self.NAME_MAX_CHAR}), last_name VARCHAR({self.NAME_MAX_CHAR}), email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, `year` VARCHAR({self.NAME_MAX_CHAR}), course VARCHAR({self.EVENT_MAX_CHAR}), malaysian BOOLEAN, committee BOOLEAN)"
         table_membership = f"CREATE TABLE IF NOT EXISTS smig_membership (person_email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, status BOOLEAN default 1, has_paid BOOLEAN, CONSTRAINT FOREIGN KEY (person_email) REFERENCES smig_person (email) ON DELETE CASCADE)"
         table_ID = f"CREATE TABLE IF NOT EXISTS smig_ID (person_email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, `type` BOOLEAN, `number` VARCHAR({self.ID_MAX_CHAR}), CONSTRAINT FOREIGN KEY (person_email) REFERENCES smig_person (email) ON DELETE CASCADE)"
@@ -53,21 +54,31 @@ class DBHandler:
         self.query(table_event_attendee)
         self.query(table_event_guest)
 
+    # creates views
     def create_views(self):
         view_csv = "CREATE VIEW csv AS SELECT ROW_NUMBER() OVER(ORDER BY p.email ASC) AS '#', p.first_name AS 'First Name', p.last_name AS 'Last Name', p.email AS 'Email', m.status AS 'Membership?', m.has_paid AS 'Paid?', p.course AS 'Course', p.malaysian AS 'Malaysian?', p.committee AS 'Committee?', id.type AS 'ID Type', id.number AS 'ID Number' FROM smig_person AS p LEFT JOIN smig_membership AS m ON p.email=m.person_email LEFT JOIN smig_ID as id ON m.person_email=id.person_email"
         self.query(view_csv)
 
+    # performs the "execute" command with error handling
     def query(self, statement):
         try:
             self.cursor.execute(statement)
         except Exception as e:
             print(e)
             return None
+    
+    # gets the first value of the first result in a query
+    def query_one_result(self):
+        return self.cursor.fetchone()[0]
+
+    # returns results from query, list of tuples
+    def query_results(self):
+        return self.cursor.fetchall()
         
     def exists_one(self, statement):
         try:
             self.query(statement)
-            if (self.cursor.fetchone()[0] == 1):
+            if (self.query_one_result() == 1):
                 return True
         except Exception as e:
             print(e)
@@ -88,7 +99,7 @@ class DBHandler:
     def no_of_persons(self):
         get_count = "SELECT COUNT(*) FROM smig_person"
         self.query(get_count)
-        return self.cursor.fetchone()[0]
+        return self.query_one_result()
     
     # removes a person object from smig_person
     def del_person(self, person):
@@ -108,6 +119,19 @@ class DBHandler:
     
     # def get_persons(self):
     #     # get_rows = 
+
+    # gets a person object from an email
+    def get_person(self, email):
+        get_row = f"SELECT `first_name`, `last_name`, `email`, `year`, `course`, `malaysian`, `committee` FROM smig_person WHERE email='{email}'"
+        self.query(get_row)
+        result = self.query_results()[0]
+        if result != None:
+            person = Person(result[0], result[1], result[2], result[3], result[4], result[5], result[6])
+            self.log("get_person", self.STATUS_OK, person.to_string())
+            return person
+        else:
+            self.log("get_person", self.STATUS_NEX, "{email}")
+            return None
 
     # adds membership for person
     def add_mem(self, person, has_paid):
@@ -146,7 +170,7 @@ class DBHandler:
         elif self.exists_mem(person):
             check_paid = f"SELECT has_paid FROM smig_membership WHERE person_email='{person.email}'"
             self.query(check_paid)
-            has_paid = self.cursor.fetchone[0]
+            has_paid = self.query_one_result()
             # assigns membership
             mem = Membership(True if has_paid else False)
             person.membership = mem
@@ -160,7 +184,7 @@ class DBHandler:
     def no_of_mem(self):
         get_count = "SELECT COUNT(*) FROM smig_membership"
         self.query(get_count)
-        return self.cursor.fetchone()[0]
+        return self.query_one_result()
 
     # adds id number for person
     def add_ID(self, person, type, number):
@@ -212,7 +236,7 @@ class DBHandler:
     def no_of_ID(self):
         get_count = "SELECT COUNT(*) FROM smig_ID"
         self.query(get_count)
-        return self.cursor.fetchone()[0]
+        return self.query_one_result()
 
     # Adds an event to the smig_event
     def add_event(self, event):
@@ -228,7 +252,7 @@ class DBHandler:
     def no_of_events(self):
         get_count = "SELECT COUNT(*) FROM smig_event"
         self.query(get_count)
-        return self.cursor.fetchone()[0]
+        return self.query_one_result()
     
     # removes a person object from smig_person
     def del_event(self, event):
@@ -244,29 +268,96 @@ class DBHandler:
     # checks if an event exists
     def exists_event(self, event):
         check_exists = f"SELECT COUNT(*) FROM smig_event WHERE (`name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}')"
-        return self.exists_one(check_exists)
-    
-    def get_event_ID(self, event):
-        if self.exists_event(event):
-            get_id = f"SELECT `id` FROM smig_event WHERE (`name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}')"
-            self.query(get_id)
-            self.log("get_event_ID", self.STATUS_OK, event.to_string())
-            event.ID = self.cursor.fetchone()[0]
-            return event.ID
-        else:
-            self.log("get_event_ID", self.STATUS_DUPLICATE, event.to_string())
-
-    def add_attendee(self, event, person, amount_paid):
-        if self.exists_event(event) and self.exists_person(person):
+        if self.exists_one(check_exists):
+            # assigns event ID
             if event.ID == None:
                 self.get_event_ID(event)
+            return True
+        return False
+    
+    # obtains event ID
+    def get_event_ID(self, event):
+        # if self.exists_event(event):
+        get_id = f"SELECT `id` FROM smig_event WHERE (`name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}')"
+        self.query(get_id)
+        self.log("get_event_ID", self.STATUS_OK, event.to_string())
+        event.ID = self.query_one_result()
+        # return event.ID
+        # else:
+        #     self.log("get_event_ID", self.STATUS_DUPLICATE, event.to_string())
+
+    # adds an attendee to an event
+    def add_attendee(self, event, person, amount_paid):
+        if self.exists_event(event) and self.exists_person(person):
             add_row = f"INSERT INTO smig_event_attendee (`event_id`, `person_email`, `amount_paid`) VALUES ('{event.ID}', '{person.email}', '{amount_paid}')"
             self.query(add_row)
-            self.log("add_attendee", self.STATUS_OK, f"{event.ID}, {person.email}")
             self.mariadb_connection.commit()
+            self.log("add_attendee", self.STATUS_OK, f"{event.ID}, {person.email}")
         else:
             self.log("add_attendee", self.STATUS_NOT_EXIST, f"{event.ID}, {person.email}")
+
+    # TODO: get all events
+
+    # TODO: edit attendee
+
+    # remove attendee from an event
+    def del_attendee(self, event, person):
+        if self.exists_attendee(event, person):
+            del_row = f"DELETE FROM smig_event_attendee WHERE `person_email`='{person.email}' AND `event_ID`='{event.ID}'"
+            self.query(del_row)
+            self.mariadb_connection.commit()
+            self.log("del_attendee", self.STATUS_OK, f"{event.ID}, {person.email}")
+        else:
+            self.log("del_attendee", self.STATUS_NOT_EXIST, f"{event.ID}, {person.email}")
+            return False
+
+    # checks if an attendee exists
+    def exists_attendee(self, event, person):
+        # checks if event exists, and person exists
+        if self.exists_event(event) and self.exists_person(person):
+            check_row = f"SELECT COUNT(*) FROM smig_event_attendee WHERE `person_email`='{person.email}' AND `event_ID`='{event.ID}'"
+            self.query(check_row)
+            return self.exists_one(check_row)
+            self.log("exists_attendee", self.STATUS_OK, f"{event.ID}, {person.email}")
+        else:
+            self.log("exists_attendee", self.STATUS_NOT_EXIST, f"{event.ID}, {person.email}")
+            return False
             
+    # gets a list of all attendees for an event
+    def get_attendees(self, event):
+        # if event exists
+        if self.exists_event(event):
+            get_rows = f"SELECT person_email FROM smig_event_attendee WHERE `event_id`='{event.ID}'"
+            self.query(get_rows)
+            results = self.query_results()
+            self.log("get_attendees", self.STATUS_OK, f"Fetched {len(results)} rows")
+            attendees = [] # list of emails
+            for result in results:
+                email = result[0]
+                person = self.get_person(email)
+                if person != None:
+                    attendees.append(person)
+                else:
+                    self.log("get_attendees", self.STATUS_NEX, f"Person {email} does not exist")
+            return attendees
+        else:
+            self.log("get_attendees", self.STATUS_NOT_EXIST, f"Event [{event.ID}] not found")
+            return None
+    
+    # gets a list of all attendees for an event
+    def no_of_attendees(self, event):
+        # if event exists
+        if self.exists_event(event):
+            get_rows = f"SELECT COUNT(*) FROM smig_event_attendee WHERE `event_id`='{event.ID}'"
+            self.query(get_rows)
+            results = self.query_one_result()
+            return results
+            self.log("no_of_attendees", self.STATUS_OK, f"Counted {len(results)} rows")
+        else:
+            self.log("no_of_attendees", self.STATUS_NOT_EXIST, f"Event [{event.ID}] not found")
+            return None
+
+    # Writes log to file
     def log(self, operation, status, string):
         f = open(f"log{datetime.date.today()}.txt","a+")
         f.write(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] ({status}) {operation}: {string}\n")
@@ -279,3 +370,4 @@ class DBHandler:
     # get values from tables
 
     # create views
+DBHandler()

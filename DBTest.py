@@ -20,39 +20,32 @@ class MyModuleTest(unittest.TestCase):
         for x in range(self.no_of_events):
             self.events.append(self.factory.random_event())
 
-    # def tearDown(self):
-    #     self.db.query("DROP TABLE IF EXISTS smig_person")
-    #     self.db.query("DROP TABLE IF EXISTS smig_membership")
-    #     self.db.query("DROP TABLE IF EXISTS smig_person")
-    #     self.db.query("DROP TABLE IF EXISTS smig_person")
-    #     self.db.query("DROP TABLE IF EXISTS smig_person")
-    #     self.db.query("DROP TABLE IF EXISTS smig_person")
+    def tearDown(self):
+        self.db.query("DROP TABLE IF EXISTS smig_membership")
+        self.db.query("DROP TABLE IF EXISTS smig_ID")
+        self.db.query("DROP TABLE IF EXISTS smig_event_attendee")
+        self.db.query("DROP TABLE IF EXISTS smig_event_guest")
+        self.db.query("DROP TABLE IF EXISTS smig_event")
+        self.db.query("DROP TABLE IF EXISTS smig_person")
 
     def testAddAllPersons(self):
-        old_no = self.db.no_of_persons()
         self.addPersons()
-        assert(self.db.no_of_persons() == old_no + self.no_of_persons)
         self.delPersons()
 
     def testAddAllEvents(self):
-        old_no = self.db.no_of_events()
         self.addEvents()
-        assert(self.db.no_of_events() == old_no + self.no_of_events)
         self.delEvents()
 
     def testAddMembership(self):
         self.addPersons()
         self.addMems()
-        assert(self.db.no_of_mem() == self.no_of_persons)
         self.delMem()
-        assert(self.db.no_of_mem() == 0)
         self.delPersons()
 
     def testAddID(self):
         self.addPersons()
         self.addMems()
         self.addIDs()
-        assert(self.db.no_of_ID() == self.no_of_persons)
         self.delMem()
         self.delPersons() 
     
@@ -62,36 +55,44 @@ class MyModuleTest(unittest.TestCase):
         self.addIDs()
         self.addEvents()
         self.addAttendees()
-        # self.delMem()
-        # self.delPersons() 
-        # self.delEvents()
+        self.delAttendees()
+        self.delMem()
+        self.delPersons() 
+        self.delEvents()
     
     def addPersons(self):
         for person in self.persons:
             self.db.add_person(person)
+        assert(self.db.no_of_persons() == self.no_of_persons)
 
     def addEvents(self):
         for event in self.events:
             self.db.add_event(event)
+        assert(self.db.no_of_events() == self.no_of_events)
 
     def addMems(self):
         for person in self.persons:
             self.db.add_mem(person, True)
+        assert(self.db.no_of_mem() == self.no_of_persons)
 
     def addIDs(self):
         for person in self.persons:
             self.db.add_ID(person, 1, random.randint(800000000,899999999))
+        assert(self.db.no_of_ID() == self.no_of_persons)
 
     def addAttendees(self):
         # for each person, attend random event
         for person in self.persons:
             self.db.add_attendee(random.choice(self.events), person, 3)
+        attendee_count = 0
+        for event in self.events:
+            attendee_count += self.db.no_of_attendees(event)
+        assert(attendee_count == len(self.persons))
 
     def delEvents(self):
-        old_no = self.db.no_of_events()
         for event in self.events:
             self.db.del_event(event)
-        # assert(old_no - self.db.no_of_events() == self.no_of_events)
+        assert(self.db.no_of_events() == 0)
     
     def delPersons(self):
         for person in self.persons:
@@ -101,6 +102,17 @@ class MyModuleTest(unittest.TestCase):
     def delMem(self):
         for person in self.persons:
             self.db.del_mem(person)
+        assert(self.db.no_of_mem() == 0)
+
+    def delAttendees(self):
+        for event in self.events:
+            # get attendees
+            attendees = self.db.get_attendees(event)
+            if attendees != None:
+                for attendee in attendees:
+                    self.db.del_attendee(event, attendee)
+        for event in self.events:
+            assert(self.db.no_of_attendees(event) == 0)
 
     def printPersons(self):
         for person in self.persons:
