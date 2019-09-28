@@ -1,24 +1,29 @@
 import random
+import names
 from smig_person import Person
 from smig_event import Event
 
 class Factory:
 
     def __init__(self):
-        self.first_name_list = ["Jane", "Jack", "Jason", "Jacob", "Kristy", "Julianna", "Mohammed"]
-        self.last_name_list = ["Bowles", "Jackson", "Smith", "Keyes", "Min", "Lee", "Won"]
+        # self.first_name_list = ["Jane", "Jack", "Jason", "Jacob", "Kristy", "Julianna", "Mohammed"]
+        # self.last_name_list = ["Bowles", "Jackson", "Smith", "Keyes", "Min", "Lee", "Won"]
         self.year_list = ["1st Year", "2nd Year", "3rd Year", "4th Year", "PhD", "Masters", "Foundation"]
         self.course_list = ["Computer Science", "Medicine", "IR", "History", "Psychology", "Philosophy", "Pathway to Medicine"]
         self.event_list = ["Flavours of Malaysia", "Christavali", "Live Lounge", "Freshers Fayre", "Icebreaker", "Taste of Asia", "Capture the Flag"]
         self.location_list = ["Nisbet Room", "Forbes Bar", "Cockshaugh Park", "Sports Hall", "Holy Trinity Church Hall"]
 
     def random_person(self):
-        first_name = random.choice(self.first_name_list)
-        last_name = random.choice(self.last_name_list)
+        # first_name = random.choice(self.first_name_list)
+        # last_name = random.choice(self.last_name_list)
+        first_name = names.get_first_name()
+        last_name = names.get_last_name()
         email = self.generate_email(first_name, last_name)
         year = random.choice(self.year_list)
         course = random.choice(self.course_list)
-        return Person(first_name, last_name, email, year, course)
+        malaysian = bool(random.getrandbits(1))
+        committee = bool(random.getrandbits(1))
+        return Person(first_name, last_name, email, year, course, malaysian, committee)
 
     def random_event(self):
         name = random.choice(self.event_list)

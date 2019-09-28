@@ -1,6 +1,6 @@
 class Person:
 
-    def __init__(self, first_name, last_name, email, year, course):
+    def __init__(self, first_name, last_name, email, year, course, malaysian, committee):
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
@@ -8,9 +8,11 @@ class Person:
         self.course = course
         self.id = None
         self.membership = None
+        self.malaysian = malaysian
+        self.committee = committee
 
     def to_string(self):
-        return f"{self.first_name}, {self.last_name}, {self.email}, {self.year}, {self.course}"
+        return f"{self.first_name}, {self.last_name}, {self.email}, {self.year}, {self.course}, {self.malaysian}, {self.committee}"
 
 class ID:
 
@@ -18,8 +20,6 @@ class ID:
         self.type = type
         self.number = number
         
-            
-
 class Membership:
     
     def __init__(self, has_paid):

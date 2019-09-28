@@ -20,6 +20,7 @@ class DBHandler:
         print("Welcome to the SMIG app v0.2")
         self.connect_db()
         self.create_tables()
+        self.create_views()
 
     def connect_db(self):
         try:
@@ -39,8 +40,8 @@ class DBHandler:
 
     def create_tables(self):
         # create the tables that matter
-        table_person = f"CREATE TABLE IF NOT EXISTS smig_person (first_name VARCHAR({self.NAME_MAX_CHAR}), last_name VARCHAR({self.NAME_MAX_CHAR}), email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, `year` VARCHAR({self.NAME_MAX_CHAR}), course VARCHAR({self.EVENT_MAX_CHAR}))"
-        table_membership = f"CREATE TABLE IF NOT EXISTS smig_membership (person_email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, hasPaid BOOLEAN, CONSTRAINT FOREIGN KEY (person_email) REFERENCES smig_person (email) ON DELETE CASCADE)"
+        table_person = f"CREATE TABLE IF NOT EXISTS smig_person (first_name VARCHAR({self.NAME_MAX_CHAR}), last_name VARCHAR({self.NAME_MAX_CHAR}), email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, `year` VARCHAR({self.NAME_MAX_CHAR}), course VARCHAR({self.EVENT_MAX_CHAR}), malaysian BOOLEAN, committee BOOLEAN)"
+        table_membership = f"CREATE TABLE IF NOT EXISTS smig_membership (person_email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, status BOOLEAN default 1, has_paid BOOLEAN, CONSTRAINT FOREIGN KEY (person_email) REFERENCES smig_person (email) ON DELETE CASCADE)"
         table_ID = f"CREATE TABLE IF NOT EXISTS smig_ID (person_email VARCHAR({self.EMAIL_MAX_CHAR}) PRIMARY KEY NOT NULL, `type` BOOLEAN, `number` VARCHAR({self.ID_MAX_CHAR}), CONSTRAINT FOREIGN KEY (person_email) REFERENCES smig_person (email) ON DELETE CASCADE)"
         table_event = f"CREATE TABLE IF NOT EXISTS smig_event (id INT PRIMARY KEY AUTO_INCREMENT, `name` VARCHAR({self.EVENT_MAX_CHAR}), price_non_member DECIMAL(10,2), price_member DECIMAL(10,2), `date` DATE, `time` TIME, `location` VARCHAR({self.EVENT_MAX_CHAR}))"
         table_event_attendee = f"CREATE TABLE IF NOT EXISTS smig_event_attendee (event_id INT, person_email VARCHAR({self.EMAIL_MAX_CHAR}), amount_paid DECIMAL(10,2), CONSTRAINT FOREIGN KEY (person_email) REFERENCES smig_person (email) ON DELETE CASCADE, CONSTRAINT FOREIGN KEY (event_id) REFERENCES smig_event (id) ON DELETE CASCADE)"
@@ -51,6 +52,10 @@ class DBHandler:
         self.query(table_event)
         self.query(table_event_attendee)
         self.query(table_event_guest)
+
+    def create_views(self):
+        view_csv = "CREATE VIEW csv AS SELECT ROW_NUMBER() OVER(ORDER BY p.email ASC) AS '#', p.first_name AS 'First Name', p.last_name AS 'Last Name', p.email AS 'Email', m.status AS 'Membership?', m.has_paid AS 'Paid?', p.course AS 'Course', p.malaysian AS 'Malaysian?', p.committee AS 'Committee?', id.type AS 'ID Type', id.number AS 'ID Number' FROM smig_person AS p LEFT JOIN smig_membership AS m ON p.email=m.person_email LEFT JOIN smig_ID as id ON m.person_email=id.person_email"
+        self.query(view_csv)
 
     def query(self, statement):
         try:
@@ -72,7 +77,7 @@ class DBHandler:
     def add_person(self, person):
         # check if not exists
         if not self.exists_person(person):
-            add_row = f"INSERT INTO smig_person(`first_name`, `last_name`, `email`, `year`, `course`) VALUES ('{person.first_name}', '{person.last_name}', '{person.email}', '{person.year}', '{person.course}')"
+            add_row = f"INSERT INTO smig_person(`first_name`, `last_name`, `email`, `year`, `course`, `malaysian`, `committee`) VALUES ('{person.first_name}', '{person.last_name}', '{person.email}', '{person.year}', '{person.course}', '{1 if person.malaysian else 0}', '{1 if person.committee else 0}')"
             self.query(add_row)
             self.log("add_person", self.STATUS_OK, person.to_string())
             self.mariadb_connection.commit()
@@ -100,13 +105,16 @@ class DBHandler:
     def exists_person(self, person):
         check_exists = f"SELECT COUNT(*) FROM smig_person WHERE email='{person.email}'"
         return self.exists_one(check_exists)
+    
+    # def get_persons(self):
+    #     # get_rows = 
 
     # adds membership for person
     def add_mem(self, person, has_paid):
         msg = f"{person.email}, {'paid' if has_paid else 'not paid'}"
         # checks if person exists first
         if self.exists_person(person):
-            add_row = f"INSERT INTO smig_membership(`person_email`, `hasPaid`) VALUES ('{person.email}', '{'1' if has_paid else '0'}')"
+            add_row = f"INSERT INTO smig_membership(`person_email`, `has_paid`) VALUES ('{person.email}', '{'1' if has_paid else '0'}')"
             # assigns membership
             mem = Membership(has_paid)
             person.membership = mem
@@ -136,7 +144,7 @@ class DBHandler:
             return person.membership.has_paid
         # checks if a person is a paid member
         elif self.exists_mem(person):
-            check_paid = f"SELECT hasPaid FROM smig_membership WHERE person_email='{person.email}'"
+            check_paid = f"SELECT has_paid FROM smig_membership WHERE person_email='{person.email}'"
             self.query(check_paid)
             has_paid = self.cursor.fetchone[0]
             # assigns membership
