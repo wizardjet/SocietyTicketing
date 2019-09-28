@@ -7,6 +7,7 @@ class Event:
         self.date = date
         self.time = time
         self.location = location
+        self.ID = None
         self.attendees = []
         self.guests = []
     
@@ -17,3 +18,6 @@ class Event:
     def add_guests(self, guests):
         for guest in guests:
             self.guests.append(guest)
+
+    def to_string(self):
+        return f"{self.name}, {self.price_non_member}, {self.price_member}, {self.date}, {self.time}, {self.location}"

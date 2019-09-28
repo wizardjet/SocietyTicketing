@@ -216,14 +216,13 @@ class DBHandler:
 
     # Adds an event to the smig_event
     def add_event(self, event):
-        msg = f"{event.name}, {event.price_non_member}, {event.price_member}, {event.date}, {event.time}, {event.location}"
         if not self.exists_event(event):
             add_row = f"INSERT INTO smig_event(`name`, `price_non_member`, `price_member`, `date`, `time`, `location`) VALUES ('{event.name}', '{event.price_non_member}', '{event.price_member}','{event.date}', '{event.time}', '{event.location}')"
             self.query(add_row)
-            self.log("add_event", self.STATUS_OK, msg)
+            self.log("add_event", self.STATUS_OK, event.to_string())
             self.mariadb_connection.commit()
         else:
-            self.log("add_event", self.STATUS_DUPLICATE, msg)
+            self.log("add_event", self.STATUS_DUPLICATE, event.to_string())
 
      # checks the number of persons in smig_person
     def no_of_events(self):
@@ -233,22 +232,45 @@ class DBHandler:
     
     # removes a person object from smig_person
     def del_event(self, event):
-        msg = f"{event.name}, {event.price_non_member}, {event.price_member}, {event.date}, {event.time}, {event.location}"
         # checks if event exists
         if self.exists_event(event):
             del_row = f"DELETE FROM smig_event WHERE (`name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}')"
             self.query(del_row)
-            self.log("del_event", self.STATUS_OK, msg)
+            self.log("del_event", self.STATUS_OK, event.to_string())
             self.mariadb_connection.commit()
         else:
-            self.log("del_event", self.STATUS_NOT_EXIST, msg)
+            self.log("del_event", self.STATUS_NOT_EXIST, event.to_string())
 
     # checks if an event exists
     def exists_event(self, event):
-        # check_exists = f"SELECT COUNT(*) FROM smig_event WHERE `name`='{event.name}' AND DATEDIFF(`date`,'{event.date}')=0"
         check_exists = f"SELECT COUNT(*) FROM smig_event WHERE (`name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}')"
-        # print(check_exists)
         return self.exists_one(check_exists)
+    
+    def get_event_ID(self, event):
+        if self.exists_event(event):
+            get_id = f"SELECT `id` FROM smig_event WHERE (`name`='{event.name}' AND `date`='{event.date}' AND `location`='{event.location}')"
+            self.query(get_id)
+            self.log("get_event_ID", self.STATUS_OK, event.to_string())
+            event.ID = self.cursor.fetchone()[0]
+            return event.ID
+        else:
+            self.log("get_event_ID", self.STATUS_DUPLICATE, event.to_string())
+
+    def add_attendee(self, event, person, amount_paid):
+        if self.exists_event(event) and self.exists_person(person):
+            if event.ID == None:
+                self.get_event_ID(event)
+            add_row = f"INSERT INTO smig_event_attendee (`event_id`, `person_email`, `amount_paid`) VALUES ('{event.ID}', '{person.email}', '{amount_paid}')"
+            self.query(add_row)
+            self.log("add_attendee", self.STATUS_OK, f"{event.ID}, {person.email}")
+            self.mariadb_connection.commit()
+        else:
+            self.log("add_attendee", self.STATUS_NOT_EXIST, f"{event.ID}, {person.email}")
+            
+    def log(self, operation, status, string):
+        f = open(f"log{datetime.date.today()}.txt","a+")
+        f.write(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] ({status}) {operation}: {string}\n")
+        f.close()
 
     # convert to CSV
 
@@ -257,8 +279,3 @@ class DBHandler:
     # get values from tables
 
     # create views
-
-    def log(self, operation, status, string):
-        f = open(f"log{datetime.date.today()}.txt","a+")
-        f.write(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] ({status}) {operation}: {string}\n")
-        f.close()

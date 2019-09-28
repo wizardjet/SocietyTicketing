@@ -20,34 +20,52 @@ class MyModuleTest(unittest.TestCase):
         for x in range(self.no_of_events):
             self.events.append(self.factory.random_event())
 
-    # def testAddAllPersons(self):
-    #     old_no = self.db.no_of_persons()
-    #     self.addPersons()
-    #     assert(self.db.no_of_persons() == old_no + self.no_of_persons)
-    #     self.delPersons()
+    # def tearDown(self):
+    #     self.db.query("DROP TABLE IF EXISTS smig_person")
+    #     self.db.query("DROP TABLE IF EXISTS smig_membership")
+    #     self.db.query("DROP TABLE IF EXISTS smig_person")
+    #     self.db.query("DROP TABLE IF EXISTS smig_person")
+    #     self.db.query("DROP TABLE IF EXISTS smig_person")
+    #     self.db.query("DROP TABLE IF EXISTS smig_person")
 
-    # def testAddAllEvents(self):
-    #     old_no = self.db.no_of_events()
-    #     self.addEvents()
-    #     assert(self.db.no_of_events() == old_no + self.no_of_events)
-    #     self.delEvents()
+    def testAddAllPersons(self):
+        old_no = self.db.no_of_persons()
+        self.addPersons()
+        assert(self.db.no_of_persons() == old_no + self.no_of_persons)
+        self.delPersons()
 
-    # def testAddMembership(self):
-    #     self.addPersons()
-    #     self.addMems()
-    #     assert(self.db.no_of_mem() == self.no_of_persons)
-    #     self.delMem()
-    #     assert(self.db.no_of_mem() == 0)
-    #     self.delPersons()
+    def testAddAllEvents(self):
+        old_no = self.db.no_of_events()
+        self.addEvents()
+        assert(self.db.no_of_events() == old_no + self.no_of_events)
+        self.delEvents()
+
+    def testAddMembership(self):
+        self.addPersons()
+        self.addMems()
+        assert(self.db.no_of_mem() == self.no_of_persons)
+        self.delMem()
+        assert(self.db.no_of_mem() == 0)
+        self.delPersons()
 
     def testAddID(self):
         self.addPersons()
         self.addMems()
         self.addIDs()
         assert(self.db.no_of_ID() == self.no_of_persons)
+        self.delMem()
+        self.delPersons() 
+    
+    def testAddAttendee(self):
+        self.addPersons()
+        self.addMems()
+        self.addIDs()
+        self.addEvents()
+        self.addAttendees()
         # self.delMem()
         # self.delPersons() 
-
+        # self.delEvents()
+    
     def addPersons(self):
         for person in self.persons:
             self.db.add_person(person)
@@ -63,6 +81,11 @@ class MyModuleTest(unittest.TestCase):
     def addIDs(self):
         for person in self.persons:
             self.db.add_ID(person, 1, random.randint(800000000,899999999))
+
+    def addAttendees(self):
+        # for each person, attend random event
+        for person in self.persons:
+            self.db.add_attendee(random.choice(self.events), person, 3)
 
     def delEvents(self):
         old_no = self.db.no_of_events()
