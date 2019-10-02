@@ -197,7 +197,7 @@ def reg():
 
 		yes_or_no = 0
 		def Yes():
-                        print(smiglet)
+			print(smiglet)
 			# submit information
 			with open('smiglets.csv', 'a') as csvFile:
 				writer = csv.writer(csvFile)
