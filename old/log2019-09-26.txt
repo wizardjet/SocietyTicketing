@@ -1,0 +1,6 @@
+[20:30:29] add_person (DUP): Jane, Smith, js20, 1, Computer Science
+[20:31:09] add_person (DUP): Jane, Smith, js20, 1, Computer Science
+[20:32:06] add_person (DUP): Jane, Smith, js20, 1, Computer Science
+[20:32:06] add_membership (NEX): js19, paid
+[20:32:06] add_ID (OK): js20, Library, 8080808808
+[20:32:06] add_ID (NEX): js19, Student, 160009424

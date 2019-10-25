@@ -1,0 +1,1022 @@
+[17:17:52] (OK) add_person: Gary, Austin, GA74, 1st Year, Medicine, True, True
+[17:17:52] (OK) add_person: Concepcion, Hackley, CH179, 4th Year, IR, True, True
+[17:17:52] (OK) add_person: Joe, Haddad, JH269, Masters, IR, True, True
+[17:17:52] (OK) add_person: Alphonso, Haskin, AH41, 2nd Year, Pathway to Medicine, False, False
+[17:17:52] (OK) add_person: Virgil, Leverett, VL180, Foundation, IR, True, False
+[17:17:52] (OK) add_person: Theresa, Ingwersen, TI119, Masters, Computer Science, False, False
+[17:17:52] (OK) add_person: Darrell, Cain, DC284, PhD, Psychology, False, True
+[17:17:52] (OK) add_person: Laura, Smith, LS151, 3rd Year, Pathway to Medicine, True, True
+[17:17:52] (OK) add_person: Clarence, Nugent, CN228, Masters, Pathway to Medicine, True, True
+[17:17:52] (OK) add_person: Gary, Gee, GG59, PhD, Philosophy, False, False
+[17:17:52] (OK) add_mem: GA74, paid
+[17:17:52] (OK) add_mem: CH179, paid
+[17:17:52] (OK) add_mem: JH269, paid
+[17:17:52] (OK) add_mem: AH41, paid
+[17:17:52] (OK) add_mem: VL180, paid
+[17:17:52] (OK) add_mem: TI119, paid
+[17:17:52] (OK) add_mem: DC284, paid
+[17:17:52] (OK) add_mem: LS151, paid
+[17:17:52] (OK) add_mem: CN228, paid
+[17:17:52] (OK) add_mem: GG59, paid
+[17:17:52] (OK) add_ID: GA74, Library, 834439391
+[17:17:52] (OK) add_ID: CH179, Library, 887682337
+[17:17:52] (OK) add_ID: JH269, Library, 867430185
+[17:17:52] (OK) add_ID: AH41, Library, 865212853
+[17:17:52] (OK) add_ID: VL180, Library, 852020748
+[17:17:52] (OK) add_ID: TI119, Library, 875173308
+[17:17:52] (OK) add_ID: DC284, Library, 802589008
+[17:17:52] (OK) add_ID: LS151, Library, 861613112
+[17:17:52] (OK) add_ID: CN228, Library, 850983278
+[17:17:52] (OK) add_ID: GG59, Library, 889621941
+[17:17:52] (OK) add_event: Flavours of Malaysia, 6, 4, 2070-9-23, 14:14:56, Cockshaugh Park
+[17:17:52] (OK) add_event: Icebreaker, 8, 6, 1985-1-25, 24:5:45, Sports Hall
+[17:17:52] (OK) add_event: Flavours of Malaysia, 5, 3, 2047-8-26, 8:37:39, Cockshaugh Park
+[17:17:52] (OK) add_event: Icebreaker, 6, 4, 2008-12-10, 10:56:15, Forbes Bar
+[17:17:52] (OK) get_event_ID: Flavours of Malaysia, 6, 4, 2070-9-23, 14:14:56, Cockshaugh Park
+[17:17:52] (OK) add_attendee: 13, GA74
+[17:17:52] (OK) get_event_ID: Flavours of Malaysia, 5, 3, 2047-8-26, 8:37:39, Cockshaugh Park
+[17:17:52] (OK) add_attendee: 15, CH179
+[17:17:52] (OK) add_attendee: 15, JH269
+[17:17:52] (OK) get_event_ID: Icebreaker, 6, 4, 2008-12-10, 10:56:15, Forbes Bar
+[17:17:52] (OK) add_attendee: 16, AH41
+[17:17:52] (OK) add_attendee: 16, VL180
+[17:17:52] (OK) get_event_ID: Icebreaker, 8, 6, 1985-1-25, 24:5:45, Sports Hall
+[17:17:52] (OK) add_attendee: 14, TI119
+[17:17:52] (OK) add_attendee: 16, DC284
+[17:17:52] (OK) add_attendee: 16, LS151
+[17:17:52] (OK) add_attendee: 16, CN228
+[17:17:52] (OK) add_attendee: 14, GG59
+[17:17:52] (OK) get_attendees: Fetched 1 rows
+[17:17:52] (OK) get_person: Gary, Austin, GA74, 1st Year, Medicine, 1, 1
+[17:17:52] (OK) del_attendee: 13, GA74
+[17:17:52] (OK) get_attendees: Fetched 2 rows
+[17:17:52] (OK) get_person: Theresa, Ingwersen, TI119, Masters, Computer Science, 0, 0
+[17:17:52] (OK) get_person: Gary, Gee, GG59, PhD, Philosophy, 0, 0
+[17:17:52] (OK) del_attendee: 14, TI119
+[17:17:52] (OK) del_attendee: 14, GG59
+[17:17:52] (OK) get_attendees: Fetched 2 rows
+[17:17:52] (OK) get_person: Concepcion, Hackley, CH179, 4th Year, IR, 1, 1
+[17:17:52] (OK) get_person: Joe, Haddad, JH269, Masters, IR, 1, 1
+[17:17:52] (OK) del_attendee: 15, CH179
+[17:17:52] (OK) del_attendee: 15, JH269
+[17:17:52] (OK) get_attendees: Fetched 5 rows
+[17:17:52] (OK) get_person: Alphonso, Haskin, AH41, 2nd Year, Pathway to Medicine, 0, 0
+[17:17:52] (OK) get_person: Virgil, Leverett, VL180, Foundation, IR, 1, 0
+[17:17:52] (OK) get_person: Darrell, Cain, DC284, PhD, Psychology, 0, 1
+[17:17:52] (OK) get_person: Laura, Smith, LS151, 3rd Year, Pathway to Medicine, 1, 1
+[17:17:52] (OK) get_person: Clarence, Nugent, CN228, Masters, Pathway to Medicine, 1, 1
+[17:17:52] (OK) del_attendee: 16, AH41
+[17:17:52] (OK) del_attendee: 16, VL180
+[17:17:52] (OK) del_attendee: 16, DC284
+[17:17:52] (OK) del_attendee: 16, LS151
+[17:17:52] (OK) del_attendee: 16, CN228
+[17:17:52] (OK) del_person: Gary, Austin, GA74, 1st Year, Medicine, True, True
+[17:17:52] (OK) del_person: Concepcion, Hackley, CH179, 4th Year, IR, True, True
+[17:17:52] (OK) del_person: Joe, Haddad, JH269, Masters, IR, True, True
+[17:17:52] (OK) del_person: Alphonso, Haskin, AH41, 2nd Year, Pathway to Medicine, False, False
+[17:17:52] (OK) del_person: Virgil, Leverett, VL180, Foundation, IR, True, False
+[17:17:52] (OK) del_person: Theresa, Ingwersen, TI119, Masters, Computer Science, False, False
+[17:17:52] (OK) del_person: Darrell, Cain, DC284, PhD, Psychology, False, True
+[17:17:52] (OK) del_person: Laura, Smith, LS151, 3rd Year, Pathway to Medicine, True, True
+[17:17:52] (OK) del_person: Clarence, Nugent, CN228, Masters, Pathway to Medicine, True, True
+[17:17:52] (OK) del_person: Gary, Gee, GG59, PhD, Philosophy, False, False
+[17:17:52] (OK) del_event: Flavours of Malaysia, 6, 4, 2070-9-23, 14:14:56, Cockshaugh Park
+[17:17:52] (OK) del_event: Icebreaker, 8, 6, 1985-1-25, 24:5:45, Sports Hall
+[17:17:52] (OK) del_event: Flavours of Malaysia, 5, 3, 2047-8-26, 8:37:39, Cockshaugh Park
+[17:17:52] (OK) del_event: Icebreaker, 6, 4, 2008-12-10, 10:56:15, Forbes Bar
+[17:21:22] (OK) add_event: Freshers Fayre, 7, 5, 2056-9-8, 15:18:16, Cockshaugh Park
+[17:21:22] (OK) add_event: Christavali, 6, 4, 1987-12-14, 21:41:29, Sports Hall
+[17:21:22] (OK) add_event: Taste of Asia, 7, 5, 1997-10-14, 13:8:30, Cockshaugh Park
+[17:21:22] (OK) add_event: Freshers Fayre, 7, 5, 1981-7-22, 11:45:8, Forbes Bar
+[17:21:22] (OK) get_event_ID: Freshers Fayre, 7, 5, 2056-9-8, 15:18:16, Cockshaugh Park
+[17:21:22] (OK) del_event: Freshers Fayre, 7, 5, 2056-9-8, 15:18:16, Cockshaugh Park
+[17:21:22] (OK) get_event_ID: Christavali, 6, 4, 1987-12-14, 21:41:29, Sports Hall
+[17:21:22] (OK) del_event: Christavali, 6, 4, 1987-12-14, 21:41:29, Sports Hall
+[17:21:22] (OK) get_event_ID: Taste of Asia, 7, 5, 1997-10-14, 13:8:30, Cockshaugh Park
+[17:21:22] (OK) del_event: Taste of Asia, 7, 5, 1997-10-14, 13:8:30, Cockshaugh Park
+[17:21:22] (OK) get_event_ID: Freshers Fayre, 7, 5, 1981-7-22, 11:45:8, Forbes Bar
+[17:21:22] (OK) del_event: Freshers Fayre, 7, 5, 1981-7-22, 11:45:8, Forbes Bar
+[17:21:23] (OK) add_person: Carol, Mahoney, CM49, 4th Year, Psychology, False, True
+[17:21:23] (OK) add_person: Gregg, Schramm, GS27, 3rd Year, Psychology, True, False
+[17:21:23] (OK) add_person: Louise, Green, LG111, Masters, Psychology, True, True
+[17:21:23] (OK) add_person: June, Hardison, JH209, Foundation, Psychology, False, True
+[17:21:23] (OK) add_person: Mike, Cropp, MC190, 1st Year, Computer Science, True, False
+[17:21:23] (OK) add_person: Douglas, Goshay, DG111, PhD, IR, True, False
+[17:21:23] (OK) add_person: Rose, Jones, RJ49, 4th Year, Computer Science, False, True
+[17:21:23] (OK) add_person: Charlie, Bettencourt, CB200, 3rd Year, Computer Science, False, True
+[17:21:23] (OK) add_person: Bonnie, Panetta, BP28, Masters, Pathway to Medicine, True, False
+[17:21:23] (OK) add_person: Larry, Wingert, LW214, 2nd Year, Pathway to Medicine, False, False
+[17:21:23] (OK) del_person: Carol, Mahoney, CM49, 4th Year, Psychology, False, True
+[17:21:23] (OK) del_person: Gregg, Schramm, GS27, 3rd Year, Psychology, True, False
+[17:21:23] (OK) del_person: Louise, Green, LG111, Masters, Psychology, True, True
+[17:21:23] (OK) del_person: June, Hardison, JH209, Foundation, Psychology, False, True
+[17:21:23] (OK) del_person: Mike, Cropp, MC190, 1st Year, Computer Science, True, False
+[17:21:23] (OK) del_person: Douglas, Goshay, DG111, PhD, IR, True, False
+[17:21:23] (OK) del_person: Rose, Jones, RJ49, 4th Year, Computer Science, False, True
+[17:21:23] (OK) del_person: Charlie, Bettencourt, CB200, 3rd Year, Computer Science, False, True
+[17:21:23] (OK) del_person: Bonnie, Panetta, BP28, Masters, Pathway to Medicine, True, False
+[17:21:23] (OK) del_person: Larry, Wingert, LW214, 2nd Year, Pathway to Medicine, False, False
+[17:21:23] (OK) add_person: Rebekah, Rollefson, RR252, Foundation, Computer Science, True, True
+[17:21:23] (OK) add_person: Kevin, Thomas, KT207, 3rd Year, Medicine, True, True
+[17:21:23] (OK) add_person: Matthew, Kelly, MK219, 2nd Year, Philosophy, False, False
+[17:21:23] (OK) add_person: Larry, Starks, LS70, 3rd Year, IR, False, True
+[17:21:23] (OK) add_person: Jack, Diloreto, JD296, 4th Year, Psychology, True, False
+[17:21:23] (OK) add_person: Elton, Haupt, EH160, 2nd Year, Computer Science, True, True
+[17:21:23] (OK) add_person: Christine, Hanson, CH213, PhD, History, True, True
+[17:21:23] (OK) add_person: Erika, Bonham, EB246, Foundation, Pathway to Medicine, False, False
+[17:21:23] (OK) add_person: George, Benjamin, GB5, 1st Year, Computer Science, True, False
+[17:21:23] (OK) add_person: Gregory, Charron, GC291, PhD, Computer Science, True, True
+[17:21:23] (OK) add_mem: RR252, paid
+[17:21:23] (OK) add_mem: KT207, paid
+[17:21:23] (OK) add_mem: MK219, paid
+[17:21:23] (OK) add_mem: LS70, paid
+[17:21:23] (OK) add_mem: JD296, paid
+[17:21:23] (OK) add_mem: EH160, paid
+[17:21:23] (OK) add_mem: CH213, paid
+[17:21:23] (OK) add_mem: EB246, paid
+[17:21:23] (OK) add_mem: GB5, paid
+[17:21:23] (OK) add_mem: GC291, paid
+[17:21:23] (OK) add_ID: RR252, Library, 830158850
+[17:21:23] (OK) add_ID: KT207, Library, 899971674
+[17:21:23] (OK) add_ID: MK219, Library, 818543147
+[17:21:23] (OK) add_ID: LS70, Library, 809903639
+[17:21:23] (OK) add_ID: JD296, Library, 877043037
+[17:21:23] (OK) add_ID: EH160, Library, 868254665
+[17:21:23] (OK) add_ID: CH213, Library, 893653471
+[17:21:23] (OK) add_ID: EB246, Library, 840225480
+[17:21:23] (OK) add_ID: GB5, Library, 835230336
+[17:21:23] (OK) add_ID: GC291, Library, 898151531
+[17:21:23] (OK) add_event: Flavours of Malaysia, 9, 7, 2002-11-7, 6:22:53, Sports Hall
+[17:21:23] (OK) add_event: Christavali, 6, 4, 1980-7-4, 16:30:35, Sports Hall
+[17:21:23] (OK) add_event: Taste of Asia, 4, 2, 1979-8-18, 11:25:1, Forbes Bar
+[17:21:23] (OK) add_event: Freshers Fayre, 5, 3, 2038-11-8, 11:22:21, Nisbet Room
+[17:21:23] (OK) get_event_ID: Christavali, 6, 4, 1980-7-4, 16:30:35, Sports Hall
+[17:21:23] (OK) add_attendee: 2, RR252
+[17:21:23] (OK) get_event_ID: Freshers Fayre, 5, 3, 2038-11-8, 11:22:21, Nisbet Room
+[17:21:23] (OK) add_attendee: 4, KT207
+[17:21:23] (OK) add_attendee: 2, MK219
+[17:21:23] (OK) add_attendee: 2, LS70
+[17:21:23] (OK) get_event_ID: Taste of Asia, 4, 2, 1979-8-18, 11:25:1, Forbes Bar
+[17:21:23] (OK) add_attendee: 3, JD296
+[17:21:23] (OK) add_attendee: 3, EH160
+[17:21:23] (OK) add_attendee: 4, CH213
+[17:21:23] (OK) get_event_ID: Flavours of Malaysia, 9, 7, 2002-11-7, 6:22:53, Sports Hall
+[17:21:23] (OK) add_attendee: 1, EB246
+[17:21:23] (OK) add_attendee: 3, GB5
+[17:21:23] (OK) add_attendee: 1, GC291
+[17:21:23] (OK) get_attendees: Fetched 2 rows
+[17:21:23] (OK) get_person: Erika, Bonham, EB246, Foundation, Pathway to Medicine, 0, 0
+[17:21:23] (OK) get_person: Gregory, Charron, GC291, PhD, Computer Science, 1, 1
+[17:21:23] (OK) del_attendee: 1, EB246
+[17:21:23] (OK) del_attendee: 1, GC291
+[17:21:23] (OK) get_attendees: Fetched 3 rows
+[17:21:23] (OK) get_person: Rebekah, Rollefson, RR252, Foundation, Computer Science, 1, 1
+[17:21:23] (OK) get_person: Matthew, Kelly, MK219, 2nd Year, Philosophy, 0, 0
+[17:21:23] (OK) get_person: Larry, Starks, LS70, 3rd Year, IR, 0, 1
+[17:21:23] (OK) del_attendee: 2, RR252
+[17:21:23] (OK) del_attendee: 2, MK219
+[17:21:23] (OK) del_attendee: 2, LS70
+[17:21:23] (OK) get_attendees: Fetched 3 rows
+[17:21:23] (OK) get_person: Jack, Diloreto, JD296, 4th Year, Psychology, 1, 0
+[17:21:23] (OK) get_person: Elton, Haupt, EH160, 2nd Year, Computer Science, 1, 1
+[17:21:23] (OK) get_person: George, Benjamin, GB5, 1st Year, Computer Science, 1, 0
+[17:21:23] (OK) del_attendee: 3, JD296
+[17:21:23] (OK) del_attendee: 3, EH160
+[17:21:23] (OK) del_attendee: 3, GB5
+[17:21:23] (OK) get_attendees: Fetched 2 rows
+[17:21:23] (OK) get_person: Kevin, Thomas, KT207, 3rd Year, Medicine, 1, 1
+[17:21:23] (OK) get_person: Christine, Hanson, CH213, PhD, History, 1, 1
+[17:21:23] (OK) del_attendee: 4, KT207
+[17:21:23] (OK) del_attendee: 4, CH213
+[17:21:23] (OK) del_mem: Rebekah, Rollefson, RR252, Foundation, Computer Science, True, True
+[17:21:23] (OK) del_mem: Kevin, Thomas, KT207, 3rd Year, Medicine, True, True
+[17:21:23] (OK) del_mem: Matthew, Kelly, MK219, 2nd Year, Philosophy, False, False
+[17:21:23] (OK) del_mem: Larry, Starks, LS70, 3rd Year, IR, False, True
+[17:21:23] (OK) del_mem: Jack, Diloreto, JD296, 4th Year, Psychology, True, False
+[17:21:23] (OK) del_mem: Elton, Haupt, EH160, 2nd Year, Computer Science, True, True
+[17:21:23] (OK) del_mem: Christine, Hanson, CH213, PhD, History, True, True
+[17:21:23] (OK) del_mem: Erika, Bonham, EB246, Foundation, Pathway to Medicine, False, False
+[17:21:23] (OK) del_mem: George, Benjamin, GB5, 1st Year, Computer Science, True, False
+[17:21:23] (OK) del_mem: Gregory, Charron, GC291, PhD, Computer Science, True, True
+[17:21:23] (OK) del_person: Rebekah, Rollefson, RR252, Foundation, Computer Science, True, True
+[17:21:23] (OK) del_person: Kevin, Thomas, KT207, 3rd Year, Medicine, True, True
+[17:21:23] (OK) del_person: Matthew, Kelly, MK219, 2nd Year, Philosophy, False, False
+[17:21:23] (OK) del_person: Larry, Starks, LS70, 3rd Year, IR, False, True
+[17:21:23] (OK) del_person: Jack, Diloreto, JD296, 4th Year, Psychology, True, False
+[17:21:23] (OK) del_person: Elton, Haupt, EH160, 2nd Year, Computer Science, True, True
+[17:21:23] (OK) del_person: Christine, Hanson, CH213, PhD, History, True, True
+[17:21:23] (OK) del_person: Erika, Bonham, EB246, Foundation, Pathway to Medicine, False, False
+[17:21:23] (OK) del_person: George, Benjamin, GB5, 1st Year, Computer Science, True, False
+[17:21:23] (OK) del_person: Gregory, Charron, GC291, PhD, Computer Science, True, True
+[17:21:23] (OK) del_event: Flavours of Malaysia, 9, 7, 2002-11-7, 6:22:53, Sports Hall
+[17:21:23] (OK) del_event: Christavali, 6, 4, 1980-7-4, 16:30:35, Sports Hall
+[17:21:23] (OK) del_event: Taste of Asia, 4, 2, 1979-8-18, 11:25:1, Forbes Bar
+[17:21:23] (OK) del_event: Freshers Fayre, 5, 3, 2038-11-8, 11:22:21, Nisbet Room
+[17:21:23] (OK) add_person: George, Carothers, GC6, 3rd Year, Medicine, True, True
+[17:21:23] (OK) add_person: Scott, Sweed, SS80, 1st Year, History, False, True
+[17:21:23] (OK) add_person: Martina, Gray, MG233, Foundation, IR, True, True
+[17:21:24] (OK) add_person: Daniel, Petty, DP250, Foundation, Philosophy, True, True
+[17:21:24] (OK) add_person: Candice, Mitchell, CM267, Masters, History, False, False
+[17:21:24] (OK) add_person: Margaret, Dean, MD155, Masters, History, True, False
+[17:21:24] (OK) add_person: Robert, Hedley, RH211, 4th Year, IR, False, False
+[17:21:24] (OK) add_person: Marie, Alcorn, MA170, 3rd Year, History, True, True
+[17:21:24] (OK) add_person: Rebecca, Dye, RD42, 1st Year, Psychology, False, False
+[17:21:24] (OK) add_person: Evelyn, Hernandez, EH53, 4th Year, Philosophy, False, False
+[17:21:24] (OK) add_mem: GC6, paid
+[17:21:24] (OK) add_mem: SS80, paid
+[17:21:24] (OK) add_mem: MG233, paid
+[17:21:24] (OK) add_mem: DP250, paid
+[17:21:24] (OK) add_mem: CM267, paid
+[17:21:24] (OK) add_mem: MD155, paid
+[17:21:24] (OK) add_mem: RH211, paid
+[17:21:24] (OK) add_mem: MA170, paid
+[17:21:24] (OK) add_mem: RD42, paid
+[17:21:24] (OK) add_mem: EH53, paid
+[17:21:24] (OK) add_ID: GC6, Library, 825164142
+[17:21:24] (OK) add_ID: SS80, Library, 853718952
+[17:21:24] (OK) add_ID: MG233, Library, 801408042
+[17:21:24] (OK) add_ID: DP250, Library, 882869526
+[17:21:24] (OK) add_ID: CM267, Library, 827357163
+[17:21:24] (OK) add_ID: MD155, Library, 874449261
+[17:21:24] (OK) add_ID: RH211, Library, 866266882
+[17:21:24] (OK) add_ID: MA170, Library, 819195193
+[17:21:24] (OK) add_ID: RD42, Library, 801519905
+[17:21:24] (OK) add_ID: EH53, Library, 875273206
+[17:21:24] (OK) del_mem: George, Carothers, GC6, 3rd Year, Medicine, True, True
+[17:21:24] (OK) del_mem: Scott, Sweed, SS80, 1st Year, History, False, True
+[17:21:24] (OK) del_mem: Martina, Gray, MG233, Foundation, IR, True, True
+[17:21:24] (OK) del_mem: Daniel, Petty, DP250, Foundation, Philosophy, True, True
+[17:21:24] (OK) del_mem: Candice, Mitchell, CM267, Masters, History, False, False
+[17:21:24] (OK) del_mem: Margaret, Dean, MD155, Masters, History, True, False
+[17:21:24] (OK) del_mem: Robert, Hedley, RH211, 4th Year, IR, False, False
+[17:21:24] (OK) del_mem: Marie, Alcorn, MA170, 3rd Year, History, True, True
+[17:21:24] (OK) del_mem: Rebecca, Dye, RD42, 1st Year, Psychology, False, False
+[17:21:24] (OK) del_mem: Evelyn, Hernandez, EH53, 4th Year, Philosophy, False, False
+[17:21:24] (OK) del_person: George, Carothers, GC6, 3rd Year, Medicine, True, True
+[17:21:24] (OK) del_person: Scott, Sweed, SS80, 1st Year, History, False, True
+[17:21:24] (OK) del_person: Martina, Gray, MG233, Foundation, IR, True, True
+[17:21:24] (OK) del_person: Daniel, Petty, DP250, Foundation, Philosophy, True, True
+[17:21:24] (OK) del_person: Candice, Mitchell, CM267, Masters, History, False, False
+[17:21:24] (OK) del_person: Margaret, Dean, MD155, Masters, History, True, False
+[17:21:24] (OK) del_person: Robert, Hedley, RH211, 4th Year, IR, False, False
+[17:21:24] (OK) del_person: Marie, Alcorn, MA170, 3rd Year, History, True, True
+[17:21:24] (OK) del_person: Rebecca, Dye, RD42, 1st Year, Psychology, False, False
+[17:21:24] (OK) del_person: Evelyn, Hernandez, EH53, 4th Year, Philosophy, False, False
+[17:21:24] (OK) add_person: Judith, Butler, JB147, Masters, Medicine, True, True
+[17:21:24] (OK) add_person: Fred, Crawley, FC176, 3rd Year, History, False, False
+[17:21:24] (OK) add_person: Patricia, Lalonde, PL226, PhD, Medicine, False, False
+[17:21:24] (OK) add_person: Henry, Burlock, HB186, Foundation, Philosophy, False, False
+[17:21:24] (OK) add_person: Randy, Gonzalez, RG255, 4th Year, IR, True, False
+[17:21:24] (OK) add_person: Harriet, Lindsay, HL84, 2nd Year, Pathway to Medicine, False, True
+[17:21:24] (OK) add_person: Colby, Little, CL297, Foundation, Medicine, True, True
+[17:21:24] (OK) add_person: James, Winnen, JW70, Foundation, Pathway to Medicine, True, True
+[17:21:24] (OK) add_person: Darrell, Emery, DE43, 2nd Year, Pathway to Medicine, False, True
+[17:21:24] (OK) add_person: Jasper, Bittle, JB64, 4th Year, History, False, True
+[17:21:24] (OK) add_mem: JB147, paid
+[17:21:24] (OK) add_mem: FC176, paid
+[17:21:24] (OK) add_mem: PL226, paid
+[17:21:24] (OK) add_mem: HB186, paid
+[17:21:24] (OK) add_mem: RG255, paid
+[17:21:24] (OK) add_mem: HL84, paid
+[17:21:24] (OK) add_mem: CL297, paid
+[17:21:24] (OK) add_mem: JW70, paid
+[17:21:24] (OK) add_mem: DE43, paid
+[17:21:24] (OK) add_mem: JB64, paid
+[17:21:24] (OK) del_mem: Judith, Butler, JB147, Masters, Medicine, True, True
+[17:21:24] (OK) del_mem: Fred, Crawley, FC176, 3rd Year, History, False, False
+[17:21:24] (OK) del_mem: Patricia, Lalonde, PL226, PhD, Medicine, False, False
+[17:21:24] (OK) del_mem: Henry, Burlock, HB186, Foundation, Philosophy, False, False
+[17:21:24] (OK) del_mem: Randy, Gonzalez, RG255, 4th Year, IR, True, False
+[17:21:24] (OK) del_mem: Harriet, Lindsay, HL84, 2nd Year, Pathway to Medicine, False, True
+[17:21:24] (OK) del_mem: Colby, Little, CL297, Foundation, Medicine, True, True
+[17:21:24] (OK) del_mem: James, Winnen, JW70, Foundation, Pathway to Medicine, True, True
+[17:21:24] (OK) del_mem: Darrell, Emery, DE43, 2nd Year, Pathway to Medicine, False, True
+[17:21:24] (OK) del_mem: Jasper, Bittle, JB64, 4th Year, History, False, True
+[17:21:24] (OK) del_person: Judith, Butler, JB147, Masters, Medicine, True, True
+[17:21:24] (OK) del_person: Fred, Crawley, FC176, 3rd Year, History, False, False
+[17:21:24] (OK) del_person: Patricia, Lalonde, PL226, PhD, Medicine, False, False
+[17:21:24] (OK) del_person: Henry, Burlock, HB186, Foundation, Philosophy, False, False
+[17:21:24] (OK) del_person: Randy, Gonzalez, RG255, 4th Year, IR, True, False
+[17:21:24] (OK) del_person: Harriet, Lindsay, HL84, 2nd Year, Pathway to Medicine, False, True
+[17:21:24] (OK) del_person: Colby, Little, CL297, Foundation, Medicine, True, True
+[17:21:24] (OK) del_person: James, Winnen, JW70, Foundation, Pathway to Medicine, True, True
+[17:21:24] (OK) del_person: Darrell, Emery, DE43, 2nd Year, Pathway to Medicine, False, True
+[17:21:24] (OK) del_person: Jasper, Bittle, JB64, 4th Year, History, False, True
+[17:22:08] (OK) add_event: Live Lounge, 10, 8, 2026-12-9, 14:51:58, Holy Trinity Church Hall
+[17:22:08] (OK) add_event: Taste of Asia, 10, 8, 2046-3-15, 4:9:55, Nisbet Room
+[17:22:08] (OK) add_event: Freshers Fayre, 10, 8, 2052-12-8, 3:18:57, Forbes Bar
+[17:22:08] (OK) add_event: Freshers Fayre, 8, 6, 2025-4-6, 16:26:7, Cockshaugh Park
+[17:22:08] (OK) get_event_ID: Live Lounge, 10, 8, 2026-12-9, 14:51:58, Holy Trinity Church Hall
+[17:22:08] (OK) del_event: Live Lounge, 10, 8, 2026-12-9, 14:51:58, Holy Trinity Church Hall
+[17:22:08] (OK) get_event_ID: Taste of Asia, 10, 8, 2046-3-15, 4:9:55, Nisbet Room
+[17:22:08] (OK) del_event: Taste of Asia, 10, 8, 2046-3-15, 4:9:55, Nisbet Room
+[17:22:08] (OK) get_event_ID: Freshers Fayre, 10, 8, 2052-12-8, 3:18:57, Forbes Bar
+[17:22:08] (OK) del_event: Freshers Fayre, 10, 8, 2052-12-8, 3:18:57, Forbes Bar
+[17:22:08] (OK) get_event_ID: Freshers Fayre, 8, 6, 2025-4-6, 16:26:7, Cockshaugh Park
+[17:22:08] (OK) del_event: Freshers Fayre, 8, 6, 2025-4-6, 16:26:7, Cockshaugh Park
+[17:22:09] (OK) add_person: Kent, Dommer, KD251, 4th Year, Pathway to Medicine, False, True
+[17:22:09] (OK) add_person: Jean, Seaberry, JS240, Masters, Pathway to Medicine, False, True
+[17:22:09] (OK) add_person: Jason, Hanshaw, JH38, 1st Year, Psychology, True, True
+[17:22:09] (OK) add_person: Breanna, Tolley, BT242, 2nd Year, IR, False, True
+[17:22:09] (OK) add_person: Bradley, Vonstein, BV190, 1st Year, Psychology, False, True
+[17:22:09] (OK) add_person: Kathleen, Peck, KP140, 3rd Year, Pathway to Medicine, True, False
+[17:22:09] (OK) add_person: Christy, Zimmerman, CZ288, PhD, IR, False, False
+[17:22:09] (OK) add_person: Joel, York, JY215, 2nd Year, Medicine, False, False
+[17:22:09] (OK) add_person: Miriam, Bell, MB194, 2nd Year, IR, False, False
+[17:22:09] (OK) add_person: Stan, Johnson, SJ59, 4th Year, Computer Science, False, False
+[17:22:09] (OK) del_person: Kent, Dommer, KD251, 4th Year, Pathway to Medicine, False, True
+[17:22:09] (OK) del_person: Jean, Seaberry, JS240, Masters, Pathway to Medicine, False, True
+[17:22:09] (OK) del_person: Jason, Hanshaw, JH38, 1st Year, Psychology, True, True
+[17:22:09] (OK) del_person: Breanna, Tolley, BT242, 2nd Year, IR, False, True
+[17:22:09] (OK) del_person: Bradley, Vonstein, BV190, 1st Year, Psychology, False, True
+[17:22:09] (OK) del_person: Kathleen, Peck, KP140, 3rd Year, Pathway to Medicine, True, False
+[17:22:09] (OK) del_person: Christy, Zimmerman, CZ288, PhD, IR, False, False
+[17:22:09] (OK) del_person: Joel, York, JY215, 2nd Year, Medicine, False, False
+[17:22:09] (OK) del_person: Miriam, Bell, MB194, 2nd Year, IR, False, False
+[17:22:09] (OK) del_person: Stan, Johnson, SJ59, 4th Year, Computer Science, False, False
+[17:22:09] (OK) add_person: Patricia, Guerrero, PG119, 3rd Year, History, False, True
+[17:22:09] (OK) add_person: Thomas, Fehr, TF239, Foundation, Psychology, False, True
+[17:22:09] (OK) add_person: Michelle, Wolfe, MW289, PhD, IR, True, False
+[17:22:09] (OK) add_person: Patrick, Lancaster, PL170, 1st Year, Medicine, True, True
+[17:22:09] (OK) add_person: Margret, Rivera, MR31, 3rd Year, Psychology, True, False
+[17:22:09] (OK) add_person: Alma, Wen, AW26, 4th Year, History, False, True
+[17:22:09] (OK) add_person: James, Anderson, JA187, Masters, Computer Science, True, True
+[17:22:09] (OK) add_person: Norma, Pugh, NP202, PhD, Philosophy, False, True
+[17:22:09] (OK) add_person: George, Vadnais, GV109, 2nd Year, Medicine, False, False
+[17:22:09] (OK) add_person: Louis, Rosasco, LR173, Masters, Psychology, True, True
+[17:22:09] (OK) add_mem: PG119, paid
+[17:22:09] (OK) add_mem: TF239, paid
+[17:22:09] (OK) add_mem: MW289, paid
+[17:22:09] (OK) add_mem: PL170, paid
+[17:22:09] (OK) add_mem: MR31, paid
+[17:22:09] (OK) add_mem: AW26, paid
+[17:22:09] (OK) add_mem: JA187, paid
+[17:22:09] (OK) add_mem: NP202, paid
+[17:22:09] (OK) add_mem: GV109, paid
+[17:22:09] (OK) add_mem: LR173, paid
+[17:22:09] (OK) add_ID: PG119, Library, 874206156
+[17:22:09] (OK) add_ID: TF239, Library, 894206112
+[17:22:09] (OK) add_ID: MW289, Library, 876038554
+[17:22:09] (OK) add_ID: PL170, Library, 815840865
+[17:22:09] (OK) add_ID: MR31, Library, 872897711
+[17:22:09] (OK) add_ID: AW26, Library, 842536758
+[17:22:09] (OK) add_ID: JA187, Library, 868515347
+[17:22:09] (OK) add_ID: NP202, Library, 839040778
+[17:22:09] (OK) add_ID: GV109, Library, 858452884
+[17:22:09] (OK) add_ID: LR173, Library, 831779813
+[17:22:09] (OK) add_event: Freshers Fayre, 8, 6, 1992-2-20, 3:40:50, Forbes Bar
+[17:22:09] (OK) add_event: Taste of Asia, 7, 5, 2043-3-13, 22:51:58, Forbes Bar
+[17:22:09] (OK) add_event: Taste of Asia, 9, 7, 1988-5-12, 1:43:31, Nisbet Room
+[17:22:09] (OK) add_event: Freshers Fayre, 4, 2, 1976-2-16, 10:7:57, Holy Trinity Church Hall
+[17:22:09] (OK) get_event_ID: Taste of Asia, 9, 7, 1988-5-12, 1:43:31, Nisbet Room
+[17:22:09] (OK) add_attendee: 3, PG119
+[17:22:09] (OK) add_attendee: 3, TF239
+[17:22:09] (OK) get_event_ID: Freshers Fayre, 8, 6, 1992-2-20, 3:40:50, Forbes Bar
+[17:22:09] (OK) add_attendee: 1, MW289
+[17:22:09] (OK) add_attendee: 3, PL170
+[17:22:09] (OK) add_attendee: 1, MR31
+[17:22:09] (OK) add_attendee: 3, AW26
+[17:22:09] (OK) add_attendee: 1, JA187
+[17:22:09] (OK) get_event_ID: Freshers Fayre, 4, 2, 1976-2-16, 10:7:57, Holy Trinity Church Hall
+[17:22:09] (OK) add_attendee: 4, NP202
+[17:22:09] (OK) get_event_ID: Taste of Asia, 7, 5, 2043-3-13, 22:51:58, Forbes Bar
+[17:22:09] (OK) add_attendee: 2, GV109
+[17:22:09] (OK) add_attendee: 1, LR173
+[17:22:09] (OK) get_attendees: Fetched 4 rows
+[17:22:09] (OK) get_person: Michelle, Wolfe, MW289, PhD, IR, 1, 0
+[17:22:09] (OK) get_person: Margret, Rivera, MR31, 3rd Year, Psychology, 1, 0
+[17:22:09] (OK) get_person: James, Anderson, JA187, Masters, Computer Science, 1, 1
+[17:22:09] (OK) get_person: Louis, Rosasco, LR173, Masters, Psychology, 1, 1
+[17:22:09] (OK) del_attendee: 1, MW289
+[17:22:09] (OK) del_attendee: 1, MR31
+[17:22:09] (OK) del_attendee: 1, JA187
+[17:22:09] (OK) del_attendee: 1, LR173
+[17:22:09] (OK) get_attendees: Fetched 1 rows
+[17:22:09] (OK) get_person: George, Vadnais, GV109, 2nd Year, Medicine, 0, 0
+[17:22:09] (OK) del_attendee: 2, GV109
+[17:22:09] (OK) get_attendees: Fetched 4 rows
+[17:22:09] (OK) get_person: Patricia, Guerrero, PG119, 3rd Year, History, 0, 1
+[17:22:09] (OK) get_person: Thomas, Fehr, TF239, Foundation, Psychology, 0, 1
+[17:22:09] (OK) get_person: Patrick, Lancaster, PL170, 1st Year, Medicine, 1, 1
+[17:22:09] (OK) get_person: Alma, Wen, AW26, 4th Year, History, 0, 1
+[17:22:09] (OK) del_attendee: 3, PG119
+[17:22:09] (OK) del_attendee: 3, TF239
+[17:22:09] (OK) del_attendee: 3, PL170
+[17:22:09] (OK) del_attendee: 3, AW26
+[17:22:09] (OK) get_attendees: Fetched 1 rows
+[17:22:09] (OK) get_person: Norma, Pugh, NP202, PhD, Philosophy, 0, 1
+[17:22:09] (OK) del_attendee: 4, NP202
+[17:22:09] (OK) del_mem: Patricia, Guerrero, PG119, 3rd Year, History, False, True
+[17:22:09] (OK) del_mem: Thomas, Fehr, TF239, Foundation, Psychology, False, True
+[17:22:09] (OK) del_mem: Michelle, Wolfe, MW289, PhD, IR, True, False
+[17:22:09] (OK) del_mem: Patrick, Lancaster, PL170, 1st Year, Medicine, True, True
+[17:22:09] (OK) del_mem: Margret, Rivera, MR31, 3rd Year, Psychology, True, False
+[17:22:09] (OK) del_mem: Alma, Wen, AW26, 4th Year, History, False, True
+[17:22:09] (OK) del_mem: James, Anderson, JA187, Masters, Computer Science, True, True
+[17:22:09] (OK) del_mem: Norma, Pugh, NP202, PhD, Philosophy, False, True
+[17:22:09] (OK) del_mem: George, Vadnais, GV109, 2nd Year, Medicine, False, False
+[17:22:09] (OK) del_mem: Louis, Rosasco, LR173, Masters, Psychology, True, True
+[17:22:09] (OK) del_person: Patricia, Guerrero, PG119, 3rd Year, History, False, True
+[17:22:09] (OK) del_person: Thomas, Fehr, TF239, Foundation, Psychology, False, True
+[17:22:09] (OK) del_person: Michelle, Wolfe, MW289, PhD, IR, True, False
+[17:22:09] (OK) del_person: Patrick, Lancaster, PL170, 1st Year, Medicine, True, True
+[17:22:09] (OK) del_person: Margret, Rivera, MR31, 3rd Year, Psychology, True, False
+[17:22:09] (OK) del_person: Alma, Wen, AW26, 4th Year, History, False, True
+[17:22:09] (OK) del_person: James, Anderson, JA187, Masters, Computer Science, True, True
+[17:22:09] (OK) del_person: Norma, Pugh, NP202, PhD, Philosophy, False, True
+[17:22:09] (OK) del_person: George, Vadnais, GV109, 2nd Year, Medicine, False, False
+[17:22:09] (OK) del_person: Louis, Rosasco, LR173, Masters, Psychology, True, True
+[17:22:09] (OK) del_event: Freshers Fayre, 8, 6, 1992-2-20, 3:40:50, Forbes Bar
+[17:22:09] (OK) del_event: Taste of Asia, 7, 5, 2043-3-13, 22:51:58, Forbes Bar
+[17:22:09] (OK) del_event: Taste of Asia, 9, 7, 1988-5-12, 1:43:31, Nisbet Room
+[17:22:09] (OK) del_event: Freshers Fayre, 4, 2, 1976-2-16, 10:7:57, Holy Trinity Church Hall
+[17:22:10] (OK) add_person: Gale, Coffey, GC86, 4th Year, Computer Science, True, True
+[17:22:10] (OK) add_person: Anthony, Mikasa, AM35, 2nd Year, Philosophy, False, False
+[17:22:10] (OK) add_person: Daniel, Garner, DG180, 3rd Year, Pathway to Medicine, True, False
+[17:22:10] (OK) add_person: Henry, Worrell, HW55, 1st Year, Pathway to Medicine, False, False
+[17:22:10] (OK) add_person: Mike, Ridley, MR183, 1st Year, Psychology, True, True
+[17:22:10] (OK) add_person: Eric, Rainer, ER291, Foundation, IR, True, False
+[17:22:10] (OK) add_person: Sara, Hoff, SH77, 4th Year, IR, False, False
+[17:22:10] (OK) add_person: Mary, Moser, MM230, PhD, Pathway to Medicine, False, False
+[17:22:10] (OK) add_person: David, Jethva, DJ60, Masters, IR, False, True
+[17:22:10] (OK) add_person: Christopher, Weaver, CW102, PhD, Medicine, True, True
+[17:22:10] (OK) add_mem: GC86, paid
+[17:22:10] (OK) add_mem: AM35, paid
+[17:22:10] (OK) add_mem: DG180, paid
+[17:22:10] (OK) add_mem: HW55, paid
+[17:22:10] (OK) add_mem: MR183, paid
+[17:22:10] (OK) add_mem: ER291, paid
+[17:22:10] (OK) add_mem: SH77, paid
+[17:22:10] (OK) add_mem: MM230, paid
+[17:22:10] (OK) add_mem: DJ60, paid
+[17:22:10] (OK) add_mem: CW102, paid
+[17:22:10] (OK) add_ID: GC86, Library, 879176749
+[17:22:10] (OK) add_ID: AM35, Library, 803499147
+[17:22:10] (OK) add_ID: DG180, Library, 862388014
+[17:22:10] (OK) add_ID: HW55, Library, 842129673
+[17:22:10] (OK) add_ID: MR183, Library, 885219288
+[17:22:10] (OK) add_ID: ER291, Library, 882865148
+[17:22:10] (OK) add_ID: SH77, Library, 817159383
+[17:22:10] (OK) add_ID: MM230, Library, 806375228
+[17:22:10] (OK) add_ID: DJ60, Library, 884719902
+[17:22:10] (OK) add_ID: CW102, Library, 837273694
+[17:22:10] (OK) del_mem: Gale, Coffey, GC86, 4th Year, Computer Science, True, True
+[17:22:10] (OK) del_mem: Anthony, Mikasa, AM35, 2nd Year, Philosophy, False, False
+[17:22:10] (OK) del_mem: Daniel, Garner, DG180, 3rd Year, Pathway to Medicine, True, False
+[17:22:10] (OK) del_mem: Henry, Worrell, HW55, 1st Year, Pathway to Medicine, False, False
+[17:22:10] (OK) del_mem: Mike, Ridley, MR183, 1st Year, Psychology, True, True
+[17:22:10] (OK) del_mem: Eric, Rainer, ER291, Foundation, IR, True, False
+[17:22:10] (OK) del_mem: Sara, Hoff, SH77, 4th Year, IR, False, False
+[17:22:10] (OK) del_mem: Mary, Moser, MM230, PhD, Pathway to Medicine, False, False
+[17:22:10] (OK) del_mem: David, Jethva, DJ60, Masters, IR, False, True
+[17:22:10] (OK) del_mem: Christopher, Weaver, CW102, PhD, Medicine, True, True
+[17:22:10] (OK) del_person: Gale, Coffey, GC86, 4th Year, Computer Science, True, True
+[17:22:10] (OK) del_person: Anthony, Mikasa, AM35, 2nd Year, Philosophy, False, False
+[17:22:10] (OK) del_person: Daniel, Garner, DG180, 3rd Year, Pathway to Medicine, True, False
+[17:22:10] (OK) del_person: Henry, Worrell, HW55, 1st Year, Pathway to Medicine, False, False
+[17:22:10] (OK) del_person: Mike, Ridley, MR183, 1st Year, Psychology, True, True
+[17:22:10] (OK) del_person: Eric, Rainer, ER291, Foundation, IR, True, False
+[17:22:10] (OK) del_person: Sara, Hoff, SH77, 4th Year, IR, False, False
+[17:22:10] (OK) del_person: Mary, Moser, MM230, PhD, Pathway to Medicine, False, False
+[17:22:10] (OK) del_person: David, Jethva, DJ60, Masters, IR, False, True
+[17:22:10] (OK) del_person: Christopher, Weaver, CW102, PhD, Medicine, True, True
+[17:22:10] (OK) add_person: Ralph, Gonzalez, RG68, Foundation, History, False, True
+[17:22:10] (OK) add_person: Haydee, Adams, HA125, 2nd Year, Computer Science, False, True
+[17:22:10] (OK) add_person: Mabel, White, MW71, Foundation, Psychology, False, True
+[17:22:10] (OK) add_person: Amelia, Budney, AB258, Foundation, Pathway to Medicine, True, True
+[17:22:10] (OK) add_person: Deborah, Kistner, DK234, 3rd Year, Medicine, False, True
+[17:22:10] (OK) add_person: Elizabeth, Smith, ES27, 4th Year, Psychology, False, False
+[17:22:10] (OK) add_person: Nancy, Price, NP72, 3rd Year, Philosophy, True, True
+[17:22:10] (OK) add_person: Amber, Mata, AM97, 3rd Year, Computer Science, True, False
+[17:22:10] (OK) add_person: Richard, Roberts, RR110, 2nd Year, History, False, True
+[17:22:10] (OK) add_person: Anna, Cason, AC19, Foundation, Pathway to Medicine, True, False
+[17:22:10] (OK) add_mem: RG68, paid
+[17:22:10] (OK) add_mem: HA125, paid
+[17:22:10] (OK) add_mem: MW71, paid
+[17:22:10] (OK) add_mem: AB258, paid
+[17:22:10] (OK) add_mem: DK234, paid
+[17:22:10] (OK) add_mem: ES27, paid
+[17:22:10] (OK) add_mem: NP72, paid
+[17:22:10] (OK) add_mem: AM97, paid
+[17:22:10] (OK) add_mem: RR110, paid
+[17:22:10] (OK) add_mem: AC19, paid
+[17:22:10] (OK) del_mem: Ralph, Gonzalez, RG68, Foundation, History, False, True
+[17:22:10] (OK) del_mem: Haydee, Adams, HA125, 2nd Year, Computer Science, False, True
+[17:22:10] (OK) del_mem: Mabel, White, MW71, Foundation, Psychology, False, True
+[17:22:10] (OK) del_mem: Amelia, Budney, AB258, Foundation, Pathway to Medicine, True, True
+[17:22:10] (OK) del_mem: Deborah, Kistner, DK234, 3rd Year, Medicine, False, True
+[17:22:10] (OK) del_mem: Elizabeth, Smith, ES27, 4th Year, Psychology, False, False
+[17:22:10] (OK) del_mem: Nancy, Price, NP72, 3rd Year, Philosophy, True, True
+[17:22:10] (OK) del_mem: Amber, Mata, AM97, 3rd Year, Computer Science, True, False
+[17:22:10] (OK) del_mem: Richard, Roberts, RR110, 2nd Year, History, False, True
+[17:22:10] (OK) del_mem: Anna, Cason, AC19, Foundation, Pathway to Medicine, True, False
+[17:22:10] (OK) del_person: Ralph, Gonzalez, RG68, Foundation, History, False, True
+[17:22:10] (OK) del_person: Haydee, Adams, HA125, 2nd Year, Computer Science, False, True
+[17:22:10] (OK) del_person: Mabel, White, MW71, Foundation, Psychology, False, True
+[17:22:10] (OK) del_person: Amelia, Budney, AB258, Foundation, Pathway to Medicine, True, True
+[17:22:10] (OK) del_person: Deborah, Kistner, DK234, 3rd Year, Medicine, False, True
+[17:22:10] (OK) del_person: Elizabeth, Smith, ES27, 4th Year, Psychology, False, False
+[17:22:10] (OK) del_person: Nancy, Price, NP72, 3rd Year, Philosophy, True, True
+[17:22:10] (OK) del_person: Amber, Mata, AM97, 3rd Year, Computer Science, True, False
+[17:22:10] (OK) del_person: Richard, Roberts, RR110, 2nd Year, History, False, True
+[17:22:10] (OK) del_person: Anna, Cason, AC19, Foundation, Pathway to Medicine, True, False
+[17:22:41] (OK) add_event: Taste of Asia, 10, 8, 1999-6-6, 13:39:59, Cockshaugh Park
+[17:22:41] (OK) add_event: Capture the Flag, 6, 4, 1975-9-25, 1:18:38, Holy Trinity Church Hall
+[17:22:41] (OK) add_event: Freshers Fayre, 4, 2, 2054-3-8, 9:17:54, Forbes Bar
+[17:22:41] (OK) add_event: Freshers Fayre, 4, 2, 2019-6-24, 23:34:25, Forbes Bar
+[17:22:41] (OK) get_event_ID: Taste of Asia, 10, 8, 1999-6-6, 13:39:59, Cockshaugh Park
+[17:22:41] (OK) del_event: Taste of Asia, 10, 8, 1999-6-6, 13:39:59, Cockshaugh Park
+[17:22:41] (OK) get_event_ID: Capture the Flag, 6, 4, 1975-9-25, 1:18:38, Holy Trinity Church Hall
+[17:22:41] (OK) del_event: Capture the Flag, 6, 4, 1975-9-25, 1:18:38, Holy Trinity Church Hall
+[17:22:41] (OK) get_event_ID: Freshers Fayre, 4, 2, 2054-3-8, 9:17:54, Forbes Bar
+[17:22:41] (OK) del_event: Freshers Fayre, 4, 2, 2054-3-8, 9:17:54, Forbes Bar
+[17:22:41] (OK) get_event_ID: Freshers Fayre, 4, 2, 2019-6-24, 23:34:25, Forbes Bar
+[17:22:41] (OK) del_event: Freshers Fayre, 4, 2, 2019-6-24, 23:34:25, Forbes Bar
+[17:22:41] (OK) add_person: Leslie, Pulliam, LP157, 3rd Year, Philosophy, False, True
+[17:22:41] (OK) add_person: Thomas, Wilson, TW112, 2nd Year, Pathway to Medicine, True, True
+[17:22:41] (OK) add_person: Joyce, Whitmore, JW40, 4th Year, Medicine, False, False
+[17:22:41] (OK) add_person: Elizabeth, Wall, EW106, 1st Year, History, True, False
+[17:22:41] (OK) add_person: Gregory, Martinez, GM50, 2nd Year, Medicine, False, True
+[17:22:41] (OK) add_person: Kevin, Prado, KP259, 1st Year, History, True, False
+[17:22:41] (OK) add_person: Regina, Chizmar, RC183, Foundation, Computer Science, True, False
+[17:22:41] (OK) add_person: Kathy, Bethel, KB71, 3rd Year, History, False, True
+[17:22:41] (OK) add_person: Roger, French, RF268, Foundation, Pathway to Medicine, False, True
+[17:22:41] (OK) add_person: Carmen, Gammon, CG287, Masters, Psychology, True, True
+[17:22:41] (OK) del_person: Leslie, Pulliam, LP157, 3rd Year, Philosophy, False, True
+[17:22:41] (OK) del_person: Thomas, Wilson, TW112, 2nd Year, Pathway to Medicine, True, True
+[17:22:41] (OK) del_person: Joyce, Whitmore, JW40, 4th Year, Medicine, False, False
+[17:22:41] (OK) del_person: Elizabeth, Wall, EW106, 1st Year, History, True, False
+[17:22:41] (OK) del_person: Gregory, Martinez, GM50, 2nd Year, Medicine, False, True
+[17:22:41] (OK) del_person: Kevin, Prado, KP259, 1st Year, History, True, False
+[17:22:41] (OK) del_person: Regina, Chizmar, RC183, Foundation, Computer Science, True, False
+[17:22:41] (OK) del_person: Kathy, Bethel, KB71, 3rd Year, History, False, True
+[17:22:41] (OK) del_person: Roger, French, RF268, Foundation, Pathway to Medicine, False, True
+[17:22:41] (OK) del_person: Carmen, Gammon, CG287, Masters, Psychology, True, True
+[17:22:42] (OK) add_person: Elia, Sheffield, ES153, 3rd Year, Philosophy, False, True
+[17:22:42] (OK) add_person: Melvina, Hanson, MH289, Masters, Medicine, False, False
+[17:22:42] (OK) add_person: Jackie, Gates, JG291, 2nd Year, Computer Science, False, True
+[17:22:42] (OK) add_person: Lloyd, Meyers, LM112, 4th Year, Pathway to Medicine, True, False
+[17:22:42] (OK) add_person: Janis, Ciccone, JC92, 2nd Year, Pathway to Medicine, True, True
+[17:22:42] (OK) add_person: Blake, Ragsdale, BR193, Foundation, Computer Science, False, True
+[17:22:42] (OK) add_person: Richard, Mcguirl, RM100, PhD, IR, True, True
+[17:22:42] (OK) add_person: Betty, Roberts, BR116, 2nd Year, History, False, True
+[17:22:42] (OK) add_person: Iola, Blair, IB57, Masters, History, True, True
+[17:22:42] (OK) add_person: Tammy, Hadden, TH102, Masters, Pathway to Medicine, False, True
+[17:22:42] (OK) add_mem: ES153, paid
+[17:22:42] (OK) add_mem: MH289, paid
+[17:22:42] (OK) add_mem: JG291, paid
+[17:22:42] (OK) add_mem: LM112, paid
+[17:22:42] (OK) add_mem: JC92, paid
+[17:22:42] (OK) add_mem: BR193, paid
+[17:22:42] (OK) add_mem: RM100, paid
+[17:22:42] (OK) add_mem: BR116, paid
+[17:22:42] (OK) add_mem: IB57, paid
+[17:22:42] (OK) add_mem: TH102, paid
+[17:22:42] (OK) add_ID: ES153, Library, 843038116
+[17:22:42] (OK) add_ID: MH289, Library, 814639987
+[17:22:42] (OK) add_ID: JG291, Library, 896271901
+[17:22:42] (OK) add_ID: LM112, Library, 823907915
+[17:22:42] (OK) add_ID: JC92, Library, 868641252
+[17:22:42] (OK) add_ID: BR193, Library, 845234172
+[17:22:42] (OK) add_ID: RM100, Library, 863104927
+[17:22:42] (OK) add_ID: BR116, Library, 890921087
+[17:22:42] (OK) add_ID: IB57, Library, 858842082
+[17:22:42] (OK) add_ID: TH102, Library, 868718530
+[17:22:42] (OK) add_event: Capture the Flag, 10, 8, 1999-12-28, 20:40:39, Nisbet Room
+[17:22:42] (OK) add_event: Christavali, 7, 5, 2064-12-13, 6:50:54, Nisbet Room
+[17:22:42] (OK) add_event: Flavours of Malaysia, 5, 3, 2063-3-23, 5:57:18, Cockshaugh Park
+[17:22:42] (OK) add_event: Icebreaker, 4, 2, 2064-2-25, 19:45:6, Cockshaugh Park
+[17:22:42] (OK) get_event_ID: Capture the Flag, 10, 8, 1999-12-28, 20:40:39, Nisbet Room
+[17:22:42] (OK) add_attendee: 1, ES153
+[17:22:42] (OK) get_event_ID: Flavours of Malaysia, 5, 3, 2063-3-23, 5:57:18, Cockshaugh Park
+[17:22:42] (OK) add_attendee: 3, MH289
+[17:22:42] (OK) get_event_ID: Icebreaker, 4, 2, 2064-2-25, 19:45:6, Cockshaugh Park
+[17:22:42] (OK) add_attendee: 4, JG291
+[17:22:42] (OK) add_attendee: 1, LM112
+[17:22:42] (OK) add_attendee: 1, JC92
+[17:22:42] (OK) add_attendee: 3, BR193
+[17:22:42] (OK) add_attendee: 3, RM100
+[17:22:42] (OK) add_attendee: 3, BR116
+[17:22:42] (OK) get_event_ID: Christavali, 7, 5, 2064-12-13, 6:50:54, Nisbet Room
+[17:22:42] (OK) add_attendee: 2, IB57
+[17:22:42] (OK) add_attendee: 1, TH102
+[17:22:42] (OK) get_attendees: Fetched 4 rows
+[17:22:42] (OK) get_person: Elia, Sheffield, ES153, 3rd Year, Philosophy, 0, 1
+[17:22:42] (OK) get_person: Lloyd, Meyers, LM112, 4th Year, Pathway to Medicine, 1, 0
+[17:22:42] (OK) get_person: Janis, Ciccone, JC92, 2nd Year, Pathway to Medicine, 1, 1
+[17:22:42] (OK) get_person: Tammy, Hadden, TH102, Masters, Pathway to Medicine, 0, 1
+[17:22:42] (OK) del_attendee: 1, ES153
+[17:22:42] (OK) del_attendee: 1, LM112
+[17:22:42] (OK) del_attendee: 1, JC92
+[17:22:42] (OK) del_attendee: 1, TH102
+[17:22:42] (OK) get_attendees: Fetched 1 rows
+[17:22:42] (OK) get_person: Iola, Blair, IB57, Masters, History, 1, 1
+[17:22:42] (OK) del_attendee: 2, IB57
+[17:22:42] (OK) get_attendees: Fetched 4 rows
+[17:22:42] (OK) get_person: Melvina, Hanson, MH289, Masters, Medicine, 0, 0
+[17:22:42] (OK) get_person: Blake, Ragsdale, BR193, Foundation, Computer Science, 0, 1
+[17:22:42] (OK) get_person: Richard, Mcguirl, RM100, PhD, IR, 1, 1
+[17:22:42] (OK) get_person: Betty, Roberts, BR116, 2nd Year, History, 0, 1
+[17:22:42] (OK) del_attendee: 3, MH289
+[17:22:42] (OK) del_attendee: 3, BR193
+[17:22:42] (OK) del_attendee: 3, RM100
+[17:22:42] (OK) del_attendee: 3, BR116
+[17:22:42] (OK) get_attendees: Fetched 1 rows
+[17:22:42] (OK) get_person: Jackie, Gates, JG291, 2nd Year, Computer Science, 0, 1
+[17:22:42] (OK) del_attendee: 4, JG291
+[17:22:42] (OK) del_mem: Elia, Sheffield, ES153, 3rd Year, Philosophy, False, True
+[17:22:42] (OK) del_mem: Melvina, Hanson, MH289, Masters, Medicine, False, False
+[17:22:42] (OK) del_mem: Jackie, Gates, JG291, 2nd Year, Computer Science, False, True
+[17:22:42] (OK) del_mem: Lloyd, Meyers, LM112, 4th Year, Pathway to Medicine, True, False
+[17:22:42] (OK) del_mem: Janis, Ciccone, JC92, 2nd Year, Pathway to Medicine, True, True
+[17:22:42] (OK) del_mem: Blake, Ragsdale, BR193, Foundation, Computer Science, False, True
+[17:22:42] (OK) del_mem: Richard, Mcguirl, RM100, PhD, IR, True, True
+[17:22:42] (OK) del_mem: Betty, Roberts, BR116, 2nd Year, History, False, True
+[17:22:42] (OK) del_mem: Iola, Blair, IB57, Masters, History, True, True
+[17:22:42] (OK) del_mem: Tammy, Hadden, TH102, Masters, Pathway to Medicine, False, True
+[17:22:42] (OK) del_person: Elia, Sheffield, ES153, 3rd Year, Philosophy, False, True
+[17:22:42] (OK) del_person: Melvina, Hanson, MH289, Masters, Medicine, False, False
+[17:22:42] (OK) del_person: Jackie, Gates, JG291, 2nd Year, Computer Science, False, True
+[17:22:42] (OK) del_person: Lloyd, Meyers, LM112, 4th Year, Pathway to Medicine, True, False
+[17:22:42] (OK) del_person: Janis, Ciccone, JC92, 2nd Year, Pathway to Medicine, True, True
+[17:22:42] (OK) del_person: Blake, Ragsdale, BR193, Foundation, Computer Science, False, True
+[17:22:42] (OK) del_person: Richard, Mcguirl, RM100, PhD, IR, True, True
+[17:22:42] (OK) del_person: Betty, Roberts, BR116, 2nd Year, History, False, True
+[17:22:42] (OK) del_person: Iola, Blair, IB57, Masters, History, True, True
+[17:22:42] (OK) del_person: Tammy, Hadden, TH102, Masters, Pathway to Medicine, False, True
+[17:22:42] (OK) del_event: Capture the Flag, 10, 8, 1999-12-28, 20:40:39, Nisbet Room
+[17:22:42] (OK) del_event: Christavali, 7, 5, 2064-12-13, 6:50:54, Nisbet Room
+[17:22:42] (OK) del_event: Flavours of Malaysia, 5, 3, 2063-3-23, 5:57:18, Cockshaugh Park
+[17:22:42] (OK) del_event: Icebreaker, 4, 2, 2064-2-25, 19:45:6, Cockshaugh Park
+[17:22:42] (OK) add_person: Julie, Munson, JM215, 2nd Year, History, False, False
+[17:22:42] (OK) add_person: Lillian, Albritton, LA75, Foundation, Pathway to Medicine, True, True
+[17:22:42] (OK) add_person: Rhonda, Didonna, RD159, 3rd Year, Philosophy, False, False
+[17:22:42] (OK) add_person: Wanda, Mason, WM14, Masters, Philosophy, True, True
+[17:22:42] (OK) add_person: Essie, Hernandez, EH235, PhD, Pathway to Medicine, False, False
+[17:22:42] (OK) add_person: Sara, Mistretta, SM81, Masters, IR, False, True
+[17:22:42] (OK) add_person: Peter, Morris, PM258, PhD, IR, True, False
+[17:22:42] (OK) add_person: Cynthia, Reese, CR76, Masters, Medicine, False, True
+[17:22:42] (OK) add_person: Gina, Witte, GW73, Foundation, Psychology, True, False
+[17:22:42] (OK) add_person: Jonah, Romero, JR179, 3rd Year, IR, True, False
+[17:22:42] (OK) add_mem: JM215, paid
+[17:22:42] (OK) add_mem: LA75, paid
+[17:22:42] (OK) add_mem: RD159, paid
+[17:22:42] (OK) add_mem: WM14, paid
+[17:22:42] (OK) add_mem: EH235, paid
+[17:22:42] (OK) add_mem: SM81, paid
+[17:22:42] (OK) add_mem: PM258, paid
+[17:22:42] (OK) add_mem: CR76, paid
+[17:22:42] (OK) add_mem: GW73, paid
+[17:22:42] (OK) add_mem: JR179, paid
+[17:22:42] (OK) add_ID: JM215, Library, 894154847
+[17:22:42] (OK) add_ID: LA75, Library, 830126883
+[17:22:42] (OK) add_ID: RD159, Library, 807419945
+[17:22:42] (OK) add_ID: WM14, Library, 865055125
+[17:22:42] (OK) add_ID: EH235, Library, 830019046
+[17:22:42] (OK) add_ID: SM81, Library, 816186883
+[17:22:42] (OK) add_ID: PM258, Library, 859273289
+[17:22:42] (OK) add_ID: CR76, Library, 892103345
+[17:22:42] (OK) add_ID: GW73, Library, 820488027
+[17:22:42] (OK) add_ID: JR179, Library, 803570884
+[17:22:42] (OK) del_mem: Julie, Munson, JM215, 2nd Year, History, False, False
+[17:22:43] (OK) del_mem: Lillian, Albritton, LA75, Foundation, Pathway to Medicine, True, True
+[17:22:43] (OK) del_mem: Rhonda, Didonna, RD159, 3rd Year, Philosophy, False, False
+[17:22:43] (OK) del_mem: Wanda, Mason, WM14, Masters, Philosophy, True, True
+[17:22:43] (OK) del_mem: Essie, Hernandez, EH235, PhD, Pathway to Medicine, False, False
+[17:22:43] (OK) del_mem: Sara, Mistretta, SM81, Masters, IR, False, True
+[17:22:43] (OK) del_mem: Peter, Morris, PM258, PhD, IR, True, False
+[17:22:43] (OK) del_mem: Cynthia, Reese, CR76, Masters, Medicine, False, True
+[17:22:43] (OK) del_mem: Gina, Witte, GW73, Foundation, Psychology, True, False
+[17:22:43] (OK) del_mem: Jonah, Romero, JR179, 3rd Year, IR, True, False
+[17:22:43] (OK) del_person: Julie, Munson, JM215, 2nd Year, History, False, False
+[17:22:43] (OK) del_person: Lillian, Albritton, LA75, Foundation, Pathway to Medicine, True, True
+[17:22:43] (OK) del_person: Rhonda, Didonna, RD159, 3rd Year, Philosophy, False, False
+[17:22:43] (OK) del_person: Wanda, Mason, WM14, Masters, Philosophy, True, True
+[17:22:43] (OK) del_person: Essie, Hernandez, EH235, PhD, Pathway to Medicine, False, False
+[17:22:43] (OK) del_person: Sara, Mistretta, SM81, Masters, IR, False, True
+[17:22:43] (OK) del_person: Peter, Morris, PM258, PhD, IR, True, False
+[17:22:43] (OK) del_person: Cynthia, Reese, CR76, Masters, Medicine, False, True
+[17:22:43] (OK) del_person: Gina, Witte, GW73, Foundation, Psychology, True, False
+[17:22:43] (OK) del_person: Jonah, Romero, JR179, 3rd Year, IR, True, False
+[17:22:43] (OK) add_person: Theresa, Prillaman, TP265, Masters, Medicine, False, False
+[17:22:43] (OK) add_person: Kay, Tweed, KT133, 3rd Year, Medicine, True, False
+[17:22:43] (OK) add_person: Irving, Canela, IC19, PhD, IR, True, False
+[17:22:43] (OK) add_person: Christina, Miller, CM69, Foundation, Philosophy, False, False
+[17:22:43] (OK) add_person: Tommie, Clayton, TC284, 4th Year, Medicine, False, False
+[17:22:43] (OK) add_person: Mae, Antonio, MA250, 1st Year, Computer Science, True, False
+[17:22:43] (OK) add_person: Brandon, Walters, BW244, 2nd Year, Psychology, False, True
+[17:22:43] (OK) add_person: Leo, Meehleder, LM88, Masters, Philosophy, True, False
+[17:22:43] (OK) add_person: Elisa, Garcia, EG239, Masters, Psychology, True, True
+[17:22:43] (OK) add_person: Raymond, Justice, RJ278, 3rd Year, Pathway to Medicine, True, True
+[17:22:43] (OK) add_mem: TP265, paid
+[17:22:43] (OK) add_mem: KT133, paid
+[17:22:43] (OK) add_mem: IC19, paid
+[17:22:43] (OK) add_mem: CM69, paid
+[17:22:43] (OK) add_mem: TC284, paid
+[17:22:43] (OK) add_mem: MA250, paid
+[17:22:43] (OK) add_mem: BW244, paid
+[17:22:43] (OK) add_mem: LM88, paid
+[17:22:43] (OK) add_mem: EG239, paid
+[17:22:43] (OK) add_mem: RJ278, paid
+[17:22:43] (OK) del_mem: Theresa, Prillaman, TP265, Masters, Medicine, False, False
+[17:22:43] (OK) del_mem: Kay, Tweed, KT133, 3rd Year, Medicine, True, False
+[17:22:43] (OK) del_mem: Irving, Canela, IC19, PhD, IR, True, False
+[17:22:43] (OK) del_mem: Christina, Miller, CM69, Foundation, Philosophy, False, False
+[17:22:43] (OK) del_mem: Tommie, Clayton, TC284, 4th Year, Medicine, False, False
+[17:22:43] (OK) del_mem: Mae, Antonio, MA250, 1st Year, Computer Science, True, False
+[17:22:43] (OK) del_mem: Brandon, Walters, BW244, 2nd Year, Psychology, False, True
+[17:22:43] (OK) del_mem: Leo, Meehleder, LM88, Masters, Philosophy, True, False
+[17:22:43] (OK) del_mem: Elisa, Garcia, EG239, Masters, Psychology, True, True
+[17:22:43] (OK) del_mem: Raymond, Justice, RJ278, 3rd Year, Pathway to Medicine, True, True
+[17:22:43] (OK) del_person: Theresa, Prillaman, TP265, Masters, Medicine, False, False
+[17:22:43] (OK) del_person: Kay, Tweed, KT133, 3rd Year, Medicine, True, False
+[17:22:43] (OK) del_person: Irving, Canela, IC19, PhD, IR, True, False
+[17:22:43] (OK) del_person: Christina, Miller, CM69, Foundation, Philosophy, False, False
+[17:22:43] (OK) del_person: Tommie, Clayton, TC284, 4th Year, Medicine, False, False
+[17:22:43] (OK) del_person: Mae, Antonio, MA250, 1st Year, Computer Science, True, False
+[17:22:43] (OK) del_person: Brandon, Walters, BW244, 2nd Year, Psychology, False, True
+[17:22:43] (OK) del_person: Leo, Meehleder, LM88, Masters, Philosophy, True, False
+[17:22:43] (OK) del_person: Elisa, Garcia, EG239, Masters, Psychology, True, True
+[17:22:43] (OK) del_person: Raymond, Justice, RJ278, 3rd Year, Pathway to Medicine, True, True
+[17:23:17] (OK) add_event: Freshers Fayre, 4, 2, 1985-3-5, 14:7:43, Forbes Bar
+[17:23:17] (OK) add_event: Flavours of Malaysia, 8, 6, 2005-1-25, 4:54:31, Forbes Bar
+[17:23:17] (OK) add_event: Icebreaker, 6, 4, 1981-9-9, 15:3:17, Cockshaugh Park
+[17:23:17] (OK) add_event: Christavali, 6, 4, 1973-12-21, 12:54:58, Holy Trinity Church Hall
+[17:23:17] (OK) get_event_ID: Freshers Fayre, 4, 2, 1985-3-5, 14:7:43, Forbes Bar
+[17:23:17] (OK) del_event: Freshers Fayre, 4, 2, 1985-3-5, 14:7:43, Forbes Bar
+[17:23:17] (OK) get_event_ID: Flavours of Malaysia, 8, 6, 2005-1-25, 4:54:31, Forbes Bar
+[17:23:17] (OK) del_event: Flavours of Malaysia, 8, 6, 2005-1-25, 4:54:31, Forbes Bar
+[17:23:17] (OK) get_event_ID: Icebreaker, 6, 4, 1981-9-9, 15:3:17, Cockshaugh Park
+[17:23:17] (OK) del_event: Icebreaker, 6, 4, 1981-9-9, 15:3:17, Cockshaugh Park
+[17:23:17] (OK) get_event_ID: Christavali, 6, 4, 1973-12-21, 12:54:58, Holy Trinity Church Hall
+[17:23:17] (OK) del_event: Christavali, 6, 4, 1973-12-21, 12:54:58, Holy Trinity Church Hall
+[17:23:18] (OK) add_person: Cynthia, Peyatt, CP260, 4th Year, Philosophy, True, False
+[17:23:18] (OK) add_person: Tonya, Myers, TM159, PhD, Medicine, True, False
+[17:23:18] (OK) add_person: Rodney, Shabazz, RS295, Foundation, Philosophy, True, True
+[17:23:18] (OK) add_person: Loretta, Lainhart, LL28, Foundation, Philosophy, False, True
+[17:23:18] (OK) add_person: Dawn, Gonsales, DG185, Foundation, Psychology, False, False
+[17:23:18] (OK) add_person: Maurice, Lewis, ML288, 3rd Year, History, False, True
+[17:23:18] (OK) add_person: Colton, Carpenter, CC233, 1st Year, History, True, True
+[17:23:18] (OK) add_person: Edward, Ramey, ER242, 3rd Year, Medicine, True, True
+[17:23:18] (OK) add_person: John, Benson, JB241, Foundation, History, False, True
+[17:23:18] (OK) add_person: Amy, Jacobsen, AJ145, 1st Year, Pathway to Medicine, True, True
+[17:23:18] (OK) del_person: Cynthia, Peyatt, CP260, 4th Year, Philosophy, True, False
+[17:23:18] (OK) del_person: Tonya, Myers, TM159, PhD, Medicine, True, False
+[17:23:18] (OK) del_person: Rodney, Shabazz, RS295, Foundation, Philosophy, True, True
+[17:23:18] (OK) del_person: Loretta, Lainhart, LL28, Foundation, Philosophy, False, True
+[17:23:18] (OK) del_person: Dawn, Gonsales, DG185, Foundation, Psychology, False, False
+[17:23:18] (OK) del_person: Maurice, Lewis, ML288, 3rd Year, History, False, True
+[17:23:18] (OK) del_person: Colton, Carpenter, CC233, 1st Year, History, True, True
+[17:23:18] (OK) del_person: Edward, Ramey, ER242, 3rd Year, Medicine, True, True
+[17:23:18] (OK) del_person: John, Benson, JB241, Foundation, History, False, True
+[17:23:18] (OK) del_person: Amy, Jacobsen, AJ145, 1st Year, Pathway to Medicine, True, True
+[17:23:32] (OK) add_event: Freshers Fayre, 10, 8, 2039-7-3, 20:19:13, Nisbet Room
+[17:23:32] (OK) add_event: Icebreaker, 4, 2, 2054-2-3, 18:39:21, Cockshaugh Park
+[17:23:32] (OK) add_event: Capture the Flag, 8, 6, 1982-2-14, 14:39:10, Holy Trinity Church Hall
+[17:23:32] (OK) add_event: Freshers Fayre, 8, 6, 1990-1-28, 1:37:4, Cockshaugh Park
+[17:23:32] (OK) get_event_ID: Freshers Fayre, 10, 8, 2039-7-3, 20:19:13, Nisbet Room
+[17:23:32] (OK) del_event: Freshers Fayre, 10, 8, 2039-7-3, 20:19:13, Nisbet Room
+[17:23:32] (OK) get_event_ID: Icebreaker, 4, 2, 2054-2-3, 18:39:21, Cockshaugh Park
+[17:23:32] (OK) del_event: Icebreaker, 4, 2, 2054-2-3, 18:39:21, Cockshaugh Park
+[17:23:32] (OK) get_event_ID: Capture the Flag, 8, 6, 1982-2-14, 14:39:10, Holy Trinity Church Hall
+[17:23:33] (OK) del_event: Capture the Flag, 8, 6, 1982-2-14, 14:39:10, Holy Trinity Church Hall
+[17:23:33] (OK) get_event_ID: Freshers Fayre, 8, 6, 1990-1-28, 1:37:4, Cockshaugh Park
+[17:23:33] (OK) del_event: Freshers Fayre, 8, 6, 1990-1-28, 1:37:4, Cockshaugh Park
+[17:23:33] (OK) add_person: Brendan, Masters, BM187, 1st Year, Philosophy, False, False
+[17:23:33] (OK) add_person: Darius, Mullen, DM40, 2nd Year, Pathway to Medicine, True, True
+[17:23:33] (OK) add_person: Nathaniel, Rodriguez, NR70, Foundation, IR, True, True
+[17:23:33] (OK) add_person: Doris, Lively, DL292, PhD, Medicine, True, True
+[17:23:33] (OK) add_person: Jessie, Hunter, JH124, 4th Year, Medicine, False, True
+[17:23:33] (OK) add_person: Stephen, Rodgers, SR217, 4th Year, Psychology, True, False
+[17:23:33] (OK) add_person: Dwayne, Darland, DD278, 4th Year, History, False, True
+[17:23:33] (OK) add_person: Merrill, Knudsvig, MK11, 4th Year, Computer Science, False, False
+[17:23:33] (OK) add_person: Lea, Bartoletti, LB292, 3rd Year, History, True, True
+[17:23:33] (OK) add_person: Elbert, Martin, EM232, 1st Year, Psychology, True, False
+[17:23:33] (OK) del_person: Brendan, Masters, BM187, 1st Year, Philosophy, False, False
+[17:23:33] (OK) del_person: Darius, Mullen, DM40, 2nd Year, Pathway to Medicine, True, True
+[17:23:33] (OK) del_person: Nathaniel, Rodriguez, NR70, Foundation, IR, True, True
+[17:23:33] (OK) del_person: Doris, Lively, DL292, PhD, Medicine, True, True
+[17:23:33] (OK) del_person: Jessie, Hunter, JH124, 4th Year, Medicine, False, True
+[17:23:33] (OK) del_person: Stephen, Rodgers, SR217, 4th Year, Psychology, True, False
+[17:23:33] (OK) del_person: Dwayne, Darland, DD278, 4th Year, History, False, True
+[17:23:33] (OK) del_person: Merrill, Knudsvig, MK11, 4th Year, Computer Science, False, False
+[17:23:33] (OK) del_person: Lea, Bartoletti, LB292, 3rd Year, History, True, True
+[17:23:33] (OK) del_person: Elbert, Martin, EM232, 1st Year, Psychology, True, False
+[17:24:05] (OK) add_event: Christavali, 10, 8, 2010-3-13, 24:26:54, Cockshaugh Park
+[17:24:05] (OK) add_event: Capture the Flag, 10, 8, 2031-11-6, 4:42:27, Holy Trinity Church Hall
+[17:24:05] (OK) add_event: Live Lounge, 8, 6, 2070-3-14, 22:2:9, Nisbet Room
+[17:24:05] (OK) add_event: Christavali, 10, 8, 2003-7-5, 14:28:43, Nisbet Room
+[17:24:05] (OK) get_event_ID: Christavali, 10, 8, 2010-3-13, 24:26:54, Cockshaugh Park
+[17:24:05] (OK) del_event: Christavali, 10, 8, 2010-3-13, 24:26:54, Cockshaugh Park
+[17:24:05] (OK) get_event_ID: Capture the Flag, 10, 8, 2031-11-6, 4:42:27, Holy Trinity Church Hall
+[17:24:05] (OK) del_event: Capture the Flag, 10, 8, 2031-11-6, 4:42:27, Holy Trinity Church Hall
+[17:24:05] (OK) get_event_ID: Live Lounge, 8, 6, 2070-3-14, 22:2:9, Nisbet Room
+[17:24:05] (OK) del_event: Live Lounge, 8, 6, 2070-3-14, 22:2:9, Nisbet Room
+[17:24:05] (OK) get_event_ID: Christavali, 10, 8, 2003-7-5, 14:28:43, Nisbet Room
+[17:24:05] (OK) del_event: Christavali, 10, 8, 2003-7-5, 14:28:43, Nisbet Room
+[17:24:06] (OK) add_person: Sabrina, Petterson, SP170, 2nd Year, Computer Science, True, True
+[17:24:06] (OK) add_person: Jeanette, Rodriguez, JR277, PhD, IR, True, False
+[17:24:06] (OK) add_person: Ebony, Amador, EA194, Foundation, Computer Science, False, False
+[17:24:06] (OK) add_person: Jennifer, Lachance, JL289, 3rd Year, Medicine, True, True
+[17:24:06] (OK) add_person: Matthew, Offield, MO106, PhD, Computer Science, False, False
+[17:24:06] (OK) add_person: Deborah, Elza, DE256, 1st Year, IR, True, False
+[17:24:06] (OK) add_person: Lana, Allen, LA91, 1st Year, Philosophy, False, False
+[17:24:06] (OK) add_person: Anna, Daisy, AD17, PhD, IR, False, False
+[17:24:06] (OK) add_person: Mary, Spells, MS74, 1st Year, Computer Science, False, False
+[17:24:06] (OK) add_person: James, Merrick, JM287, Masters, History, True, True
+[17:24:06] (OK) del_person: Sabrina, Petterson, SP170, 2nd Year, Computer Science, True, True
+[17:24:06] (OK) del_person: Jeanette, Rodriguez, JR277, PhD, IR, True, False
+[17:24:06] (OK) del_person: Ebony, Amador, EA194, Foundation, Computer Science, False, False
+[17:24:06] (OK) del_person: Jennifer, Lachance, JL289, 3rd Year, Medicine, True, True
+[17:24:06] (OK) del_person: Matthew, Offield, MO106, PhD, Computer Science, False, False
+[17:24:06] (OK) del_person: Deborah, Elza, DE256, 1st Year, IR, True, False
+[17:24:06] (OK) del_person: Lana, Allen, LA91, 1st Year, Philosophy, False, False
+[17:24:06] (OK) del_person: Anna, Daisy, AD17, PhD, IR, False, False
+[17:24:06] (OK) del_person: Mary, Spells, MS74, 1st Year, Computer Science, False, False
+[17:24:06] (OK) del_person: James, Merrick, JM287, Masters, History, True, True
+[17:24:06] (OK) add_person: Oscar, Giordano, OG234, 4th Year, Pathway to Medicine, False, False
+[17:24:06] (OK) add_person: Steve, Carter, SC40, 4th Year, Computer Science, True, False
+[17:24:06] (OK) add_person: Natasha, Milliken, NM115, PhD, Pathway to Medicine, True, False
+[17:24:06] (OK) add_person: Beth, Miller, BM113, 1st Year, History, False, False
+[17:24:06] (OK) add_person: Norma, Baker, NB139, Masters, History, True, True
+[17:24:06] (OK) add_person: Eugene, Harvey, EH235, 3rd Year, Psychology, True, False
+[17:24:06] (OK) add_person: David, Reiser, DR4, PhD, Psychology, False, True
+[17:24:06] (OK) add_person: John, Chamberland, JC229, Foundation, IR, False, False
+[17:24:06] (OK) add_person: Gregg, Brown, GB57, 1st Year, Psychology, False, False
+[17:24:06] (OK) add_person: Lucy, Dotson, LD99, Foundation, Psychology, False, False
+[17:24:06] (OK) add_mem: OG234, paid
+[17:24:06] (OK) add_mem: SC40, paid
+[17:24:06] (OK) add_mem: NM115, paid
+[17:24:06] (OK) add_mem: BM113, paid
+[17:24:06] (OK) add_mem: NB139, paid
+[17:24:06] (OK) add_mem: EH235, paid
+[17:24:06] (OK) add_mem: DR4, paid
+[17:24:06] (OK) add_mem: JC229, paid
+[17:24:06] (OK) add_mem: GB57, paid
+[17:24:06] (OK) add_mem: LD99, paid
+[17:24:06] (OK) add_ID: OG234, Library, 808274795
+[17:24:06] (OK) add_ID: SC40, Library, 836324426
+[17:24:06] (OK) add_ID: NM115, Library, 849045055
+[17:24:06] (OK) add_ID: BM113, Library, 802385322
+[17:24:06] (OK) add_ID: NB139, Library, 898211848
+[17:24:06] (OK) add_ID: EH235, Library, 803428414
+[17:24:06] (OK) add_ID: DR4, Library, 891097019
+[17:24:06] (OK) add_ID: JC229, Library, 889951894
+[17:24:06] (OK) add_ID: GB57, Library, 893336342
+[17:24:06] (OK) add_ID: LD99, Library, 878043313
+[17:24:06] (OK) add_event: Icebreaker, 5, 3, 2014-7-17, 20:7:58, Holy Trinity Church Hall
+[17:24:06] (OK) add_event: Live Lounge, 6, 4, 2036-11-17, 8:6:3, Forbes Bar
+[17:24:06] (OK) add_event: Flavours of Malaysia, 4, 2, 1987-6-25, 13:22:59, Nisbet Room
+[17:24:06] (OK) add_event: Capture the Flag, 4, 2, 2026-10-2, 11:54:36, Nisbet Room
+[17:24:06] (OK) get_event_ID: Flavours of Malaysia, 4, 2, 1987-6-25, 13:22:59, Nisbet Room
+[17:24:06] (OK) add_attendee: 3, OG234
+[17:24:06] (OK) get_event_ID: Capture the Flag, 4, 2, 2026-10-2, 11:54:36, Nisbet Room
+[17:24:06] (OK) add_attendee: 4, SC40
+[17:24:06] (OK) add_attendee: 4, NM115
+[17:24:06] (OK) get_event_ID: Live Lounge, 6, 4, 2036-11-17, 8:6:3, Forbes Bar
+[17:24:06] (OK) add_attendee: 2, BM113
+[17:24:06] (OK) get_event_ID: Icebreaker, 5, 3, 2014-7-17, 20:7:58, Holy Trinity Church Hall
+[17:24:06] (OK) add_attendee: 1, NB139
+[17:24:06] (OK) add_attendee: 4, EH235
+[17:24:06] (OK) add_attendee: 2, DR4
+[17:24:06] (OK) add_attendee: 4, JC229
+[17:24:06] (OK) add_attendee: 4, GB57
+[17:24:06] (OK) add_attendee: 3, LD99
+[17:24:06] (OK) get_attendees: Fetched 1 rows
+[17:24:06] (OK) get_person: Norma, Baker, NB139, Masters, History, 1, 1
+[17:24:06] (OK) del_attendee: 1, NB139
+[17:24:06] (OK) get_attendees: Fetched 2 rows
+[17:24:06] (OK) get_person: Beth, Miller, BM113, 1st Year, History, 0, 0
+[17:24:06] (OK) get_person: David, Reiser, DR4, PhD, Psychology, 0, 1
+[17:24:06] (OK) del_attendee: 2, BM113
+[17:24:06] (OK) del_attendee: 2, DR4
+[17:24:06] (OK) get_attendees: Fetched 2 rows
+[17:24:06] (OK) get_person: Oscar, Giordano, OG234, 4th Year, Pathway to Medicine, 0, 0
+[17:24:06] (OK) get_person: Lucy, Dotson, LD99, Foundation, Psychology, 0, 0
+[17:24:06] (OK) del_attendee: 3, OG234
+[17:24:06] (OK) del_attendee: 3, LD99
+[17:24:06] (OK) get_attendees: Fetched 5 rows
+[17:24:06] (OK) get_person: Steve, Carter, SC40, 4th Year, Computer Science, 1, 0
+[17:24:06] (OK) get_person: Natasha, Milliken, NM115, PhD, Pathway to Medicine, 1, 0
+[17:24:06] (OK) get_person: Eugene, Harvey, EH235, 3rd Year, Psychology, 1, 0
+[17:24:06] (OK) get_person: John, Chamberland, JC229, Foundation, IR, 0, 0
+[17:24:06] (OK) get_person: Gregg, Brown, GB57, 1st Year, Psychology, 0, 0
+[17:24:06] (OK) del_attendee: 4, SC40
+[17:24:06] (OK) del_attendee: 4, NM115
+[17:24:06] (OK) del_attendee: 4, EH235
+[17:24:06] (OK) del_attendee: 4, JC229
+[17:24:06] (OK) del_attendee: 4, GB57
+[17:24:06] (OK) del_mem: Oscar, Giordano, OG234, 4th Year, Pathway to Medicine, False, False
+[17:24:06] (OK) del_mem: Steve, Carter, SC40, 4th Year, Computer Science, True, False
+[17:24:06] (OK) del_mem: Natasha, Milliken, NM115, PhD, Pathway to Medicine, True, False
+[17:24:06] (OK) del_mem: Beth, Miller, BM113, 1st Year, History, False, False
+[17:24:06] (OK) del_mem: Norma, Baker, NB139, Masters, History, True, True
+[17:24:06] (OK) del_mem: Eugene, Harvey, EH235, 3rd Year, Psychology, True, False
+[17:24:06] (OK) del_mem: David, Reiser, DR4, PhD, Psychology, False, True
+[17:24:06] (OK) del_mem: John, Chamberland, JC229, Foundation, IR, False, False
+[17:24:06] (OK) del_mem: Gregg, Brown, GB57, 1st Year, Psychology, False, False
+[17:24:06] (OK) del_mem: Lucy, Dotson, LD99, Foundation, Psychology, False, False
+[17:24:06] (OK) del_person: Oscar, Giordano, OG234, 4th Year, Pathway to Medicine, False, False
+[17:24:06] (OK) del_person: Steve, Carter, SC40, 4th Year, Computer Science, True, False
+[17:24:06] (OK) del_person: Natasha, Milliken, NM115, PhD, Pathway to Medicine, True, False
+[17:24:06] (OK) del_person: Beth, Miller, BM113, 1st Year, History, False, False
+[17:24:06] (OK) del_person: Norma, Baker, NB139, Masters, History, True, True
+[17:24:06] (OK) del_person: Eugene, Harvey, EH235, 3rd Year, Psychology, True, False
+[17:24:06] (OK) del_person: David, Reiser, DR4, PhD, Psychology, False, True
+[17:24:06] (OK) del_person: John, Chamberland, JC229, Foundation, IR, False, False
+[17:24:06] (OK) del_person: Gregg, Brown, GB57, 1st Year, Psychology, False, False
+[17:24:06] (OK) del_person: Lucy, Dotson, LD99, Foundation, Psychology, False, False
+[17:24:06] (OK) del_event: Icebreaker, 5, 3, 2014-7-17, 20:7:58, Holy Trinity Church Hall
+[17:24:06] (OK) del_event: Live Lounge, 6, 4, 2036-11-17, 8:6:3, Forbes Bar
+[17:24:06] (OK) del_event: Flavours of Malaysia, 4, 2, 1987-6-25, 13:22:59, Nisbet Room
+[17:24:06] (OK) del_event: Capture the Flag, 4, 2, 2026-10-2, 11:54:36, Nisbet Room
+[17:24:07] (OK) add_person: Patrick, Nau, PN273, 3rd Year, Pathway to Medicine, False, True
+[17:24:07] (OK) add_person: Mamie, Hughes, MH23, Foundation, IR, True, True
+[17:24:07] (OK) add_person: Kevin, Williams, KW211, Foundation, Medicine, False, True
+[17:24:07] (OK) add_person: William, Harrison, WH40, PhD, Medicine, True, False
+[17:24:07] (OK) add_person: John, Gonzalez, JG278, 1st Year, Psychology, False, False
+[17:24:07] (OK) add_person: Nicola, Dubois, ND15, Masters, History, False, True
+[17:24:07] (OK) add_person: Keli, Gallemore, KG212, Masters, Medicine, True, False
+[17:24:07] (OK) add_person: Daniel, Penn, DP140, 4th Year, Pathway to Medicine, True, False
+[17:24:07] (OK) add_person: Kimberly, Gordon, KG200, 1st Year, Psychology, True, True
+[17:24:07] (OK) add_person: Lisha, Dombrowski, LD68, Masters, Computer Science, False, True
+[17:24:07] (OK) add_mem: PN273, paid
+[17:24:07] (OK) add_mem: MH23, paid
+[17:24:07] (OK) add_mem: KW211, paid
+[17:24:07] (OK) add_mem: WH40, paid
+[17:24:07] (OK) add_mem: JG278, paid
+[17:24:07] (OK) add_mem: ND15, paid
+[17:24:07] (OK) add_mem: KG212, paid
+[17:24:07] (OK) add_mem: DP140, paid
+[17:24:07] (OK) add_mem: KG200, paid
+[17:24:07] (OK) add_mem: LD68, paid
+[17:24:07] (OK) add_ID: PN273, Library, 847658216
+[17:24:07] (OK) add_ID: MH23, Library, 802038688
+[17:24:07] (OK) add_ID: KW211, Library, 896317927
+[17:24:07] (OK) add_ID: WH40, Library, 881284978
+[17:24:07] (OK) add_ID: JG278, Library, 826113843
+[17:24:07] (OK) add_ID: ND15, Library, 837978566
+[17:24:07] (OK) add_ID: KG212, Library, 809001941
+[17:24:07] (OK) add_ID: DP140, Library, 885961448
+[17:24:07] (OK) add_ID: KG200, Library, 864227038
+[17:24:07] (OK) add_ID: LD68, Library, 812447057
+[17:24:07] (OK) del_mem: Patrick, Nau, PN273, 3rd Year, Pathway to Medicine, False, True
+[17:24:07] (OK) del_mem: Mamie, Hughes, MH23, Foundation, IR, True, True
+[17:24:07] (OK) del_mem: Kevin, Williams, KW211, Foundation, Medicine, False, True
+[17:24:07] (OK) del_mem: William, Harrison, WH40, PhD, Medicine, True, False
+[17:24:07] (OK) del_mem: John, Gonzalez, JG278, 1st Year, Psychology, False, False
+[17:24:07] (OK) del_mem: Nicola, Dubois, ND15, Masters, History, False, True
+[17:24:07] (OK) del_mem: Keli, Gallemore, KG212, Masters, Medicine, True, False
+[17:24:07] (OK) del_mem: Daniel, Penn, DP140, 4th Year, Pathway to Medicine, True, False
+[17:24:07] (OK) del_mem: Kimberly, Gordon, KG200, 1st Year, Psychology, True, True
+[17:24:07] (OK) del_mem: Lisha, Dombrowski, LD68, Masters, Computer Science, False, True
+[17:24:07] (OK) del_person: Patrick, Nau, PN273, 3rd Year, Pathway to Medicine, False, True
+[17:24:07] (OK) del_person: Mamie, Hughes, MH23, Foundation, IR, True, True
+[17:24:07] (OK) del_person: Kevin, Williams, KW211, Foundation, Medicine, False, True
+[17:24:07] (OK) del_person: William, Harrison, WH40, PhD, Medicine, True, False
+[17:24:07] (OK) del_person: John, Gonzalez, JG278, 1st Year, Psychology, False, False
+[17:24:07] (OK) del_person: Nicola, Dubois, ND15, Masters, History, False, True
+[17:24:07] (OK) del_person: Keli, Gallemore, KG212, Masters, Medicine, True, False
+[17:24:07] (OK) del_person: Daniel, Penn, DP140, 4th Year, Pathway to Medicine, True, False
+[17:24:07] (OK) del_person: Kimberly, Gordon, KG200, 1st Year, Psychology, True, True
+[17:24:07] (OK) del_person: Lisha, Dombrowski, LD68, Masters, Computer Science, False, True
+[17:24:07] (OK) add_person: Andrew, Nolan, AN82, 1st Year, Pathway to Medicine, True, True
+[17:24:07] (OK) add_person: Wallace, Nelson, WN159, PhD, History, True, True
+[17:24:07] (OK) add_person: William, Morrell, WM182, PhD, Pathway to Medicine, True, True
+[17:24:07] (OK) add_person: Dennis, Bade, DB68, 4th Year, IR, False, True
+[17:24:07] (OK) add_person: Christopher, Girard, CG10, 2nd Year, IR, False, False
+[17:24:07] (OK) add_person: Ryan, Martin, RM17, PhD, Psychology, False, True
+[17:24:07] (OK) add_person: Margaret, Lopez, ML60, 3rd Year, IR, True, False
+[17:24:07] (OK) add_person: Roseann, Cruz, RC173, 1st Year, Pathway to Medicine, True, True
+[17:24:07] (OK) add_person: Marilyn, Davis, MD191, 2nd Year, IR, True, True
+[17:24:07] (OK) add_person: Robert, Kintner, RK18, PhD, Psychology, True, False
+[17:24:07] (OK) add_mem: AN82, paid
+[17:24:07] (OK) add_mem: WN159, paid
+[17:24:07] (OK) add_mem: WM182, paid
+[17:24:07] (OK) add_mem: DB68, paid
+[17:24:07] (OK) add_mem: CG10, paid
+[17:24:07] (OK) add_mem: RM17, paid
+[17:24:07] (OK) add_mem: ML60, paid
+[17:24:07] (OK) add_mem: RC173, paid
+[17:24:07] (OK) add_mem: MD191, paid
+[17:24:07] (OK) add_mem: RK18, paid
+[17:24:07] (OK) del_mem: Andrew, Nolan, AN82, 1st Year, Pathway to Medicine, True, True
+[17:24:07] (OK) del_mem: Wallace, Nelson, WN159, PhD, History, True, True
+[17:24:07] (OK) del_mem: William, Morrell, WM182, PhD, Pathway to Medicine, True, True
+[17:24:07] (OK) del_mem: Dennis, Bade, DB68, 4th Year, IR, False, True
+[17:24:07] (OK) del_mem: Christopher, Girard, CG10, 2nd Year, IR, False, False
+[17:24:07] (OK) del_mem: Ryan, Martin, RM17, PhD, Psychology, False, True
+[17:24:07] (OK) del_mem: Margaret, Lopez, ML60, 3rd Year, IR, True, False
+[17:24:07] (OK) del_mem: Roseann, Cruz, RC173, 1st Year, Pathway to Medicine, True, True
+[17:24:07] (OK) del_mem: Marilyn, Davis, MD191, 2nd Year, IR, True, True
+[17:24:07] (OK) del_mem: Robert, Kintner, RK18, PhD, Psychology, True, False
+[17:24:07] (OK) del_person: Andrew, Nolan, AN82, 1st Year, Pathway to Medicine, True, True
+[17:24:07] (OK) del_person: Wallace, Nelson, WN159, PhD, History, True, True
+[17:24:07] (OK) del_person: William, Morrell, WM182, PhD, Pathway to Medicine, True, True
+[17:24:07] (OK) del_person: Dennis, Bade, DB68, 4th Year, IR, False, True
+[17:24:07] (OK) del_person: Christopher, Girard, CG10, 2nd Year, IR, False, False
+[17:24:07] (OK) del_person: Ryan, Martin, RM17, PhD, Psychology, False, True
+[17:24:07] (OK) del_person: Margaret, Lopez, ML60, 3rd Year, IR, True, False
+[17:24:07] (OK) del_person: Roseann, Cruz, RC173, 1st Year, Pathway to Medicine, True, True
+[17:24:07] (OK) del_person: Marilyn, Davis, MD191, 2nd Year, IR, True, True
+[17:24:07] (OK) del_person: Robert, Kintner, RK18, PhD, Psychology, True, False
