@@ -61,7 +61,9 @@ def checkout():
             return redirect(url_for('home'))
         return render_template('checkout.html', title='Checkout', form=form)
     
-
+@app.route("/persons", methods=['GET', 'POST'])
+def persons():
+    return render_template('persons.html')
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

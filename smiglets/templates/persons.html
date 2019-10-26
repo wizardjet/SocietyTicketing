@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+{% block styles %}
+	<!-- Table CSS -->
+	<link rel="stylesheet" type="text/css" href="/static/table/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.11/css/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="/static/table/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/table/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/static/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+{% endblock styles %}
+
+{% block body %}
+	<div class="wrap-table100">
+		<div class="table">
+			<div class="row header">
+				<div class="cell">
+					Full Name
+				</div>
+				<div class="cell">
+					Age
+				</div>
+				<div class="cell">
+					Job Title
+				</div>
+				<div class="cell">
+					Location
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell" data-title="Full Name">
+					Vincent Williamson
+				</div>
+				<div class="cell" data-title="Age">
+					31
+				</div>
+				<div class="cell" data-title="Job Title">
+					iOS Developer
+				</div>
+				<div class="cell" data-title="Location">
+					Washington
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell" data-title="Full Name">
+					Joseph Smith
+				</div>
+				<div class="cell" data-title="Age">
+					27
+				</div>
+				<div class="cell" data-title="Job Title">
+					Project Manager
+				</div>
+				<div class="cell" data-title="Location">
+					Somerville, MA
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell" data-title="Full Name">
+					Justin Black
+				</div>
+				<div class="cell" data-title="Age">
+					26
+				</div>
+				<div class="cell" data-title="Job Title">
+					Front-End Developer
+				</div>
+				<div class="cell" data-title="Location">
+					Los Angeles
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell" data-title="Full Name">
+					Sean Guzman
+				</div>
+				<div class="cell" data-title="Age">
+					25
+				</div>
+				<div class="cell" data-title="Job Title">
+					Web Designer
+				</div>
+				<div class="cell" data-title="Location">
+					San Francisco
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell" data-title="Full Name">
+					Keith Carter
+				</div>
+				<div class="cell" data-title="Age">
+					20
+				</div>
+				<div class="cell" data-title="Job Title">
+					Graphic Designer
+				</div>
+				<div class="cell" data-title="Location">
+					New York, NY
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell" data-title="Full Name">
+					Austin Medina
+				</div>
+				<div class="cell" data-title="Age">
+					32
+				</div>
+				<div class="cell" data-title="Job Title">
+					Photographer
+				</div>
+				<div class="cell" data-title="Location">
+					New York
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell" data-title="Full Name">
+					Vincent Williamson
+				</div>
+				<div class="cell" data-title="Age">
+					31
+				</div>
+				<div class="cell" data-title="Job Title">
+					iOS Developer
+				</div>
+				<div class="cell" data-title="Location">
+					Washington
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="cell" data-title="Full Name">
+					Joseph Smith
+				</div>
+				<div class="cell" data-title="Age">
+					27
+				</div>
+				<div class="cell" data-title="Job Title">
+					Project Manager
+				</div>
+				<div class="cell" data-title="Location">
+					Somerville, MA
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock body %}
+
+{% block content %}
+{% endblock content %}
+
+{% block scripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.11/js/select2.min.js"></script>
+	<script src="/static/table/js/main.js"></script>
+{% endblock scripts %}
