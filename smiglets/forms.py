@@ -12,8 +12,8 @@ class RegistrationForm(FlaskForm):
     year_of_study = SelectField('Year of Study', choices=[("Foundation","Foundation"), ("1st Year", "1st Year"), ("2nd Year", "2nd Year"), ("3rd Year", "3rd Year"),  ("4th Year", "4th Year"), ("Masters", "Masters"), ("PhD", "PhD"), ("Alumni", "Alumni")])
     course = StringField('Course',
                            validators=[DataRequired(), Length(min=0, max=50)])
-    malaysian = BooleanField('Malaysian?')
-    membership = BooleanField('Would you like a membership?')
+    malaysian = BooleanField('Are you Malaysian?')
+    membership = BooleanField('Membership?')
 
     # password = PasswordField('Password', validators=[DataRequired()])
     # confirm_password = PasswordField('Confirm Password',
