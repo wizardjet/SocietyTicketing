@@ -1,5 +1,5 @@
 from flask import render_template, url_for, flash, redirect
-from smiglets import app
+from smiglets import app, db
 from smiglets.forms import RegistrationForm, LoginForm
 from smiglets.models import Person, Membership, Event, Event_Attendee, Event_Guest
 
@@ -35,9 +35,20 @@ def about():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        person = Person(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, year_of_study=form.year_of_study.data, course=form.course.data, malaysian=form.malaysian.data)
+        membership = Membership(person_email=form.email.data, is_member=form.membership.data)
+        db.session.add(person)
+        db.session.add(membership)
+        db.session.commit()
+        # if form.membership.data: # checkout member
+        #     return redirect()
         flash(f'Account created for {form.email.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
+
+# # checkout page
+# @app.route("/checkout", methods=['GET', 'POST'])
+# def checkout()
 
 
 @app.route("/login", methods=['GET', 'POST'])

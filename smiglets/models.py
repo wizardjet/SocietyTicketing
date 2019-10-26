@@ -13,7 +13,7 @@ class Person(db.Model):
     first_name = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=False) # don't need unique
     last_name = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=True) # don't need last name
     email = db.Column(db.String(EMAIL_MAX_CHAR), unique=True, nullable=False, primary_key=True) # must have unique email
-    membership = db.relationship('Membership', backref='member', lazy=True)
+    membership = db.relationship('Membership', back_populates='user')
     year_of_study = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=True) # don't need year of study
     course = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=True) # don't need course
     malaysian = db.Column(db.Boolean, default=False)
@@ -23,13 +23,15 @@ class Person(db.Model):
     # amount owed, primary join?
 
     def __repr__(self):
-        return f"Person('{self.first_name}', '{self.last_name}', '{self.email}', '{'Member' if self.membership.is_member else 'Non-member'}' '{self.year_of_study}', '{self.course}', '{'Malaysian' if self.malaysian else 'Non-Malaysian'}', '{'Is Committee' if self.committee else 'Non-Committee'}', '')"
+        return f"Person('{self.first_name}', '{self.last_name}', '{self.email}', '{self.membership}' '{self.year_of_study}', '{self.course}', '{'Malaysian' if self.malaysian else 'Non-Malaysian'}', '{'Is Committee' if self.committee else 'Non-Committee'}', '')"
 
 class Membership(db.Model):
     person_email = db.Column(db.String(EMAIL_MAX_CHAR), db.ForeignKey('person.email'), primary_key=True, nullable=False)
     is_member = db.Column(db.Boolean, default=False)
     has_paid = db.Column(db.Boolean, default=False)
     id_number = db.Column(db.String(ID_MAX_CHAR), unique=True, nullable=True) # only accept library ID number
+
+    user = db.relationship('Person', back_populates='membership')
 
     def __repr__(self):
         return f"Membership('{self.person_email}', '{'Member' if self.is_member else 'Non-member'}', '{'Paid' if self.has_paid else 'Not Paid'})"
