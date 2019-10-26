@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <!-- <fieldset class="form-group"> -->
+                <legend class="border-bottom mb-4">Checkout</legend>
+                <div class="form-row">
+                    <!-- First name -->
+                    <div class="form-group col-md-6">
+                        {{ form.library_id.label(class="form-control-label") }}
+
+                        {% if form.library_id.errors %}
+                            {{ form.library_id(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.library_id.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.library_id(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                   
+            </fieldset>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+{% endblock content %}
