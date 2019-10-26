@@ -1,19 +1,31 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, Regexp
+from wtforms.validators import DataRequired, Length, Email, EqualTo, Regexp, ValidationError
+from smiglets.models import Person
 
 class RegistrationForm(FlaskForm):
-    first_name = StringField('First Name', render_kw={'placeholder':'Mohammad Amir'},
-                           validators=[DataRequired(), Length(min=1, max=50)])
-    last_name = StringField('Last Name', render_kw={'placeholder':'bin Shafiq'},
-                           validators=[DataRequired(), Length(min=0, max=50)])
-    email = StringField('Email', render_kw={'placeholder':'mabs2'},
-                        validators=[DataRequired(), Length(min=0, max=10), Regexp('^w+$', message="Must be alphanumerical")])
-    year_of_study = SelectField('Year of Study', choices=[("Foundation","Foundation"), ("1st Year", "1st Year"), ("2nd Year", "2nd Year"), ("3rd Year", "3rd Year"),  ("4th Year", "4th Year"), ("Masters", "Masters"), ("PhD", "PhD"), ("Alumni", "Alumni")])
-    course = StringField('Course', render_kw={'placeholder':'Pathway to Medicine'},
-                           validators=[DataRequired(), Length(min=0, max=50)])
+    first_name = StringField('First Name', 
+                            render_kw={'placeholder':'Mohammad Amir'},
+                            validators=[DataRequired(), Length(min=1, max=50)])
+    last_name = StringField('Last Name', 
+                            render_kw={'placeholder':'bin Shafiq'},
+                            validators=[DataRequired(), Length(min=0, max=50)])
+    email = StringField('Email',
+                            render_kw={'placeholder':'mabs2'},
+                            validators=[DataRequired(), Length(min=0, max=10), Regexp('^\w+$', message="Must be alphanumerical")])
+    year_of_study = SelectField('Year of Study', 
+                            choices=[("Foundation","Foundation"), ("1st Year", "1st Year"), ("2nd Year", "2nd Year"), ("3rd Year", "3rd Year"),  ("4th Year", "4th Year"), ("Masters", "Masters"), ("PhD", "PhD"), ("Alumni", "Alumni")])
+    course = StringField('Course', 
+                            render_kw={'placeholder':'Pathway to Medicine'},
+                            validators=[DataRequired(), Length(min=0, max=50)])
     malaysian = BooleanField('Are you Malaysian?')
     membership = BooleanField('Membership?')
+
+    # make sure person does not exist in database
+    def validate_email(self, email):
+        person = Person.query.filter_by(email=email.data).first()
+        if person:
+            raise ValidationError('You are already a member!')
 
     # password = PasswordField('Password', validators=[DataRequired()])
     # confirm_password = PasswordField('Confirm Password',
