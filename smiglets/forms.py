@@ -8,7 +8,7 @@ class RegistrationForm(FlaskForm):
     last_name = StringField('Last Name', render_kw={'placeholder':'bin Shafiq'},
                            validators=[DataRequired(), Length(min=0, max=50)])
     email = StringField('Email', render_kw={'placeholder':'mabs2'},
-                        validators=[DataRequired(), Length(min=0, max=10)])
+                        validators=[DataRequired(), Length(min=0, max=10), Regexp('^w+$', message="Must be alphanumerical")])
     year_of_study = SelectField('Year of Study', choices=[("Foundation","Foundation"), ("1st Year", "1st Year"), ("2nd Year", "2nd Year"), ("3rd Year", "3rd Year"),  ("4th Year", "4th Year"), ("Masters", "Masters"), ("PhD", "PhD"), ("Alumni", "Alumni")])
     course = StringField('Course', render_kw={'placeholder':'Pathway to Medicine'},
                            validators=[DataRequired(), Length(min=0, max=50)])
@@ -23,8 +23,9 @@ class RegistrationForm(FlaskForm):
 class CheckoutForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Length(min=0, max=10)])
-    library_id = StringField('Library ID',
-                            validators=[Regexp('([0-9])[UP]')])
+    library_id = StringField('Library ID', render_kw={'placeholder':'0845678912U'},
+                            validators=[Regexp('^([0-9])+[UP]$', message="Must contain only numbers and end in U or P")])
+    submit = SubmitField('Done')
 
 class LoginForm(FlaskForm):
     email = StringField('Email',

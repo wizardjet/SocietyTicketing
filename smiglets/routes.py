@@ -54,7 +54,7 @@ def checkout():
     if item == "Membership":
         form = CheckoutForm(data={'email': person_email}) #populate form
         if form.validate_on_submit():
-            membership = Membership(person_email=person_email, is_member=True, has_paid=True, library_id=form.library_id.data)
+            membership = Membership(person_email=person_email, is_member=True, has_paid=True, id_number=form.library_id.data[:-1])
             db.session.add(membership)
             db.session.commit()
             flash(f'Membership added for {form.email.data}!', 'success')

@@ -78,3 +78,16 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
+
+  a.linkr {
+    color: #2196F3;
+  }
+
+  span.price {
+    float: right;
+    color: grey;
+  }
+
+  .order{
+    margin-bottom: 1rem;
+  }

@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
-{% block content %}
+{% block body %}
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Checkout</legend>
+                <legend class="border-bottom mb-4">Fast Entry Information</legend>
                 <div class="form-row">
                     <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
@@ -18,7 +18,6 @@
                     <!-- Library ID -->
                     <div class="form-group col-md-6">
                         {{ form.library_id.label(class="form-control-label") }}
-
                         {% if form.library_id.errors %}
                             {{ form.library_id(class="form-control form-control-lg is-invalid") }}
                             <div class="invalid-feedback">
@@ -29,9 +28,23 @@
                         {% else %}
                             {{ form.library_id(class="form-control form-control-lg") }}
                         {% endif %}
+                        <small class="form-text text-muted">Located at the back of your Student ID. We use this for fast entry purposes only.</small>
                     </div>
                 </div>
             </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
         </form>
     </div>
+{% endblock body %}
+{% block content %}
+    <h3 class='order'>Order Summary</h3>
+    <p class='text-muted'>
+        <a class="linkr">SMIG Membership</a>
+        <span class="price">GBP 3.00</span>
+    <hr class="hr">
+    Total
+    <span class="price">GBP 3.00</span>
+    </p>
 {% endblock content %}
