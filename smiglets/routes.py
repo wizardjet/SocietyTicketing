@@ -1,6 +1,6 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request
 from smiglets import app, db
-from smiglets.forms import RegistrationForm, LoginForm
+from smiglets.forms import RegistrationForm, LoginForm, CheckoutForm
 from smiglets.models import Person, Membership, Event, Event_Attendee, Event_Guest
 
 
@@ -40,15 +40,27 @@ def register():
         db.session.add(person)
         db.session.add(membership)
         db.session.commit()
-        # if form.membership.data: # checkout member
-        #     return redirect()
+        if form.membership.data: # checkout member
+            return redirect(url_for('checkout', person_email=person.email, item="Membership"))
         flash(f'Account created for {form.email.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
-# # checkout page
-# @app.route("/checkout", methods=['GET', 'POST'])
-# def checkout()
+# checkout page
+@app.route("/checkout", methods=['GET', 'POST'])
+def checkout():
+    item = request.args.get('item')
+    person_email = request.args.get('person_email')
+    if item == "Membership":
+        form = CheckoutForm(data={'email': person_email}) #populate form
+        if form.validate_on_submit():
+            membership = Membership(person_email=person_email, is_member=True, has_paid=True, library_id=form.library_id.data)
+            db.session.add(membership)
+            db.session.commit()
+            flash(f'Membership added for {form.email.data}!', 'success')
+            return redirect(url_for('home'))
+        return render_template('checkout.html', title='Checkout', form=form)
+    
 
 
 @app.route("/login", methods=['GET', 'POST'])

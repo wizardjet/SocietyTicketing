@@ -3,10 +3,19 @@
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <!-- <fieldset class="form-group"> -->
+            <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Checkout</legend>
                 <div class="form-row">
-                    <!-- First name -->
+                    <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    <div class="input-group mb-2">
+                            {{ form.email(class="form-control form-control-lg", disabled=True) }}
+                        <div class="input-group-append">
+                            <div class="input-group-text">@st-andrews.ac.uk</div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- Library ID -->
                     <div class="form-group col-md-6">
                         {{ form.library_id.label(class="form-control-label") }}
 
@@ -21,13 +30,8 @@
                             {{ form.library_id(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                   
+                </div>
             </fieldset>
         </form>
-    </div>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
-        </small>
     </div>
 {% endblock content %}

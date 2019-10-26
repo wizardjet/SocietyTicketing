@@ -21,6 +21,8 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Join')
 
 class CheckoutForm(FlaskForm):
+    email = StringField('Email',
+                        validators=[DataRequired(), Length(min=0, max=10)])
     library_id = StringField('Library ID',
                             validators=[Regexp('([0-9])[UP]')])
 
