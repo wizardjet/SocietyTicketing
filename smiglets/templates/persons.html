@@ -14,138 +14,47 @@
 		<div class="table">
 			<div class="row header">
 				<div class="cell">
-					Full Name
+					First Name
 				</div>
 				<div class="cell">
-					Age
+					Last Name
 				</div>
 				<div class="cell">
-					Job Title
+					Email
 				</div>
 				<div class="cell">
-					Location
+					Membership
+				</div>
+				<div class="cell">
+					Year of Study
+				</div>
+				<div class="cell">
+					Malaysian?
 				</div>
 			</div>
-
-			<div class="row">
-				<div class="cell" data-title="Full Name">
-					Vincent Williamson
+			
+			{% for person in persons %}
+				<div class="row">
+					<a class="cell" data-title="First Name" href="{{ url_for('person', person_email=person.email)}}">
+						{{ person.first_name }}
+					</a>
+					<a class="cell" data-title="Last Name" href="{{ url_for('person', person_email=person.email)}}">
+						{{ person.last_name }}
+					</a>
+					<a class="cell" data-title="Email" href="{{ url_for('person', person_email=person.email)}}">
+						{{ person.email }}
+					</a>
+					<a class="cell" data-title="Membership" href="{{ url_for('person', person_email=person.email)}}">
+						{{ person.membership[0] }}
+					</a>
+					<a class="cell" data-title="Year of Study" href="{{ url_for('person', person_email=person.email)}}">
+						{{ person.year_of_study }}
+					</a>
+					<a class="cell" data-title="Malaysian?" href="{{ url_for('person', person_email=person.email)}}">
+						{{ 'Malaysian' if person.malaysian else 'Non-Malaysian' }}
+					</a>
 				</div>
-				<div class="cell" data-title="Age">
-					31
-				</div>
-				<div class="cell" data-title="Job Title">
-					iOS Developer
-				</div>
-				<div class="cell" data-title="Location">
-					Washington
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="cell" data-title="Full Name">
-					Joseph Smith
-				</div>
-				<div class="cell" data-title="Age">
-					27
-				</div>
-				<div class="cell" data-title="Job Title">
-					Project Manager
-				</div>
-				<div class="cell" data-title="Location">
-					Somerville, MA
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="cell" data-title="Full Name">
-					Justin Black
-				</div>
-				<div class="cell" data-title="Age">
-					26
-				</div>
-				<div class="cell" data-title="Job Title">
-					Front-End Developer
-				</div>
-				<div class="cell" data-title="Location">
-					Los Angeles
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="cell" data-title="Full Name">
-					Sean Guzman
-				</div>
-				<div class="cell" data-title="Age">
-					25
-				</div>
-				<div class="cell" data-title="Job Title">
-					Web Designer
-				</div>
-				<div class="cell" data-title="Location">
-					San Francisco
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="cell" data-title="Full Name">
-					Keith Carter
-				</div>
-				<div class="cell" data-title="Age">
-					20
-				</div>
-				<div class="cell" data-title="Job Title">
-					Graphic Designer
-				</div>
-				<div class="cell" data-title="Location">
-					New York, NY
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="cell" data-title="Full Name">
-					Austin Medina
-				</div>
-				<div class="cell" data-title="Age">
-					32
-				</div>
-				<div class="cell" data-title="Job Title">
-					Photographer
-				</div>
-				<div class="cell" data-title="Location">
-					New York
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="cell" data-title="Full Name">
-					Vincent Williamson
-				</div>
-				<div class="cell" data-title="Age">
-					31
-				</div>
-				<div class="cell" data-title="Job Title">
-					iOS Developer
-				</div>
-				<div class="cell" data-title="Location">
-					Washington
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="cell" data-title="Full Name">
-					Joseph Smith
-				</div>
-				<div class="cell" data-title="Age">
-					27
-				</div>
-				<div class="cell" data-title="Job Title">
-					Project Manager
-				</div>
-				<div class="cell" data-title="Location">
-					Somerville, MA
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 

@@ -27,9 +27,6 @@ class RegistrationForm(FlaskForm):
         if person:
             raise ValidationError('You are already a member!')
 
-    # password = PasswordField('Password', validators=[DataRequired()])
-    # confirm_password = PasswordField('Confirm Password',
-    #                                  validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Join')
 
 class CheckoutForm(FlaskForm):

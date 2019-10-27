@@ -34,8 +34,9 @@ class Membership(db.Model):
     user = db.relationship('Person', back_populates='membership')
 
     def __repr__(self):
-        return f"Membership('{self.person_email}', '{'Member' if self.is_member else 'Non-member'}', '{'Paid' if self.has_paid else 'Not Paid'})"
-
+        # return f"Membership('{self.person_email}', '{'Member' if self.is_member else 'Non-member'}', '{'Paid' if self.has_paid else 'Not Paid'})"
+        return f"{'Member' if self.is_member else 'Non-member'}"
+        
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(EVENT_MAX_CHAR), unique=True, nullable=False) # not allowed to have multiple events with the same name

@@ -4,14 +4,14 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
+                <legend class="border-bottom mb-4">Person</legend>
                 <div class="form-row">
                     <!-- First name -->
                     <div class="form-group col-md-6">
                         {{ form.first_name.label(class="form-control-label") }}
 
                         {% if form.first_name.errors %}
-                            {{ form.first_name(class="form-control form-control-lg is-invalid") }}
+                            {{ form.first_name(class="form-control form-control-lg is-invalid", disabled=editing) }}
                             <div class="invalid-feedback">
                                 {% for error in form.first_name.errors %}
                                     <span>{{ error }}</span>
@@ -105,13 +105,13 @@
     </div>
 {% endblock body %}
 {% block content %}
-    <h3>Our Sidebar</h3>
+    <h3>Events</h3>
     <p class='text-muted'>You can put any information here you'd like.
         <ul class="list-group">
-        <li class="list-group-item list-group-item-light">Latest Posts</li>
-        <li class="list-group-item list-group-item-light">Announcements</li>
-        <li class="list-group-item list-group-item-light">Calendars</li>
-        <li class="list-group-item list-group-item-light">etc</li>
+        <li class="list-group-item list-group-item-light">2019 Christavali</li>
+        <li class="list-group-item list-group-item-light">2018 Flavours of Malaysia</li>
+        <li class="list-group-item list-group-item-light">2017 Chinese New Year</li>
+        <li class="list-group-item list-group-item-light">2016 Icebreaker</li>
         </ul>
     </p>
 {% endblock content %}

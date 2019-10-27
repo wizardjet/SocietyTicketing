@@ -63,7 +63,19 @@ def checkout():
     
 @app.route("/persons", methods=['GET', 'POST'])
 def persons():
-    return render_template('persons.html')
+    persons = Person.query.all()
+    return render_template('persons.html', persons=persons)
+
+@app.route("/person/<string:person_email>")
+def person(person_email):
+    person = Person.query.get_or_404(person_email)
+    form = RegistrationForm(data={'first_name': person.first_name, 'last_name': person.last_name, 'email': person.email, 'membership': True if person.membership=='Member' else False, 'year_of_study': person.year_of_study, 'course': person.course, 'malaysian': person.malaysian, 'committee': person.committee})
+    # form.year_of_study.default = 4
+    # form.process()
+    print(form.year_of_study.data)
+
+    return render_template('person.html', person=person, form=form, title=f"{person_email} | SMIG App", editing=False)
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
