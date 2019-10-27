@@ -204,6 +204,7 @@ iframe {
 .table-row .cell:nth-child(1) {
   /* width: 160px; */
   padding-left: 20px;
+  padding-right: 10px;
 }
 
 /* .table-row .cell:nth-child(2) {

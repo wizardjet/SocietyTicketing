@@ -16,6 +16,9 @@
 			<div class="table">
 				<div class="table-row header">
 					<div class="cell">
+						#
+					</div>
+					<div class="cell">
 						First Name
 					</div>
 					<div class="cell">
@@ -34,9 +37,13 @@
 						Malaysian?
 					</div>
 				</div>
-				
+				{% set ns = namespace(count=1) %}
 				{% for smiglet in smiglets %}
 					<div class="table-row">
+						<a class="cell" data-title="#" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+							{{ ns.count }}
+							{% set ns.count = ns.count + 1 %}
+						</a>
 						<a class="cell" data-title="First Name" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
 							{{ smiglet.first_name }}
 						</a>
