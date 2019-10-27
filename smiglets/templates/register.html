@@ -78,21 +78,23 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="form_row">
-                    <div class="col-sm-5 my-1">
-                        <!-- Malaysian? -->
+                <div class="form-row align-items-center">
+                    <div class="col-sm">
                         <div class="form-check">
-                            {{ form.malaysian(class="form-check-input") }}
+                            <!-- Malaysian? -->
+                            {{ form.malaysian(class="form-check-input", disabled=not editing) }}
                             {{ form.malaysian.label(class="form-check-label") }}
                         </div>
-                        <!-- Membership? -->
+                    </div>
+                    <div class="col-sm">
                         <div class="form-check">
-                            {{ form.membership(class="form-check-input") }}
+                            <!-- Membership? -->
+                            {{ form.membership(class="form-check-input", disabled=not editing) }}
                             {{ form.membership.label(class="form-check-label") }}
                         </div>
                     </div>
-                    <div class="col-sm-5 my-1">
-                        {{ form.submit(class="btn btn-outline-info") }}
+                    <div class="col-sm">
+                        {{ form.submit(class="float-right btn btn-outline-info") }}
                     </div>
                 </div>
             </fieldset>
