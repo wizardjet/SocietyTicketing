@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, Regexp, ValidationError
-from smiglets.models import Person
+from smiglets.models import Smiglet
 
 class RegistrationForm(FlaskForm):
     first_name = StringField('First Name', 
@@ -21,10 +21,10 @@ class RegistrationForm(FlaskForm):
     malaysian = BooleanField('Are you Malaysian?')
     membership = BooleanField('Membership?')
 
-    # make sure person does not exist in database
+    # make sure smiglet does not exist in database
     def validate_email(self, email):
-        person = Person.query.filter_by(email=email.data).first()
-        if person:
+        smiglet = Smiglet.query.filter_by(email=email.data).first()
+        if smiglet:
             raise ValidationError('You are already a member!')
 
     submit = SubmitField('Join')

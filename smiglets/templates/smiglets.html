@@ -33,25 +33,25 @@
 				</div>
 			</div>
 			
-			{% for person in persons %}
+			{% for smiglet in smiglets %}
 				<div class="row">
-					<a class="cell" data-title="First Name" href="{{ url_for('person', person_email=person.email)}}">
-						{{ person.first_name }}
+					<a class="cell" data-title="First Name" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+						{{ smiglet.first_name }}
 					</a>
-					<a class="cell" data-title="Last Name" href="{{ url_for('person', person_email=person.email)}}">
-						{{ person.last_name }}
+					<a class="cell" data-title="Last Name" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+						{{ smiglet.last_name }}
 					</a>
-					<a class="cell" data-title="Email" href="{{ url_for('person', person_email=person.email)}}">
-						{{ person.email }}
+					<a class="cell" data-title="Email" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+						{{ smiglet.email }}
 					</a>
-					<a class="cell" data-title="Membership" href="{{ url_for('person', person_email=person.email)}}">
-						{{ person.membership[0] }}
+					<a class="cell" data-title="Membership" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+						{{ smiglet.membership[0] }}
 					</a>
-					<a class="cell" data-title="Year of Study" href="{{ url_for('person', person_email=person.email)}}">
-						{{ person.year_of_study }}
+					<a class="cell" data-title="Year of Study" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+						{{ smiglet.year_of_study }}
 					</a>
-					<a class="cell" data-title="Malaysian?" href="{{ url_for('person', person_email=person.email)}}">
-						{{ 'Malaysian' if person.malaysian else 'Non-Malaysian' }}
+					<a class="cell" data-title="Malaysian?" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+						{{ 'Malaysian' if smiglet.malaysian else 'Non-Malaysian' }}
 					</a>
 				</div>
 			{% endfor %}
