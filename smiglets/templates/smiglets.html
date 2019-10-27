@@ -34,7 +34,7 @@
 						Year of Study
 					</div>
 					<div class="cell">
-						Malaysian?
+						Msian?
 					</div>
 				</div>
 				{% set ns = namespace(count=1) %}
@@ -59,8 +59,9 @@
 						<a class="cell" data-title="Year of Study" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
 							{{ smiglet.year_of_study }}
 						</a>
-						<a class="cell" data-title="Malaysian?" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
-							{{ 'Malaysian' if smiglet.malaysian else 'Non-Malaysian' }}
+						<a class="cell" data-title="Msian?" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+							{{ 'Yes' if smiglet.malaysian else 'No' }}
+							<!-- {{ 'Malaysian' if smiglet.malaysian else 'Non-Malaysian' }} -->
 						</a>
 					</div>
 				{% endfor %}
