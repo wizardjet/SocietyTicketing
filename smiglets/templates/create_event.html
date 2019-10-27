@@ -1,9 +1,5 @@
 {% extends "layout.html" %}
 
-{% block styles %}
-    <link rel="stylesheet" type="text/css" href="/static/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-{% endblock styles %}
-
 {% block body %}
     <div class="content-section">
         <form method="POST" action="">
@@ -45,29 +41,33 @@
                 </div>
                 <!-- Prices -->
                 <div class="form-row">
-                    <!-- Member Price -->
-                    <div class="form-group col-md-3">
-                            {{ form.member_price.label(class="form-control-label") }}
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">GBP</span>
+                    <div class="col-md-6">
+                        <div class="form-row">
+                            <!-- Member Price -->
+                            <div class="form-group col-md-6">
+                                    {{ form.member_price.label(class="form-control-label") }}
+                                <div class="form-inline input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">£</span>
+                                    </div>
+                                    {{ form.member_price(class='form-control form-control-lg') }}
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+                                </div>
                             </div>
-                            {{ form.member_price(class='form-control form-control-lg') }}
-                            <div class="input-group-append">
-                                <span class="input-group-text">.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Non-member Price -->
-                    <div class="form-group col-md-3">
-                            {{ form.non_member_price.label(class="form-control-label") }}
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">GBP</span>
-                            </div>
-                            {{ form.non_member_price(class='form-control form-control-lg') }}
-                            <div class="input-group-append">
-                                <span class="input-group-text">.00</span>
+                            <!-- Non-member Price -->
+                            <div class="form-group col-md-6">
+                                    {{ form.non_member_price.label(class="form-control-label") }}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">£</span>
+                                    </div>
+                                    {{ form.non_member_price(class='form-control form-control-lg') }}
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,10 +90,10 @@
                             $('#datetimepicker1').datetimepicker();
                         });
                     </script>
-                </div>
-                    
+                    {{ form.submit(class="form-control-lg float-right btn btn-outline-info") }}
             </fieldset>
         </form>
+    </div>
 {% endblock body %}
 {% block content %}
     <h3>Our Sidebar</h3>

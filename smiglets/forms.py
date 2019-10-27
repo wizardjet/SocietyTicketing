@@ -58,6 +58,7 @@ class EventForm(FlaskForm):
     date_and_time = DateTimeLocalField('Date and Time',
                             format='%m/%d/%y',
                             validators=[DataRequired()])
+    submit = SubmitField('Create')
 
 class LoginForm(FlaskForm):
     email = StringField('Email',

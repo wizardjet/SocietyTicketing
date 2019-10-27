@@ -112,7 +112,7 @@ iframe {
 }
 
 .wrap-table100 {
-  width: 960px;
+  /* width: 960px; */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -129,31 +129,31 @@ iframe {
   }
 }
 
-.row {
+.table-row {
   display: table-row;
-  background: #fff;
+  background: #f9faff;
 }
 
-.row.header {
+.table-row.header {
   color: #ffffff;
   background: #6c7ae0;
 }
 
 @media screen and (max-width: 768px) {
-  .row {
+  .table-row {
     display: block;
   }
 
-  .row.header {
+  .table-row.header {
     padding: 0;
     height: 0px;
   }
 
-  .row.header .cell {
+  .table-row.header .cell {
     display: none;
   }
 
-  .row .cell:before {
+  .table-row .cell:before {
     font-family: Poppins-Bold;
     font-size: 12px;
     color: #808080;
@@ -178,7 +178,7 @@ iframe {
   }
 }
 
-.row .cell {
+.table-row .cell {
   font-family: Poppins-Regular;
   font-size: 15px;
   color: #666666;
@@ -190,7 +190,7 @@ iframe {
   border-bottom: 1px solid #f2f2f2;
 }
 
-.row.header .cell {
+.table-row.header .cell {
   font-family: Poppins-Regular;
   font-size: 18px;
   color: #fff;
@@ -201,43 +201,43 @@ iframe {
   padding-bottom: 19px;
 }
 
-.row .cell:nth-child(1) {
-  width: 160px;
+.table-row .cell:nth-child(1) {
+  /* width: 160px; */
   padding-left: 20px;
 }
 
-.row .cell:nth-child(2) {
+/* .table-row .cell:nth-child(2) {
   width: 160px;
 }
 
-.row .cell:nth-child(3) {
+.table-row .cell:nth-child(3) {
   width: 160px;
 }
 
-.row .cell:nth-child(4) {
+.table-row .cell:nth-child(4) {
   width: 160px;
 }
 
-.row .cell:nth-child(5) {
+.table-row .cell:nth-child(5) {
   width: 160px;
 }
 
-.row .cell:nth-child(6) {
+.table-row .cell:nth-child(6) {
   width: 160px;
-}
+} */
 
 
-.table, .row {
+.table, .table-row {
   width: 100% !important;
 }
 
-.row:hover {
+.table-row:hover {
   background-color: #ececff;
   cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  .row {
+  .table-row {
     border-bottom: 1px solid #f2f2f2;
     padding-bottom: 18px;
     padding-top: 30px;
@@ -245,17 +245,17 @@ iframe {
     margin: 0;
   }
   
-  .row .cell {
+  .table-row .cell {
     border: none;
     padding-left: 30px;
     padding-top: 16px;
     padding-bottom: 16px;
   }
-  .row .cell:nth-child(1) {
+  .table-row .cell:nth-child(1) {
     padding-left: 30px;
   }
   
-  .row .cell {
+  .table-row .cell {
     font-family: Poppins-Regular;
     font-size: 18px;
     color: #555555;
@@ -263,7 +263,7 @@ iframe {
     font-weight: unset !important;
   }
 
-  .table, .row, .cell {
+  .table, .table-row, .cell {
     width: 100% !important;
   }
 }

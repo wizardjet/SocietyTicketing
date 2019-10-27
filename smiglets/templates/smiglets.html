@@ -10,57 +10,69 @@
 {% endblock styles %}
 
 {% block body %}
-	<div class="wrap-table100">
-		<div class="table">
-			<div class="row header">
-				<div class="cell">
-					First Name
+	<div class="content-section">
+		<legend class="border-bottom mb-4">All Smiglets</legend>
+		<div class="wrap-table100">
+			<div class="table">
+				<div class="table-row header">
+					<div class="cell">
+						First Name
+					</div>
+					<div class="cell">
+						Last Name
+					</div>
+					<div class="cell">
+						Email
+					</div>
+					<div class="cell">
+						Membership
+					</div>
+					<div class="cell">
+						Year of Study
+					</div>
+					<div class="cell">
+						Malaysian?
+					</div>
 				</div>
-				<div class="cell">
-					Last Name
-				</div>
-				<div class="cell">
-					Email
-				</div>
-				<div class="cell">
-					Membership
-				</div>
-				<div class="cell">
-					Year of Study
-				</div>
-				<div class="cell">
-					Malaysian?
-				</div>
+				
+				{% for smiglet in smiglets %}
+					<div class="table-row">
+						<a class="cell" data-title="First Name" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+							{{ smiglet.first_name }}
+						</a>
+						<a class="cell" data-title="Last Name" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+							{{ smiglet.last_name }}
+						</a>
+						<a class="cell" data-title="Email" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+							{{ smiglet.email }}
+						</a>
+						<a class="cell" data-title="Membership" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+							{{ smiglet.membership[0] }}
+						</a>
+						<a class="cell" data-title="Year of Study" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+							{{ smiglet.year_of_study }}
+						</a>
+						<a class="cell" data-title="Malaysian?" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
+							{{ 'Malaysian' if smiglet.malaysian else 'Non-Malaysian' }}
+						</a>
+					</div>
+				{% endfor %}
 			</div>
-			
-			{% for smiglet in smiglets %}
-				<div class="row">
-					<a class="cell" data-title="First Name" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
-						{{ smiglet.first_name }}
-					</a>
-					<a class="cell" data-title="Last Name" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
-						{{ smiglet.last_name }}
-					</a>
-					<a class="cell" data-title="Email" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
-						{{ smiglet.email }}
-					</a>
-					<a class="cell" data-title="Membership" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
-						{{ smiglet.membership[0] }}
-					</a>
-					<a class="cell" data-title="Year of Study" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
-						{{ smiglet.year_of_study }}
-					</a>
-					<a class="cell" data-title="Malaysian?" href="{{ url_for('smiglet', smiglet_email=smiglet.email)}}">
-						{{ 'Malaysian' if smiglet.malaysian else 'Non-Malaysian' }}
-					</a>
-				</div>
-			{% endfor %}
 		</div>
 	</div>
 
 {% endblock body %}
 
 {% block content %}
+<h3>Our Sidebar</h3>
+<p class='text-muted'>You can put any information here you'd like.
+	<ul class="list-group">
+	<li class="list-group-item list-group-item-light">Latest Posts</li>
+	<li class="list-group-item list-group-item-light">Announcements</li>
+	<li class="list-group-item list-group-item-light">Calendars</li>
+	<li class="list-group-item list-group-item-light">etc</li>
+	</ul>
+</p>
 {% endblock content %}
 
 {% block scripts %}
