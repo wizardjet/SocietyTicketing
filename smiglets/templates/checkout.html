@@ -4,10 +4,10 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Fast Entry Information</legend>
+                <legend class="border-bottom mb-4">Membership Information</legend>
                 <div class="form-row">
-                    <div class="form-group">
-                    {{ form.email.label(class="form-control-label") }}
+                    <div class="form-group col-md-5">
+                        {{ form.email.label(class="form-control-label") }}
                     <div class="input-group mb-2">
                         {{ form.email(class="form-control form-control-lg", disabled=True) }}
                         <div class="input-group-append">
@@ -30,6 +30,11 @@
                         {% endif %}
                         <small class="form-text text-muted">Located at the back of your Student ID. We use this for fast entry purposes only.</small>
                     </div>
+                </div>
+                <legend class="border-bottom mb-4">Membership Perks</legend>
+                The SMIG membership entitles you to discounts to our events, plus exclusive discounts from our selected ponsors
+                <div class=row>
+                    <
                 </div>
             </fieldset>
             <div class="form-group">

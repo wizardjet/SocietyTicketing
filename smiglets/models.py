@@ -22,6 +22,9 @@ class Smiglet(db.Model):
 
     # amount owed, primary join?
 
+    def is_member(self):
+        return True if str(self.membership[0])=="Member" else False
+
     def __repr__(self):
         return f"Smiglet('{self.first_name}', '{self.last_name}', '{self.email}', '{self.membership}' '{self.year_of_study}', '{self.course}', '{'Malaysian' if self.malaysian else 'Non-Malaysian'}', '{'Is Committee' if self.committee else 'Non-Committee'}', '')"
 

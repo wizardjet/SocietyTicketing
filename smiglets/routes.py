@@ -54,6 +54,7 @@ def checkout():
     if item == "Membership":
         form = CheckoutForm(data={'email': smiglet_email}) #populate form
         if form.validate_on_submit():
+            #TODO: Has Paid
             membership = Membership(smiglet_email=smiglet_email, is_member=True, has_paid=True, id_number=form.library_id.data[:-1])
             db.session.add(membership)
             db.session.commit()
@@ -71,7 +72,7 @@ def smiglets():
 @app.route("/smiglet/<string:smiglet_email>", methods=['GET', 'POST'])
 def smiglet(smiglet_email):
     smiglet = Smiglet.query.get_or_404(smiglet_email)
-    form = RegistrationForm(data={'first_name': smiglet.first_name, 'last_name': smiglet.last_name, 'email': smiglet.email, 'membership': True if smiglet.membership=='Member' else False, 'year_of_study': smiglet.year_of_study, 'course': smiglet.course, 'malaysian': smiglet.malaysian, 'committee': smiglet.committee})
+    form = RegistrationForm(data={'first_name': smiglet.first_name, 'last_name': smiglet.last_name, 'email': smiglet.email, 'membership': smiglet.is_member(), 'year_of_study': smiglet.year_of_study, 'course': smiglet.course, 'malaysian': smiglet.malaysian, 'committee': smiglet.committee})
     form.submit.label.text = "Edit"
     if form.is_submitted():
         return redirect(url_for('edit_smiglet', smiglet_email=smiglet_email))
@@ -81,7 +82,8 @@ def smiglet(smiglet_email):
 @app.route("/smiglet/<string:smiglet_email>/edit", methods=['GET', 'POST'])
 def edit_smiglet(smiglet_email):
     smiglet = Smiglet.query.get_or_404(smiglet_email)
-    form = RegistrationForm(data={'first_name': smiglet.first_name, 'last_name': smiglet.last_name, 'email': smiglet.email, 'membership': True if smiglet.membership=='Member' else False, 'year_of_study': smiglet.year_of_study, 'course': smiglet.course, 'malaysian': smiglet.malaysian, 'committee': smiglet.committee})
+    print(str(smiglet.membership[0])=="Member")
+    form = RegistrationForm(data={'first_name': smiglet.first_name, 'last_name': smiglet.last_name, 'email': smiglet.email, 'membership': smiglet.is_member(), 'year_of_study': smiglet.year_of_study, 'course': smiglet.course, 'malaysian': smiglet.malaysian, 'committee': smiglet.committee})
     form.submit.label.text = "Update"
     # if form.validate_on_submit():
     # catch if buying membership
