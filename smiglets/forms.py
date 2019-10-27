@@ -1,8 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, IntegerField
+from wtforms.fields.html5 import DateTimeLocalField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, Regexp, ValidationError
 from smiglets.models import Smiglet
 
+############################# smiglet creation form #############################
 class RegistrationForm(FlaskForm):
     first_name = StringField('First Name', 
                             render_kw={'placeholder':'Mohammad Amir'},
@@ -29,12 +31,33 @@ class RegistrationForm(FlaskForm):
 
     submit = SubmitField('Join')
 
+############################# membership creation form #############################
 class CheckoutForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Length(min=0, max=10)])
     library_id = StringField('Library ID', render_kw={'placeholder':'0845678912U'},
                             validators=[Regexp('^([0-9])+[UP]$', message="Must contain only numbers and end in U or P")])
     submit = SubmitField('Done')
+
+############################# event creation form #############################
+class EventForm(FlaskForm):
+    name = StringField('Event Name', 
+                            render_kw={'placeholder': 'Christavali'},
+                            validators=[DataRequired(), Length(min=1, max=50)])
+    # TODO: SelectField for event location
+    location = StringField('Location', 
+                            render_kw={'placeholder': 'Forbes Bar'},
+                            validators=[DataRequired(), Length(min=0, max=50)])
+    member_price = IntegerField('Member Price',
+                            default=0,
+                            validators=[DataRequired()])
+    non_member_price = IntegerField('Non-member Price',
+                            default=0,
+                            validators=[DataRequired()])
+
+    date_and_time = DateTimeLocalField('Date and Time',
+                            format='%m/%d/%y',
+                            validators=[DataRequired()])
 
 class LoginForm(FlaskForm):
     email = StringField('Email',

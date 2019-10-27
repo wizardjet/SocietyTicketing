@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request
 from smiglets import app, db
-from smiglets.forms import RegistrationForm, LoginForm, CheckoutForm
+from smiglets.forms import RegistrationForm, LoginForm, CheckoutForm, EventForm
 from smiglets.models import Smiglet, Membership, Event, Event_Attendee, Event_Guest
 
 
@@ -30,7 +30,7 @@ def home():
 def about():
     return render_template('about.html', title='About')
 
-############################# register page #############################
+############################# smiglet creation page #############################
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -46,7 +46,7 @@ def register():
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
-############################# checkout page #############################
+############################# membership creation page #############################
 @app.route("/checkout", methods=['GET', 'POST'])
 def checkout():
     item = request.args.get('item')
@@ -62,7 +62,7 @@ def checkout():
             return redirect(url_for('home'))
         return render_template('checkout.html', title='Checkout', form=form)
 
-############################# smiglets page #############################
+############################# all smiglets page #############################
 @app.route("/smiglets", methods=['GET', 'POST'])
 def smiglets():
     smiglets = Smiglet.query.all()
@@ -85,12 +85,34 @@ def edit_smiglet(smiglet_email):
     print(str(smiglet.membership[0])=="Member")
     form = RegistrationForm(data={'first_name': smiglet.first_name, 'last_name': smiglet.last_name, 'email': smiglet.email, 'membership': smiglet.is_member(), 'year_of_study': smiglet.year_of_study, 'course': smiglet.course, 'malaysian': smiglet.malaysian, 'committee': smiglet.committee})
     form.submit.label.text = "Update"
-    # if form.validate_on_submit():
-    # catch if buying membership
-    #     return redirect(url_for(''))
+    # TODO: Editing and updating
+        # if form.validate_on_submit():
+        # catch if buying membership
+        #     return redirect(url_for(''))
     return render_template('smiglet.html', smiglet=smiglet, form=form, title=f"Edit {smiglet_email} | SMIG App", editing=True)
 
-############################# event page #############################
+############################# create event page #############################
+@app.route("/events/create", methods=['GET', 'POST'])
+def create_event():
+    form = EventForm()
+    if form.validate_on_submit():
+        event = Smiglet(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, year_of_study=form.year_of_study.data, course=form.course.data, malaysian=form.malaysian.data)
+        db.session.add(event)
+        db.session.commit()
+        flash(f'Event created for {form.name.data}!', 'success')
+        return redirect(url_for('events'))
+    return render_template('create_event.html', title='Create Event', form=form)
+
+############################# all events page #############################
+@app.route("/events", methods=['GET', 'POST'])
+def events():
+    events = Event.query.all()
+    return render_template('events.html', events=events)
+
+
+############################# view event page #############################
+# @app.route("/event/<int:id>", methods=['GET', 'POST'])
+# def event(id):
 
 
 ############################# checkout page #############################
