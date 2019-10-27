@@ -45,12 +45,21 @@
                         <div class="form-row">
                             <!-- Member Price -->
                             <div class="form-group col-md-6">
-                                    {{ form.member_price.label(class="form-control-label") }}
+                                    {{ form.price_member.label(class="form-control-label") }}
                                 <div class="form-inline input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">£</span>
                                     </div>
-                                    {{ form.member_price(class='form-control form-control-lg') }}
+                                    {% if form.price_member.errors %}
+                                        {{ form.price_member(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.price_member.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.price_member(class='form-control form-control-lg') }}
+                                    {% endif %}
                                     <div class="input-group-append">
                                         <span class="input-group-text">.00</span>
                                     </div>
@@ -58,12 +67,21 @@
                             </div>
                             <!-- Non-member Price -->
                             <div class="form-group col-md-6">
-                                    {{ form.non_member_price.label(class="form-control-label") }}
+                                    {{ form.price_non_member.label(class="form-control-label") }}
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">£</span>
                                     </div>
-                                    {{ form.non_member_price(class='form-control form-control-lg') }}
+                                    {% if form.price_non_member.errors %}
+                                        {{ form.price_non_member(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.price_non_member.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.price_non_member(class='form-control form-control-lg') }}
+                                    {% endif %}
                                     <div class="input-group-append">
                                         <span class="input-group-text">.00</span>
                                     </div>
@@ -74,7 +92,16 @@
                     <div class="form-group col-md-6">
                         {{ form.date_and_time.label(class="form-control-label") }}
                         <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                {{ form.date_and_time(class="form-control form-control-lg datetimepicker-input", **{"data-target": "#datetimepicker1"}) }}
+                                {% if form.date_and_time.errors %}
+                                        {{ form.date_and_time(class="form-control form-control-lg datetimepicker-input is-invalid", **{"data-target": "#datetimepicker1", "data-date-format": "DD-MM-YYYY HH:mm"}) }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.date_and_time.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                       {{ form.date_and_time(class="form-control form-control-lg datetimepicker-input", **{"data-target": "#datetimepicker1", "data-date-format": "DD-MM-YYYY HH:mm"}) }}
+                                    {% endif %}
                                 <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
@@ -87,7 +114,7 @@
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
                     <script type="text/javascript">
                         $(function () {
-                            $('#datetimepicker1').datetimepicker();
+                            $('#datetimepicker1').datetimepicker({});
                         });
                     </script>
                     {{ form.submit(class="form-control-lg float-right btn btn-outline-info") }}

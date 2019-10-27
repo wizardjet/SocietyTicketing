@@ -96,7 +96,7 @@ def edit_smiglet(smiglet_email):
 def create_event():
     form = EventForm()
     if form.validate_on_submit():
-        event = Smiglet(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, year_of_study=form.year_of_study.data, course=form.course.data, malaysian=form.malaysian.data)
+        event = Event(name=form.name.data, location=form.location.data, price_member=form.price_member.data, price_non_member=form.price_non_member.data, datetime=form.date_and_time.data)
         db.session.add(event)
         db.session.commit()
         flash(f'Event created for {form.name.data}!', 'success')

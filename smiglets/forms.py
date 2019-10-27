@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, IntegerField
-from wtforms.fields.html5 import DateTimeLocalField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, Regexp, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, IntegerField, DateTimeField
+# from wtforms.fields.html5 import DateTimeLocalField
+from wtforms.validators import Required, DataRequired, Length, Email, EqualTo, Regexp, ValidationError, InputRequired
 from smiglets.models import Smiglet
+from datetime import datetime
 
 ############################# smiglet creation form #############################
 class RegistrationForm(FlaskForm):
@@ -47,17 +48,16 @@ class EventForm(FlaskForm):
     # TODO: SelectField for event location
     location = StringField('Location', 
                             render_kw={'placeholder': 'Forbes Bar'},
-                            validators=[DataRequired(), Length(min=0, max=50)])
-    member_price = IntegerField('Member Price',
+                            validators=[DataRequired(), Length(min=1, max=50)])
+    price_member = IntegerField('Member Price',
                             default=0,
                             validators=[DataRequired()])
-    non_member_price = IntegerField('Non-member Price',
+    price_non_member = IntegerField('Non-member Price',
                             default=0,
                             validators=[DataRequired()])
-
-    date_and_time = DateTimeLocalField('Date and Time',
-                            format='%m/%d/%y',
-                            validators=[DataRequired()])
+    date_and_time = DateTimeField('Date and Time',
+                            validators=[InputRequired()],
+                            format = "%m/%d/%Y %I:%M %p",default= datetime.utcnow())
     submit = SubmitField('Create')
 
 class LoginForm(FlaskForm):

@@ -45,8 +45,8 @@ class Event(db.Model):
     name = db.Column(db.String(EVENT_MAX_CHAR), unique=True, nullable=False) # not allowed to have multiple events with the same name
     price_member = db.Column(db.DECIMAL(precision=10, scale=2), nullable=False, default=0.00)
     price_non_member = db.Column(db.DECIMAL(precision=10, scale=2), nullable=False, default=0.00)
-    date = db.Column(db.DATE, nullable=False)
-    time = db.Column(db.TIME, nullable=False)
+    datetime = db.Column(db.DATETIME, nullable=False)
+    # time = db.Column(db.TIME, nullable=False)
     location = db.Column(db.String(EVENT_MAX_CHAR), nullable=False)
     attendees = db.relationship('Event_Attendee', backref='event', lazy=True)
     guests = db.relationship('Event_Guest', backref='event', lazy=True)
