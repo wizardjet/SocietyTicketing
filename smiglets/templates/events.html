@@ -1,21 +1,23 @@
 {% extends "layout.html" %}
 {% block body %}
-	<legend class="border-bottom mb-4">All events</legend>
-	<div class="row">
-	{% for event in events %}
-		<div class="col-sm">
-			<article class="media content-section">
-				<div class="media-body">
-					<div class="article-metadata">
-						<a class="mr-2" href="#">{{ event.location }}</a>
-						<small class="text-muted">{{ event.datetime }}</small>
+	<div class="content-section">
+		<legend class="border-bottom mb-4">All events</legend>
+		<div class="row">
+		{% for event in events %}
+			<div class="col-sm">
+				<article class="media content-section">
+					<div class="media-body">
+						<div class="article-metadata">
+							<a class="mr-2" href="#">{{ event.location }}</a>
+							<small class="text-muted">{{ event.datetime }}</small>
+						</div>
+						<h2><a class="article-title" href="#">{{ event.name }}</a></h2>
+						<p class="article-content">Member price: {{ event.price_member }} Non-member price: {{ event.price_non_member }}</p>
 					</div>
-					<h2><a class="article-title" href="#">{{ event.name }}</a></h2>
-					<p class="article-content">Member price: {{ event.price_member }} Non-member price: {{ event.price_non_member }}</p>
-				</div>
-			</article>
+				</article>
+			</div>
+		{% endfor %}
 		</div>
-	{% endfor %}
 	</div>
 
 {% endblock body %}

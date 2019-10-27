@@ -37,7 +37,7 @@ class CheckoutForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Length(min=0, max=10)])
     library_id = StringField('Library ID', render_kw={'placeholder':'0845678912U'},
-                            validators=[Regexp('^([0-9])+[UP]$', message="Must contain only numbers and end in U or P")])
+                            validators=[Regexp('^([0-9])+[UP]$|^$', message="Must contain only numbers and end in U or P")]) #allow empty strings
     submit = SubmitField('Done')
 
 ############################# event creation form #############################

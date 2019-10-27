@@ -38,7 +38,6 @@ def register():
         smiglet = Smiglet(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, year_of_study=form.year_of_study.data, course=form.course.data, malaysian=form.malaysian.data)
         membership = Membership(smiglet_email=form.email.data, is_member=form.membership.data)
         db.session.add(smiglet)
-        db.session.add(membership)
         db.session.commit()
         if form.membership.data: # checkout member
             return redirect(url_for('checkout', smiglet_email=smiglet.email, item="Membership"))
@@ -58,6 +57,7 @@ def checkout():
             membership = Membership(smiglet_email=smiglet_email, is_member=True, has_paid=True, id_number=form.library_id.data[:-1])
             db.session.add(membership)
             db.session.commit()
+            print('Membership added')
             flash(f'Membership added for {form.email.data}!', 'success')
             return redirect(url_for('home'))
         return render_template('checkout.html', title='Checkout', form=form)
