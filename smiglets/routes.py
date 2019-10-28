@@ -111,8 +111,10 @@ def events():
 
 
 ############################# view event page #############################
-# @app.route("/event/<int:id>", methods=['GET', 'POST'])
-# def event(id):
+@app.route("/event/<int:id>", methods=['GET', 'POST'])
+def event(id):
+    event = Event.query.get_or_404(id)
+    return render_template('event.html', event=event)
 
 
 ############################# checkout page #############################
