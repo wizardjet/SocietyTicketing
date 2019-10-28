@@ -1,21 +1,50 @@
 {% extends "layout.html" %}
 {% block body %}
-    <div class="content-section">
+    <div class="event-box">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class='event-placeholder'>
-                    Bonjour
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="event-details">
-                    <h2>{{ event.name }}</h2>
-                    <h3>{{ event.location }}</h3>
-                    <h4>{{ event.datetime }} </h4>
-                    Members: GBP {{ event.price_member }}
-                    Non-members: GBP {{ event.price_non_member }}
+                <div class="event-body">
+                    <div class='event-date'>
+                        <!-- <h4>{{ event.datetime }} </h4> -->
+                        <p class='event-month'>OCT</p>
+                        <p class='event-day'>20</p>
+                    </div>
+                    <div class='event-details'>
+                        <p class='event-name'>{{ event.name }}</p>
+                        <div class='event-detail'>
+                            <div class="event-icon">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            {{ event.location }}
+                        </div>
+                        <div class='event-detail'>
+                            <div class="event-icon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            07.00 PM - 10:00 PM
+                        </div>
+                        <div class='event-detail'>
+                            <div class="event-icon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            £{{ event.price_member }}
+                        </div>
+                        <div class='event-detail event-detail-non-member'>
+                            <div class="event-icon">
+                                <i class="fa fa-user-times"></i>
+                            </div>
+                            £{{ event.price_non_member }}
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            
         </div>
     </div>
 {% endblock body %}

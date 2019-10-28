@@ -97,12 +97,75 @@
     margin-bottom: 1rem;
   }
 
-  .event-details {
-    padding: 30px;
+  .event-body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 10px;
   }
 
   .event-placeholder {
-    background: #555555;
+    background: #e6ffcc;
     width: 100%;
     height: 100%;
   }
+
+  .event-box {
+    background: #ffffff;
+    border: .5px solid #dddddd;
+    border-radius: 3px;
+  }
+
+  .event-date {
+    position: absolute;
+    text-align: center;
+  }
+
+  .event-details {
+    padding-top: 64px;
+  }
+
+  .event-month {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    margin: 0px;
+  }
+
+  .event-day {
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 1.25em;
+    letter-spacing: 1px;
+    margin: 0px;
+  }
+
+  .event-name {
+    text-overflow: ellipsis;
+    /* color: #1E0A3C; */
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 21px;
+    letter-spacing: .5px;
+    word-break: break-word;
+    margin-bottom: 30px;
+  }
+
+  .event-detail {
+    display: inline-block;
+    font-size: 17px;
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
+  }
+
+  .event-detail-non-member {
+    padding-left: 10px;
+  }
+  
+  .event-icon {
+    width: 25px;
+    float: left;
+  }
+
