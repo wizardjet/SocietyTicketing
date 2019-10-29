@@ -118,16 +118,16 @@
 
   .event-date {
     position: absolute;
+    /* padding: 3px; */
     text-align: center;
-  }
-
-  .event-details {
-    padding-top: 64px;
+    /* width: 42px; */
+    /* height: 42px; */
+    /* background: #fdfdfe; */
   }
 
   .event-month {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 15px;
     letter-spacing: .5px;
     text-transform: uppercase;
@@ -140,6 +140,10 @@
     line-height: 1.25em;
     letter-spacing: 1px;
     margin: 0px;
+  }
+
+  .event-details {
+    padding-top: 64px;
   }
 
   .event-name {
@@ -169,3 +173,59 @@
     float: left;
   }
 
+  .event-attendee {
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    border-top: .5px solid #dddddd;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+  }
+
+  span.button-container {
+    /* text-align: center; */
+    /* display: flex; */
+    width: 100%;
+  }
+
+  .event-button {
+    text-transform: none;
+    width: 100%;
+    min-width: 280px;
+    float: none;
+    font-weight: 600;
+    color: #FFF;
+    background-color: #0D8547;
+    transition: all .2s ease-out;
+    vertical-align: middle;
+    position: relative;
+    height: 44px;
+    border: 2px solid transparent;
+    padding: 0 30px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    line-height: 26px;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: capitalize;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .event-button:hover {
+    background-color: #3ab63a;
+  }
+
+  span.button-wrapper {
+    margin-right: 25px;
+    float: right;
+    /* align-items: flex-start; */
+  }
+
+  .event_image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
