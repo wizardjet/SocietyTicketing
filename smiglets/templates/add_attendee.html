@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Membership Information</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        {{ form.email.label(class="form-control-label") }}
+                    <div class="input-group mb-2">
+                        {{ form.email(class="form-control form-control-lg", disabled=True) }}
+                        <div class="input-group-append">
+                            <div class="input-group-text">@st-andrews.ac.uk</div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- Library ID -->
+                    <div class="form-group col-md-6">
+                        {{ form.library_id.label(class="form-control-label") }}
+                        {% if form.library_id.errors %}
+                            {{ form.library_id(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.library_id.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.library_id(class="form-control form-control-lg") }}
+                        {% endif %}
+                        <small class="form-text text-muted">Located at the back of your Student ID. We use this for fast entry purposes only.</small>
+                    </div>
+                </div>
+                <legend class="border-bottom mb-4">Membership Perks</legend>
+                The SMIG membership entitles you to discounts to our events, plus exclusive discounts from our selected ponsors
+                <div class=row>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock body %}
+{% block content %}
+    <h3 class='order'>Order Summary</h3>
+    <p class='text-muted'>
+        <a class="linkr">SMIG Membership</a>
+        <span class="price">GBP 3.00</span>
+    <hr class="hr">
+    Total
+    <span class="price">GBP 3.00</span>
+    </p>
+{% endblock content %}

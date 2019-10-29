@@ -116,9 +116,11 @@ def event(id):
     event = Event.query.get_or_404(id)
     return render_template('event.html', event=event)
 
-
-############################# checkout page #############################
-
+############################# add attendee page #############################
+@app.route("event/<int:id>/add_attendee", methods=['GET', 'POST'])
+def add_attendee(id):
+    event = Event.query.get_or_404(id)
+    return render_template('add_attendee.html', event=event)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

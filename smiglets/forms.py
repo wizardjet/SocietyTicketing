@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, IntegerField, DateTimeField
 # from wtforms.fields.html5 import DateTimeLocalField
 from wtforms.validators import Required, DataRequired, Length, Email, EqualTo, Regexp, ValidationError, InputRequired
-from smiglets.models import Smiglet
+from smiglets.models import Smiglet, Event
 from datetime import datetime
 
 ############################# smiglet creation form #############################
@@ -59,6 +59,28 @@ class EventForm(FlaskForm):
                             validators=[InputRequired()],
                             format = "%m/%d/%Y %I:%M %p",default= datetime.utcnow())
     submit = SubmitField('Create')
+
+############################# add attendee form #############################
+class AttendeeForm(FlaskForm):
+    event_id = IntegerField('Event ID',
+                            validators=[DataRequired()])
+    smiglet_email = StringField('Smiglet Email',
+                            render_kw={'placeholder':'mabs2'},
+                            validators=[DataRequired(), Length(min=0, max=10), Regexp('^\w+$', message="Must be alphanumerical")])
+    amount_paid = IntegerField('Amount Paid',default=0,
+                            validators=[DataRequired()])
+
+    # make sure event exists in database
+    def validate_event_id(self, id):
+        event = Event.query.filter_by(id=id.data).first()
+        if event == None:
+            raise ValidationError('Event does not exist')
+    
+    # make sure smiglet exists in database
+    def validate_smiglet_email(self, email):
+        smiglet = Smiglet.query.filter_by(email=email.data).first()
+        if smiglet == None:
+            raise ValidationError('Smiglet does not exist')
 
 class LoginForm(FlaskForm):
     email = StringField('Email',
