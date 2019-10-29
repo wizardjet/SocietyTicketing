@@ -49,7 +49,9 @@
         <div class="event-attendee">
             <span class="button-container">
                 <span class="button-wrapper">
-                    <button type='button' class="event-button">Add Attendee</button>
+                    <form action="{{ url_for('add_attendee', id=event.id) }}" method="get">
+                        <button type='submit' class="event-button">Add Attendee</button>
+                    </form>
                 </span>
             </span>
         </div>

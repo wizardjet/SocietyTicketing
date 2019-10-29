@@ -9,7 +9,9 @@ EVENT_MAX_CHAR = 50
 # STATUS_NOT_EXIST = "NEX"
 # STATUS_DUPLICATE = "DUP"
 
-class Smiglet(db.Model):
+class Smiglet(db.Model):   
+    __searchable__ = ['first_name', 'last_name', 'email']
+
     first_name = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=False) # don't need unique
     last_name = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=True) # don't need last name
     email = db.Column(db.String(EMAIL_MAX_CHAR), unique=True, nullable=False, primary_key=True) # must have unique email
@@ -29,6 +31,8 @@ class Smiglet(db.Model):
         return f"Smiglet('{self.first_name}', '{self.last_name}', '{self.email}', '{self.membership}' '{self.year_of_study}', '{self.course}', '{'Malaysian' if self.malaysian else 'Non-Malaysian'}', '{'Is Committee' if self.committee else 'Non-Committee'}', '')"
 
 class Membership(db.Model):
+    __searchable__ = ['id_number']
+
     smiglet_email = db.Column(db.String(EMAIL_MAX_CHAR), db.ForeignKey('smiglet.email'), primary_key=True, nullable=False)
     is_member = db.Column(db.Boolean, default=False)
     has_paid = db.Column(db.Boolean, default=False)

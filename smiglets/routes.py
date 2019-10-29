@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request
 from smiglets import app, db
-from smiglets.forms import RegistrationForm, LoginForm, CheckoutForm, EventForm
+from smiglets.forms import RegistrationForm, LoginForm, CheckoutForm, EventForm, AttendeeForm
 from smiglets.models import Smiglet, Membership, Event, Event_Attendee, Event_Guest
 
 
@@ -117,10 +117,16 @@ def event(id):
     return render_template('event.html', event=event)
 
 ############################# add attendee page #############################
-@app.route("event/<int:id>/add_attendee", methods=['GET', 'POST'])
+@app.route("/event/<int:id>/add_attendee", methods=['GET', 'POST'])
 def add_attendee(id):
     event = Event.query.get_or_404(id)
-    return render_template('add_attendee.html', event=event)
+    form = AttendeeForm(data={'event_id': event.id})
+    return render_template('add_attendee.html', title='Add Attendee', event=event, form=form)
+
+@app.route("/event/<int:id>/add_attendee/results/<string:keyword>", methods=)
+def select_attendee(id, keyword):
+    results = Event.query.whoosh_search('cool')
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

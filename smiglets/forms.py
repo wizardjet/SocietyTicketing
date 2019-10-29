@@ -69,6 +69,7 @@ class AttendeeForm(FlaskForm):
                             validators=[DataRequired(), Length(min=0, max=10), Regexp('^\w+$', message="Must be alphanumerical")])
     amount_paid = IntegerField('Amount Paid',default=0,
                             validators=[DataRequired()])
+    submit = SubmitField('Add')
 
     # make sure event exists in database
     def validate_event_id(self, id):
