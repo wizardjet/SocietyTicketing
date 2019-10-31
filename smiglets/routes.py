@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request
 from smiglets import app, db
-from smiglets.forms import RegistrationForm, LoginForm, CheckoutForm, EventForm, AttendeeForm
+from smiglets.forms import RegistrationForm, LoginForm, CheckoutForm, EventForm, AttendeeForm, SearchAttendeeForm
 from smiglets.models import Smiglet, Membership, Event, Event_Attendee, Event_Guest
 
 
@@ -121,11 +121,26 @@ def event(id):
 def add_attendee(id):
     event = Event.query.get_or_404(id)
     form = AttendeeForm(data={'event_id': event.id})
-    return render_template('add_attendee.html', title='Add Attendee', event=event, form=form)
+    search_form = SearchAttendeeForm()
+    if search_form.validate_on_submit():
+        results = None
+        if not search_form.by_library_id.data: # library id not empty
+            #TODO: Trim ID
+            id = search_form.by_library_id.data
+            # results = Membership.query.whoosh_search(id)
+        # else: # search by name
+            # results = Smiglet.query.whoosh_search(search_form.by_name_or_email.data)
+        # if len(results) == 0:
+        #     flash(f'No results found, try again?', 'success')
+        #     return redirect(url_for('add_attendee', id=event.id))
+        # else:
+        # for result in results:
+        #     print(result)
+    return render_template('add_attendee.html', title='Add Attendee', event=event, form=form, search_form=search_form)
 
-@app.route("/event/<int:id>/add_attendee/results/<string:keyword>", methods=)
-def select_attendee(id, keyword):
-    results = Event.query.whoosh_search('cool')
+############################# search attendee page #############################
+# @app.route("/event/<int:id>/add_attendee/results/<string:keyword>", methods=['GET', 'POST'])
+# def select_attendee(id, keyword):
 
 
 @app.route("/login", methods=['GET', 'POST'])

@@ -1,6 +1,6 @@
 from datetime import datetime
-from smiglets import db
-
+from smiglets import db, app
+import flask_whooshalchemy as whooshalchemy
 NAME_MAX_CHAR = 20
 EMAIL_MAX_CHAR = 15
 ID_MAX_CHAR = 10
@@ -39,7 +39,7 @@ class Membership(db.Model):
     id_number = db.Column(db.String(ID_MAX_CHAR), unique=True, nullable=True) # only accept library ID number
 
     user = db.relationship('Smiglet', back_populates='membership')
-
+    
     def __repr__(self):
         # return f"Membership('{self.smiglet_email}', '{'Member' if self.is_member else 'Non-member'}', '{'Paid' if self.has_paid else 'Not Paid'})"
         return f"{'Member' if self.is_member else 'Non-member'}"
@@ -73,3 +73,6 @@ class Event_Guest(db.Model):
 
     def __repr__(self):
         return f"Event_Guest('{self.event_id}', '{self.name}', '{self.amount_paid}')"
+
+whooshalchemy.whoosh_index(app, Smiglet)
+whooshalchemy.whoosh_index(app, Membership)

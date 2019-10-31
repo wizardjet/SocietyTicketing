@@ -60,6 +60,15 @@ class EventForm(FlaskForm):
                             format = "%m/%d/%Y %I:%M %p",default= datetime.utcnow())
     submit = SubmitField('Create')
 
+class SearchAttendeeForm(FlaskForm):
+    by_name_or_email = StringField('By name or email',
+                            render_kw={'placeholder':'Jewel OR Cha OR jcsj'},
+                            validators=[Length(min=0, max=10), Regexp('^\w+$', message="Must be alphanumerical and contain only one word")])
+    by_library_id = StringField('By Library ID',
+                            render_kw={'placeholder':'0841234567U'},
+                            validators=[Length(min=0, max=10), Regexp('^([0-9])+[UP]?$|^$', message="e.g. Invalid characters detected")])
+    submit = SubmitField('Search')
+
 ############################# add attendee form #############################
 class AttendeeForm(FlaskForm):
     event_id = IntegerField('Event ID',
@@ -70,7 +79,7 @@ class AttendeeForm(FlaskForm):
     amount_paid = IntegerField('Amount Paid',default=0,
                             validators=[DataRequired()])
     submit = SubmitField('Add')
-
+    
     # make sure event exists in database
     def validate_event_id(self, id):
         event = Event.query.filter_by(id=id.data).first()
@@ -89,3 +98,4 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
