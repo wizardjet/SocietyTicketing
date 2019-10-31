@@ -54,7 +54,7 @@
 							{{ smiglet.email }}
 						</a>
 						<a class="cell" data-title="Membership" href="{{ url_for('smiglet', email=smiglet.email)}}">
-							{{ smiglet.membership[0] }}
+							{{ smiglet.membership_status() }}
 						</a>
 						<a class="cell" data-title="Year of Study" href="{{ url_for('smiglet', email=smiglet.email)}}">
 							{{ smiglet.year_of_study }}

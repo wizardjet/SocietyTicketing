@@ -23,11 +23,14 @@ class RegistrationForm(FlaskForm):
     malaysian = BooleanField('Are you Malaysian?')
     membership = BooleanField('Membership?')
 
+    editing = False
     # make sure smiglet does not exist in database
     def validate_email(self, email):
         smiglet = Smiglet.query.filter_by(email=email.data).first()
-        if smiglet:
+        if not editing and smiglet:
             raise ValidationError('You are already a member!')
+        elif editing and not smiglet:
+            raise ValidationError('SMIGlet does not exist')
 
     submit = SubmitField('Join')
 

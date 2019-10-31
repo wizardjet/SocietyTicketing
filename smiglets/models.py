@@ -55,7 +55,7 @@ class Smiglet(SearchableMixin, db.Model):
     first_name = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=False) # don't need unique
     last_name = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=True) # don't need last name
     email = db.Column(db.String(EMAIL_MAX_CHAR), unique=True, nullable=False, primary_key=True) # must have unique email
-    membership = db.relationship('Membership', back_populates='user')
+    membership = db.relationship('Membership', back_populates='user', uselist=False)
     year_of_study = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=True) # don't need year of study
     course = db.Column(db.String(NAME_MAX_CHAR), unique=False, nullable=True) # don't need course
     malaysian = db.Column(db.Boolean, default=False)
@@ -63,10 +63,11 @@ class Smiglet(SearchableMixin, db.Model):
     events = db.relationship('Event_Attendee', backref='attendee', lazy=True)
 
     # amount owed, primary join?
-
     def is_member(self):
-        print (self.membership.is_member.data)
-        return True if str(self.membership[0])=="Member" else False
+        True if self.membership else False
+
+    def membership_status(self):
+        return 'Member' if self.membership else 'Non-member'
 
     def __repr__(self):
         return f"Smiglet('{self.first_name}', '{self.last_name}', '{self.email}', '{self.membership}' '{self.year_of_study}', '{self.course}', '{'Malaysian' if self.malaysian else 'Non-Malaysian'}', '{'Is Committee' if self.committee else 'Non-Committee'}', '')"
@@ -76,15 +77,14 @@ class Membership(SearchableMixin, db.Model):
 
     # id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(EMAIL_MAX_CHAR), db.ForeignKey('smiglet.email'), nullable=False, primary_key=True)
-    is_member = db.Column(db.Boolean, default=False)
     has_paid = db.Column(db.Boolean, default=False)
     id_number = db.Column(db.String(ID_MAX_CHAR), unique=True, nullable=True) # only accept library ID number
 
-    user = db.relationship('Smiglet', back_populates='membership')
+    user = db.relationship('Smiglet', back_populates='membership', uselist=False)
     
     def __repr__(self):
-        # return f"Membership('{self.smiglet_email}', '{'Member' if self.is_member else 'Non-member'}', '{'Paid' if self.has_paid else 'Not Paid'})"
-        return f"{'Member' if self.is_member else 'Non-member'}"
+        return f"Membership('{self.smiglet_email}', '{'Member' if self.is_member else 'Non-member'}', '{'Paid' if self.has_paid else 'Not Paid'}, '{self.id_number if self.id_number else 'No ID Number'}')"
+        # return f"{'Member' if self.is_member else 'Non-member'}"
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)

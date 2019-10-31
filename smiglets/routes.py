@@ -54,10 +54,9 @@ def checkout():
         form = CheckoutForm(data={'email': email}) #populate form
         if form.validate_on_submit():
             #TODO: Has Paid
-            membership = Membership(email=email, is_member=True, has_paid=True, id_number=trim_id(form.library_id.data))
+            membership = Membership(email=email, has_paid=True, id_number=trim_id(form.library_id.data))
             db.session.add(membership)
             db.session.commit()
-            print('Membership added')
             flash(f'Membership added for {form.email.data}!', 'success')
             return redirect(url_for('home'))
         return render_template('checkout.html', title='Checkout', form=form)
@@ -82,13 +81,12 @@ def smiglet(email):
 @app.route("/smiglet/<string:email>/edit", methods=['GET', 'POST'])
 def edit_smiglet(email):
     smiglet = Smiglet.query.get_or_404(email)
-    print(str(smiglet.membership[0])=="Member")
     form = RegistrationForm(data={'first_name': smiglet.first_name, 'last_name': smiglet.last_name, 'email': smiglet.email, 'membership': smiglet.is_member(), 'year_of_study': smiglet.year_of_study, 'course': smiglet.course, 'malaysian': smiglet.malaysian, 'committee': smiglet.committee})
+    form.editing = True
     form.submit.label.text = "Update"
-    # TODO: Editing and updating
-        # if form.validate_on_submit():
-        # catch if buying membership
-        #     return redirect(url_for(''))
+    # if form.validate_on_submit():
+        # smiglet.
+        # return redirect(url_for('smiglet', email=email))
     return render_template('smiglet.html', smiglet=smiglet, form=form, title=f"Edit {email} | SMIG App", editing=True)
 
 ############################# create event page #############################
