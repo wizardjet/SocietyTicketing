@@ -1,6 +1,5 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, IntegerField, DateTimeField
-# from wtforms.fields.html5 import DateTimeLocalField
 from wtforms.validators import Required, DataRequired, Length, Email, EqualTo, Regexp, ValidationError, InputRequired
 from smiglets.models import Smiglet, Event
 from datetime import datetime

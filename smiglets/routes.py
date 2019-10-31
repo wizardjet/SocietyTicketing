@@ -36,11 +36,11 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         smiglet = Smiglet(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, year_of_study=form.year_of_study.data, course=form.course.data, malaysian=form.malaysian.data)
-        membership = Membership(smiglet_email=form.email.data, is_member=form.membership.data)
+        membership = Membership(email=form.email.data, is_member=form.membership.data)
         db.session.add(smiglet)
         db.session.commit()
         if form.membership.data: # checkout member
-            return redirect(url_for('checkout', smiglet_email=smiglet.email, item="Membership"))
+            return redirect(url_for('checkout', email=smiglet.email, item="Membership"))
         flash(f'Account created for {form.email.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
@@ -49,12 +49,12 @@ def register():
 @app.route("/checkout", methods=['GET', 'POST'])
 def checkout():
     item = request.args.get('item')
-    smiglet_email = request.args.get('smiglet_email')
+    email = request.args.get('email')
     if item == "Membership":
-        form = CheckoutForm(data={'email': smiglet_email}) #populate form
+        form = CheckoutForm(data={'email': email}) #populate form
         if form.validate_on_submit():
             #TODO: Has Paid
-            membership = Membership(smiglet_email=smiglet_email, is_member=True, has_paid=True, id_number=form.library_id.data[:-1])
+            membership = Membership(email=email, is_member=True, has_paid=True, id_number=trim_id(form.library_id.data))
             db.session.add(membership)
             db.session.commit()
             print('Membership added')
@@ -69,19 +69,19 @@ def smiglets():
     return render_template('smiglets.html', smiglets=smiglets)
 
 ############################# view smiglet page #############################
-@app.route("/smiglet/<string:smiglet_email>", methods=['GET', 'POST'])
-def smiglet(smiglet_email):
-    smiglet = Smiglet.query.get_or_404(smiglet_email)
+@app.route("/smiglet/<string:email>", methods=['GET', 'POST'])
+def smiglet(email):
+    smiglet = Smiglet.query.get_or_404(email)
     form = RegistrationForm(data={'first_name': smiglet.first_name, 'last_name': smiglet.last_name, 'email': smiglet.email, 'membership': smiglet.is_member(), 'year_of_study': smiglet.year_of_study, 'course': smiglet.course, 'malaysian': smiglet.malaysian, 'committee': smiglet.committee})
     form.submit.label.text = "Edit"
     if form.is_submitted():
-        return redirect(url_for('edit_smiglet', smiglet_email=smiglet_email))
-    return render_template('smiglet.html', smiglet=smiglet, form=form, title=f"View {smiglet_email} | SMIG App", editing=False)
+        return redirect(url_for('edit_smiglet', email=email))
+    return render_template('smiglet.html', smiglet=smiglet, form=form, title=f"View {email} | SMIG App", editing=False)
 
 ############################# edit smiglet page #############################
-@app.route("/smiglet/<string:smiglet_email>/edit", methods=['GET', 'POST'])
-def edit_smiglet(smiglet_email):
-    smiglet = Smiglet.query.get_or_404(smiglet_email)
+@app.route("/smiglet/<string:email>/edit", methods=['GET', 'POST'])
+def edit_smiglet(email):
+    smiglet = Smiglet.query.get_or_404(email)
     print(str(smiglet.membership[0])=="Member")
     form = RegistrationForm(data={'first_name': smiglet.first_name, 'last_name': smiglet.last_name, 'email': smiglet.email, 'membership': smiglet.is_member(), 'year_of_study': smiglet.year_of_study, 'course': smiglet.course, 'malaysian': smiglet.malaysian, 'committee': smiglet.committee})
     form.submit.label.text = "Update"
@@ -89,7 +89,7 @@ def edit_smiglet(smiglet_email):
         # if form.validate_on_submit():
         # catch if buying membership
         #     return redirect(url_for(''))
-    return render_template('smiglet.html', smiglet=smiglet, form=form, title=f"Edit {smiglet_email} | SMIG App", editing=True)
+    return render_template('smiglet.html', smiglet=smiglet, form=form, title=f"Edit {email} | SMIG App", editing=True)
 
 ############################# create event page #############################
 @app.route("/events/create", methods=['GET', 'POST'])
@@ -124,18 +124,20 @@ def add_attendee(id):
     search_form = SearchAttendeeForm()
     if search_form.validate_on_submit():
         results = None
-        if not search_form.by_library_id.data: # library id not empty
-            #TODO: Trim ID
-            id = search_form.by_library_id.data
-            # results = Membership.query.whoosh_search(id)
-        # else: # search by name
-            # results = Smiglet.query.whoosh_search(search_form.by_name_or_email.data)
-        # if len(results) == 0:
-        #     flash(f'No results found, try again?', 'success')
-        #     return redirect(url_for('add_attendee', id=event.id))
-        # else:
-        # for result in results:
-        #     print(result)
+        total_hits = 0
+        if len(search_form.by_library_id.data) > 0: # library id not empty
+            print("search by library ID")
+            id = trim_id(search_form.by_library_id.data) #trim
+            results, total_hits = Membership.search(id, 1, 5)
+        else: # search by name
+            print("search by name or email")
+            results, total_hits = Smiglet.search(search_form.by_name_or_email.data, 1, 5)
+        if len(results) == 0:
+            flash(f'No results found, try again?', 'success')
+            return redirect(url_for('add_attendee', id=event.id))
+        else:
+            for result in results:
+                print(result)
     return render_template('add_attendee.html', title='Add Attendee', event=event, form=form, search_form=search_form)
 
 ############################# search attendee page #############################
@@ -153,3 +155,8 @@ def login():
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', title='Login', form=form)
+
+def trim_id(id):
+    if id.endswith('U') or id.endswith('P') or id.endswith('u') or id.endswith('p'):
+        return id[:-1]
+    return id
